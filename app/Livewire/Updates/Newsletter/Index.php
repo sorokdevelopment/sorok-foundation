@@ -32,9 +32,14 @@ class Index extends Component
 
     public function render()
     {
-        $newsletters = Newsletter::query()->latest()->skip(1)->paginate($this->limit);
         $this->latestNewsletter = Newsletter::query()->latest()->first();
-        $hasMore = Newsletter::query()->count() > $this->limit;
+
+        $newsletters = Newsletter::query()
+            ->where('id', '!=', $this->latestNewsletter?->id)
+            ->latest()
+            ->paginate($this->limit);
+
+        $hasMore = $newsletters->hasMorePages();
 
         return view('livewire.updates.newsletter.index', compact('newsletters', 'hasMore'));
     }

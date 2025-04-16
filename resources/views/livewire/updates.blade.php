@@ -7,8 +7,8 @@
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
     
-        <div class="absolute inset-0 flex items-center justify-center text-white text-center">
-            <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
+        <div class="absolute inset-0 flex items-center justify-center text-white text-center scroll-section">
+            <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl text-content">
                 UPDATES
             </h1>
         </div>

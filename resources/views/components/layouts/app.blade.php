@@ -20,15 +20,14 @@
         <header class="bg-white">
             <x-layouts.container>
                 <nav x-data="{ open: false }" class="h-[100px] lg:h-[120px] text-2xl font-primary font-bold flex items-center w-full justify-between relative">
-                    <!-- Logo -->
                     <div class="w-full flex-1 h-full flex justify-start items-center">
-                        <a href="{{  route('home') }}" wire:navigate>
+                        <a href="{{  route('home') }}" >
                             <img src="{{ Vite::asset('public/images/logo-primary.png') }}" alt="Website Logo" class="w-[220px] lg:w-[280px]">
 
                         </a>
                     </div> 
 
-                    <!-- Desktop Navigation -->
+
                     <div class="hidden flex-3 xl:flex items-center justify-center">
                         <ul class="flex justify-center text-sm w-full xl:space-x-6 2xl:space-x-12">
                             @php
@@ -50,22 +49,19 @@
                         </ul>
                     </div>
 
-                    <!-- Contact Us Button -->
                     <div class="hidden xl:flex">
                         <x-buttons.primary>
-                            <a href="{{ route('contact-us') }}" wire:navigate class="w-full">
+                            <a href="{{ route('contact-us') }}"  class="w-full">
                                 CONTACT US 
                             </a>
                         </x-buttons.primary>
                     </div>
 
-                    <!-- Mobile Menu Button -->
                     <div class="block xl:hidden">
                         <div x-on:click="open = true" class="cursor-pointer">
                             <img src="{{ Vite::asset('public/images/menu-bar.png') }}" alt="menu bar" class="h-[25px]">
                         </div>    
 
-                        <!-- Overlay (click outside to close) -->
                         <div x-show="open" 
                             x-on:click="open = false"
                             x-transition:enter="transition-opacity ease-out duration-300"
@@ -78,7 +74,6 @@
                             x-cloak>
                         </div>
 
-                        <!-- Mobile Menu -->
                         <div x-show="open"
                             x-transition:enter="transition transform ease-out duration-300"
                             x-transition:enter-start="translate-x-full opacity-0"
@@ -90,7 +85,6 @@
                             x-on:click.stop
                             x-cloak>
                             
-                            <!-- Close Button -->
                             <div x-on:click="open = false" class="absolute top-5 right-5 cursor-pointer">
                                 <i class="fa-solid fa-xmark text-2xl text-red-500 hover:text-red-700"></i>                        
                             </div>
@@ -101,7 +95,7 @@
                                 </a>
                             @endforeach
                             <x-buttons.primary>
-                                <a  href="{{ route('contact-us') }}" wire:navigate>
+                                <a  href="{{ route('contact-us') }}" >
                                     CONTACT US 
                                 </a>
                             </x-buttons.primary>
@@ -129,13 +123,6 @@
                      class="w-full h-full object-cover">
             </div>
         
-            {{-- <!-- Floating Image at the Top -->
-            <div class="absolute top-0 left-0 w-full -mt-16 z-10">
-                <img src="{{ Vite::asset('public/images/footer.png') }}" 
-                    alt="Footer Decoration" 
-                    class="w-full">
-            </div> --}}
-        
             <x-layouts.container>
                 <div class="relative pt-20 pb-8 max-w-screen-xl mx-auto">
                     <div class="flex flex-col items-center space-y-6">
@@ -147,7 +134,6 @@
                     <div class="flex flex-col justify-between md:justify-center lg:justify-between lg:mt-8 items-start lg:flex-row-reverse">
                         <div class="mt-8 flex flex-col items-center justify-center md:justify-start space-y-4">
                             <div class="right-corner flex flex-col space-y-8">
-                                <!-- Departments -->
                                 <div class="space-y-4">
                                     <h2 class="font-bold text-lg lg:text-xl text-white">
                                         Programs and Social Services Department                                    
@@ -275,20 +261,15 @@
 
         <!--Start of Tawk.to Script-->
             <script type="text/javascript">
-                document.addEventListener("livewire:navigated", function () {
-                    if (!document.querySelector("iframe[src*='tawk.to']")) {
-                        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-                        (function () {
-                            var s1 = document.createElement("script"),
-                                s0 = document.getElementsByTagName("script")[0];
-                            s1.async = true;
-                            s1.src = "https://embed.tawk.to/67e0ec56241a85190f5bbba7/1in39mcps";
-                            s1.charset = "UTF-8";
-                            s1.setAttribute("crossorigin", "*");
-                            s0.parentNode.insertBefore(s1, s0);
-                        })();
-                    }
-                });
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/67e0ec56241a85190f5bbba7/1in39mcps';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+                })();
             </script>
         <!--End of Tawk.to Script-->
 

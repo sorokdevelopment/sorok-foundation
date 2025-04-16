@@ -64,8 +64,6 @@ html, body {
     height: 24px;
 }
 
-
-
 .swiper-pagination-bullet-active {
     background-color: #00674F !important; 
 }
@@ -78,4 +76,22 @@ html, body {
     position: absolute !important;
     bottom: -50px !important; 
 }
+
+
+
+/***************  GSAP ANIMATION  ***********************/
+
+.scroll-section {
+    will-change: transform, clip-path;
+    backface-visibility: hidden;
+  }
+  
+  .text-content > * {
+    transition: text-shadow 0.3s ease;
+  }
+  
+  .image-content {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
 

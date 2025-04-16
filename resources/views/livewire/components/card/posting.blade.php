@@ -5,7 +5,7 @@
     <div class="absolute inset-0 bg-gradient-to-t from-[#333333]/90 to-transparent"></div>
 
     <div class="absolute bottom-0 p-4 text-white space-y-4">
-        <p class="text-sm font-secondary">{{ \Carbon\Carbon::parse($date)->format('F j, Y') }}</p>
+        <p class="text-sm font-secondary">{{ $date }}</p>
         <h3 class="text-lg font-bold line-clamp-2">{{ $title }}</h3>
         <p class="text-sm font-secondary line-clamp-2">
             {{ $description }}

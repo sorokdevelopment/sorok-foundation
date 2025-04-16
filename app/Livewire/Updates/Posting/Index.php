@@ -34,7 +34,7 @@ class Index extends Component
     public function render()
     {
         $postings = SocialMediaPosting::query()->latest()->paginate($this->limit);
-        $hasMore = SocialMediaPosting::query()->count() > $this->limit;
+        $hasMore = $postings->hasMorePages();
 
 
         return view('livewire.updates.posting.index', compact('postings', 'hasMore'));

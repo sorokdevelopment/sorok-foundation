@@ -57,7 +57,7 @@ class SocialMediaPostingResource extends Resource
                 Textarea::make('description')
                     ->required()
                     ->rows(4)
-                    ->placeholder('Write a short post description')
+                    ->placeholder('Write a post description')
                     ->label('Description'),
 
                 DatePicker::make('published_at')
@@ -68,6 +68,7 @@ class SocialMediaPostingResource extends Resource
                 FileUpload::make('image')
                     ->directory('social-media-images')
                     ->image()
+                    ->previewable(false)
                     ->imageEditor()
                     ->required()
                     ->imageEditorAspectRatios([
@@ -77,12 +78,15 @@ class SocialMediaPostingResource extends Resource
                         '1:1',
                     ])
                     ->maxSize(2048)
+                    ->columnSpan('full'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateIcon('heroicon-o-document-text')
+            ->emptyStateDescription('Once you write your first post, it will appear here.')
             ->columns([
                 ImageColumn::make('image')
                     ->size(50),
@@ -99,7 +103,11 @@ class SocialMediaPostingResource extends Resource
                     ->openUrlInNewTab(),
                 TextColumn::make('published_at')
                     ->date('F j, Y')
-                    ->sortable(),            
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->date('F j, Y'),            
                 ])
             ->filters([
                 //

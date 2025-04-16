@@ -62,7 +62,7 @@ class NewsletterResource extends Resource
             Textarea::make('description')
                 ->required()
                 ->rows(5)
-                ->placeholder('Write a short description...'),
+                ->placeholder('Write a description...'),
 
             DatePicker::make('published_at')
                 ->label('Published Date')
@@ -72,6 +72,7 @@ class NewsletterResource extends Resource
             FileUpload::make('thumbnail')
                 ->directory('newsletters')
                 ->image()
+                ->previewable(false)
                 ->imageEditor()
                 ->required()
                 ->imageEditorAspectRatios([
@@ -80,7 +81,8 @@ class NewsletterResource extends Resource
                     '4:3',
                     '1:1',
                 ])
-                ->maxSize(2048),
+                ->maxSize(2048)
+                ->columnSpan('full'),
             RichEditor::make('content')
                 ->label('Newsletter Content')
                 ->required()
@@ -113,6 +115,8 @@ class NewsletterResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateIcon('heroicon-o-newspaper')
+            ->emptyStateDescription('Once you write your first newsletter, it will appear here.')
             ->columns([
                 ImageColumn::make('thumbnail')
                     ->size(50),
@@ -135,6 +139,11 @@ class NewsletterResource extends Resource
                     ->label('Preview')
                     ->limit(200) 
                     ->html(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->date('F j, Y'),
+                    
 
             ])
             ->filters([

@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\Action;
 use App\Filament\Resources\VideoResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\VideoResource\RelationManagers;
@@ -20,6 +21,8 @@ class VideoResource extends Resource
     protected static ?string $model = Video::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-video-camera';
+    protected static ?string $navigationGroup = 'Media';
+
 
     public static function getNavigationBadge(): ?string
     {
@@ -59,6 +62,8 @@ class VideoResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateIcon('heroicon-o-video-camera')
+            ->emptyStateDescription('Once you write your first video, it will appear here.')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
@@ -66,6 +71,10 @@ class VideoResource extends Resource
                     ->limit(30)
                     ->tooltip(fn ($record) => $record->title),
                 Tables\Columns\TextColumn::make('embedId'),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->date('F j, Y'),
             ])
             ->filters([
                 //

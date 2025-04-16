@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\FilmResource\Pages;
@@ -19,6 +20,8 @@ class FilmResource extends Resource
     protected static ?string $model = Film::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-film';
+    protected static ?string $navigationGroup = 'Media';
+
 
     public static function getNavigationBadge(): ?string
     {
@@ -60,13 +63,20 @@ class FilmResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->emptyStateIcon('heroicon-o-film')
+            ->emptyStateDescription('Once you write your first film, it will appear here.')
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->searchable()
                     ->sortable()
                     ->limit(30)
                     ->tooltip(fn ($record) => $record->title),
-                Tables\Columns\TextColumn::make('embedId'),
+                TextColumn::make('embedId'),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->date('F j, Y'),
+
             ])
             ->filters([
                 //

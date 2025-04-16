@@ -7,13 +7,15 @@
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
     
-        <div class="absolute inset-0 flex items-center justify-center text-white flex-col text-center">
-            <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
-                CAPT. JAE J. JANG
-            </h1>
-            <p class="text-center mt-4 font-secondary text-sm lg:text-xl md:text-base ">
-                Founder & Chairman of SOROK UNI FOUNDATION, INC. 
-            </p>
+        <div class="absolute inset-0 flex items-center justify-center text-white flex-col text-center scroll-section">
+            <div class="text-content">
+                <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
+                    CAPT. JAE J. JANG
+                </h1>
+                <p class="text-center mt-4 font-secondary text-sm lg:text-xl md:text-base ">
+                    Founder & Chairman of SOROK UNI FOUNDATION, INC. 
+                </p>
+            </div>
         </div>
     </div>
     
@@ -21,8 +23,8 @@
     <x-layouts.container>
 
         <div>
-            <div class="py-12">
-                <p class="font-secondary text-sm lg:text-lg md:text-base leading-8 lg:leading-10">
+            <div class="py-12 scroll-section">
+                <p class="font-secondary text-sm lg:text-lg md:text-base leading-8 lg:leading-10 text-content">
                     Welcome Friends,
                     <br><br>   
                      As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through empowerment and building sustainable communities, and where compassion, service, and dedication are the cornerstones of mission. Our journey began with a simple vision: a Philippines without forgotten neighbors, and each day, with your support, we are turning that vision into reality. 
@@ -39,7 +41,7 @@
                 </p>
             </div>
 
-            <div class="py-12">
+            <div class="py-12 scroll-section">
                 <h1 class="text-center font-bold text-3xl md:text-4xl lg:text-5xl">
                     AWARDS AND RECOGNITIONS
                 </h1>

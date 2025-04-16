@@ -14,7 +14,7 @@
                                 <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full flex flex-col">
                                     <img src="{{ asset('storage/' . $latestNewsletter->thumbnail) }}" alt="Featured News" class="w-full h-60 object-cover">
                                     <div class="p-4 flex-grow justify-between space-y-8 flex flex-col">
-                                        <p class="text-xs font-secondary md:text-sm">{{ \Carbon\Carbon::parse($latestNewsletter->published_at)->format('F j, Y') }}</p>
+                                        <p class="text-xs font-secondary md:text-sm">{{ $latestNewsletter->formatted_date }}</p>
                                         <h1 class="text-xl font-bold">{{ $latestNewsletter->title }}</h1>
                                         <p class="flex-grow font-secondary text-sm lg:text-base">{{ $latestNewsletter->description }}</p>
                                         <div class="flex justify-start">
@@ -34,17 +34,13 @@
                             <div class="space-y-6"
                                 :class="{ 'grid grid-cols-1 lg:grid-cols-2 gap-6': @js($expanded) }"
                                 x-data="{ show: true }"
-                                x-transition:enter="ease-out duration-300 opacity-0 scale-90"
-                                x-transition:enter-start="opacity-0 scale-95"
-                                x-transition:leave="ease-in duration-200 opacity-0 scale-90"
-                                x-transition:leave-end="opacity-0 scale-95"
                                 x-show="show"
                             >
                                 @foreach ($newsletters as $newsletter) 
                                     <div class="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden h-full" wire:key="{{ $newsletter->id }}">
                                         <img src="{{ asset('storage/'. $newsletter->thumbnail) }}" alt="Newsletter Image" class="w-full md:w-48 h-48 object-cover">
                                         <div class="p-4 flex-grow flex space-y-2 justify-between flex-col">
-                                            <p class="font-secondary text-xs md:text-sm">{{ \Carbon\Carbon::parse($newsletter->published_at)->format('F j, Y') }}</p>
+                                            <p class="font-secondary text-xs md:text-sm">{{ $newsletter->formatted_date }}</p>
                                             <h1 class="text-lg font-bold line-clamp-1">{{ $newsletter->title }}</h1>
                                             <p class="flex-grow font-secondary text-sm lg:text-base line-clamp-1">{{ $newsletter->description }}</p>
                                             <div class="flex justify-start">
@@ -77,6 +73,38 @@
 
                 </div>
                 
+            </x-layouts.container>
+        </div>
+
+    @else
+        <div class="flex items-center justify-center py-8 mt-12">
+            <x-layouts.container>
+                <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
+                    NEWSLETTERS
+                </h1>
+
+                <div class="flex flex-col items-center justify-center space-y-4 py-12 px-4 text-center">
+                    <img src="{{ Vite::asset('public/images/newsletter.svg') }}" alt="Newsletter SVG" class="w-40 h-40 md:w-48 md:h-48 mb-6">
+
+
+                    <h2 class="text-xl font-primary font-bold md:text-2xl mb-4">
+                        No Newsletters Yet
+                    </h2>
+                    <p class="font-secondary mx-auto mb-6">
+                        We're working on new content.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="{{ route('home') }}">
+                            <button 
+                                class="px-6 py-3 border bg-[#00674F] text-white font-bold  font-primary rounded-3xl transition duration-300 cursor-pointer"
+                            >
+                                Back to Home
+                            </button>
+                        </a>
+                    </div>
+
+                </div>
             </x-layouts.container>
         </div>
     @endif

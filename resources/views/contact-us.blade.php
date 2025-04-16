@@ -1,14 +1,19 @@
 <x-layouts.app>
-    <div class="relative">
-        <img src="{{ Vite::asset('public/images/contact-us.png') }}" 
-            alt="Program hero section" 
-            class="w-full max-h-[75vh] object-cover">
-        <div class="absolute inset-0 bg-[#333333] opacity-80 flex flex-col py-4 justify-center items-center text-white px-4">
-            <h1 class="font-bold text-3xl text-center md:text-5xl lg:text-6xl text-white">
+    <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333] ">
+        <div 
+            class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('{{ Vite::asset('public/images/contact-us.png') }}');">
+        </div>
+    
+        <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
+    
+        <div class="absolute inset-0 flex items-center justify-center text-white text-center scroll-section">
+            <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl text-content">
                 GET IN TOUCH
             </h1>
         </div>
     </div>
+    
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:-mt-24 ">
         <div class="bg-white border-b-4 md:border-l-6 md:border-b-0 border-[#00674F] md:rounded-r-lg md:max-w-2/3 mx-auto shadow-lg relative z-1">
             <div class="py-12 px-4 sm:px-6 md:px-8 w-full">
