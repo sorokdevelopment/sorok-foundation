@@ -14,12 +14,18 @@
 }
 
 
+
 html, body {
     overflow-x: hidden;
     height: 100%;
     scroll-behavior: smooth;
+    color: #333333;
+    background: #F5F5F5;
 }
 
+body {
+    height: 100vh
+}
 
 .font-primary {
     font-family: 'Montserrat', sans-serif;
@@ -31,26 +37,6 @@ html, body {
 
 .text-primary {
     color: #00674F;
-}
-
-/* 
-.swiper-slide img {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-} */
-/* 
-:deep(.swiper-pagination-bullet) {
-    width: 10px;
-    height: 10px;
-    background: #0d0d60;
-    opacity: 0.5;
-} */
-
-
-.active {
-    color: #00674F;
-    text-decoration: underline #00674F;
-    font-weight: bold;
 }
 
 

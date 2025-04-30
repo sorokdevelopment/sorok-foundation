@@ -1,18 +1,24 @@
 <div>
-    <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
-        <div 
-            class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ Vite::asset('public/images/home-banner.png')}}');">
-        </div>
-    
+    <div class="relative w-full h-[80vh] xl:h-[90vh] bg-[#333333] overflow-hidden">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            class="absolute inset-0 w-full h-full object-cover"
+        >
+            <source src="{{ Vite::asset('public/images/videos/hero-bg.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
-    
-        <div class="absolute inset-0 flex items-center justify-center text-white text-center text-content">
+        
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
             <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
-                LET’S BUILD A COMMUNITY
+                LET'S BUILD A COMMUNITY
             </h1>
-            <p class="font-secondary text-sm mt-6">
-                Explore our programs and choose how you’d like to contribute. Your support can make a significant impact on our mission.
+            <p class="font-secondary text-sm mt-6 max-w-2xl">
+                Explore our programs and choose how you'd like to contribute. Your support can make a significant impact on our mission.
             </p>
         </div>
     </div>
@@ -37,9 +43,9 @@
                             Sorok Uni Foundation Inc. is a non-profit organization for change and development that works for and with: Persons Affected by Leprosy (PALs), Individuals and Families in Street Situations, Underprivileged Children, Disadvantaged Indigenous Peoples, Online Sexually Abused and Exploited Children (OSAEC), and Children and Youth with Disability (CYD).                    
                         </p>
                         <div class="mt-12">
-                            <x-buttons.secondary>
+                            <x-buttons.primary>
                                 READ MORE
-                            </x-buttons.secondary>
+                            </x-buttons.primary>
                         </div>
                         <div class="mt-16 xl:w-2/3">
                             <div class="border-t-4 border-[#00674F] lg:border-l-6 lg:border-t-0 bg-white px-8 py-6 lg:rounded-e-lg shadow-lg">
@@ -93,9 +99,9 @@
                                 As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through...                    
                             </p>
                             <div class="my-12">
-                                <x-buttons.secondary>
+                                <x-buttons.primary>
                                     READ MORE
-                                </x-buttons.secondary>
+                                </x-buttons.primary>
                             </div>
                         </div>
                        
@@ -187,7 +193,7 @@
         <div class="flex items-center justify-center mt-16 h-full sm:mt-32">
             <x-layouts.container>
                 <h1 class="font-bold text-4xl lg:text-5xl text-content mb-8 md:mb-16 text-center">
-                    PROGRAMS
+                    PROGRAMS AND SOCIAL SERVICES
                 </h1>
 
                 <div class="relative">

@@ -40,7 +40,7 @@
                         <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
                             OUR VISION
                         </h1>
-                        <p class="hidden mt-6 md:block font-secondary text-sm lg:text-lg md:text-base leading-8">
+                        <p class="hidden mt-6 md:block font-secondary lg:text-lg md:text-lg leading-8">
                             “A Philippines Without Forgotten Neighbors”
                         </p>
                     </div>
@@ -49,9 +49,9 @@
                         <img src="{{ Vite::asset('public/images/banner-1.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
-                            class="rounded-full w-56 h-56 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] object-cover">
+                            class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
                         
-                        <p class="md:hidden text-center font-secondary text-sm lg:text-lg leading-8">
+                        <p class="md:hidden text-center font-secondary text-base leading-8">
                             “A Philippines Without Forgotten Neighbors”
                         </p>
                     </div>
@@ -64,7 +64,7 @@
                         <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
                             OUR MISSION
                         </h1>
-                        <p class="hidden mt-6 md:block font-secondary text-sm lg:text-lg md:text-base leading-8">
+                        <p class="hidden mt-6 md:block font-secondary lg:text-lg md:text-base leading-8">
                             Sorok Uni Foundation, Inc. aims to emancipate forgotten neighbors in the Philippines from
                             social stigma and/or lowest level of poverty through facilitating their empowerment and
                             raising social awareness.
@@ -75,9 +75,9 @@
                         <img src="{{ Vite::asset('public/images/banner-2.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
-                            class="rounded-full w-56 h-56 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] object-cover">
+                            class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
                         
-                        <p class="md:hidden text-center font-secondary text-sm lg:text-lg leading-8">
+                        <p class="md:hidden text-center font-secondary text-base leading-8">
                             Sorok Uni Foundation, Inc. aims to emancipate forgotten neighbors in the Philippines from
                             social stigma and/or lowest level of poverty through facilitating their empowerment and
                             raising social awareness.
@@ -91,7 +91,7 @@
                         <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
                             OUR PHILOSOPHY
                         </h1>
-                        <p class="hidden mt-6 md:block font-secondary text-sm lg:text-lg md:text-base leading-8">
+                        <p class="hidden mt-6 md:block font-secondary lg:text-lg md:text-base leading-8">
                             “Give a man a fish and you feed him for a day. Teach a man to fish, you feed him for a lifetime.”
                         </p>
                     </div>
@@ -100,9 +100,9 @@
                         <img src="{{ Vite::asset('public/images/banner-3.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
-                            class="rounded-full w-56 h-56 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] object-cover">
+                            class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
                         
-                        <p class="md:hidden text-center font-secondary text-sm lg:text-lg leading-8">
+                        <p class="md:hidden text-center font-secondary text-base leading-8">
                             “Give a man a fish and you feed him for a day. Teach a man to fish, you feed him for a lifetime.”
                         </p>
                     </div>
@@ -115,7 +115,7 @@
                         <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl">
                             CORE VALUES
                         </h1>
-                        <p class="hidden mt-6 md:block font-secondary text-sm lg:text-lg md:text-base leading-8">
+                        <p class="hidden mt-6 md:block font-secondary lg:text-lg md:text-base leading-8">
                             Love the Lord our God, above all Love our country (Nationalism) Love our neighbors (Equality, Inclusivity and Compassion) Love our organization as a whole (Teamwork)
                         </p>
                     </div>
@@ -124,9 +124,9 @@
                         <img src="{{ Vite::asset('public/images/banner-2.jpg') }}" 
                             alt="Background"
                             loading="lazy" 
-                            class="rounded-full w-56 h-56 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] object-cover">
+                            class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
                         
-                        <p class="md:hidden text-center font-secondary text-sm lg:text-lg leading-8">
+                        <p class="md:hidden text-center font-secondary text-base leading-8">
                             Love the Lord our God, above all Love our country (Nationalism) Love our neighbors (Equality, Inclusivity and Compassion) Love our organization as a whole (Teamwork)
                         </p>
                     </div>

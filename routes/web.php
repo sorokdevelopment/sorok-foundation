@@ -2,8 +2,9 @@
 
 use App\Livewire\Home;
 use App\Livewire\Updates;
-use App\Livewire\Updates\Newsletter\NewsletterBlog;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Updates\Newsletter\NewsletterBlog;
 
 
 Route::get('/', function () {
@@ -21,9 +22,15 @@ Route::get('/programs-and-services', function () {
 Route::get('/chairman-corner', function () {
     return view('chairman');
 })->name('chairman-corner');
+
 Route::get('/contact-us', function () {
     return view('contact-us');
 })->name('contact-us');
+
+Route::get('/champions', function () {
+    return view('champion');
+})->name('champions');
+
 Route::get('/updates', Updates::class)->name('updates');
 
 Route::get('/updates/newsletters/{slug}', NewsletterBlog::class)->name('updates.show');

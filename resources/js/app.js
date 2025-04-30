@@ -16,7 +16,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 //*********************  SWIPER JS   *********** */
 
-// First Swiper (for auto-sliding logos)
 document.addEventListener("livewire:navigated", function() {
     setTimeout(() => {
 
@@ -39,7 +38,6 @@ document.addEventListener("livewire:navigated", function() {
     }, 100);
 });
 
-// Second Swiper (for carousel with navigation and pagination)
 document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
         new Swiper(".swiper-programs", {
@@ -65,7 +63,6 @@ document.addEventListener("livewire:navigated", function () {
     }, 100);
 });
 
-// for updates swiper
 document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
         new Swiper(".update-swiper", {
@@ -84,6 +81,7 @@ document.addEventListener("livewire:navigated", function () {
             },
         });
     }, 100);
+    
 });
 
 
@@ -94,6 +92,8 @@ document.addEventListener("livewire:navigated", function () {
 
 
 gsap.utils.toArray(".scroll-section").forEach((section) => {
+    if (!section) return;
+    
     gsap.set(section, { opacity: 0 });
 
     gsap.fromTo(section,
@@ -114,35 +114,38 @@ gsap.utils.toArray(".scroll-section").forEach((section) => {
     );
 
     const textItems = section.querySelectorAll(".text-content > *");
-    gsap.fromTo(textItems,
-        { y: 30, opacity: 0 },
-        {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            scrollTrigger: {
-                trigger: section,
-                start: "top 75%",
-                toggleActions: "play none none none"
+    if (textItems && textItems.length > 0) {
+        gsap.fromTo(textItems,
+            { y: 30, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 75%",
+                    toggleActions: "play none none none"
+                }
             }
-        }
-    );
+        );
+    }
 
     const image = section.querySelector(".image-content");
-    gsap.fromTo(image,
-        { scale: 0.98, opacity: 0 },
-        {
-            scale: 1,
-            opacity: 1,
-            duration: 1.2,
-            scrollTrigger: {
-                trigger: section,
-                start: "top 65%",
-                toggleActions: "play none none none"
+    if (image) {
+        gsap.fromTo(image,
+            { scale: 0.98, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 1.2,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 65%",
+                    toggleActions: "play none none none"
+                }
             }
-        }
-    );
+        );
+    }
 });
-
 
