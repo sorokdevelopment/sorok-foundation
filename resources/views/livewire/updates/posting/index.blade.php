@@ -49,7 +49,7 @@
     
                 <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
 
-                    <img src="{{ Vite::asset('public/images/posting.svg') }}" alt="Facebook Posting SVG" class="w-40 h-40 md:w-48 md:h-48 mb-6">
+                    <img src="{{ asset('images/posting.svg') }}" alt="Facebook Posting SVG" class="w-40 h-40 md:w-48 md:h-48 mb-6">
 
     
                     <h2 class="text-xl font-primary font-bold md:text-2xl mb-4">
@@ -69,11 +69,9 @@
     
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="{{ route('home') }}">
-                            <button 
-                                class="px-6 py-3 border bg-[#00674F] text-white font-bold  font-primary rounded-3xl transition duration-300 cursor-pointer"
-                            >
-                                Back to Home
-                            </button>
+                            <x-buttons.primary>
+                                BACK TO HOME
+                            </x-buttons.primary>
                         </a>
                     </div>
                 </div>

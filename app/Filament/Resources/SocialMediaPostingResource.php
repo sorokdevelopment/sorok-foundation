@@ -4,21 +4,22 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Champion;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use App\Models\SocialMediaPosting;
+use App\Jobs\SendChampionEmailsJob;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\DateColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SocialMediaPostingResource\Pages;
-use App\Filament\Resources\SocialMediaPostingResource\RelationManagers;
 
 class SocialMediaPostingResource extends Resource
 {
@@ -113,13 +114,36 @@ class SocialMediaPostingResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\Action::make('sendToChampions')
+                        ->icon('heroicon-o-envelope')
+                        ->label('Send to Champions')
+                        ->color('success')
+                        ->modalDescription('Emails will process in background')
+                        ->requiresConfirmation()
+                        ->modalHeading('Send to Champions')
+                        ->action(function (Model $record): void {
+                            SendChampionEmailsJob::dispatch($record->id);
+
+                            Notification::make()
+                                ->title('Emails are being sent')
+                                ->body('The process has started and will continue in the background.')
+                                ->success()
+                                ->send();
+                        })
+                        ->deselectRecordsAfterCompletion(),
+                ])
+
+                ->tooltip('Actions')
+                ->color('info')
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])
             ]);
     }
 

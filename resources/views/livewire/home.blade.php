@@ -1,34 +1,30 @@
 <div>
-    <div class="relative w-full h-[80vh] xl:h-[90vh] bg-[#333333] overflow-hidden">
-        <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            class="absolute inset-0 w-full h-full object-cover"
-        >
-            <source src="{{ Vite::asset('public/images/videos/hero-bg.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
+    @if(!session()->has('seen_modal'))
+        <livewire:modal.advertise />
+    @endif
+    <div class="relative w-full">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="{{ asset('images/videos/hero-bg.mp4') }}" type="video/mp4">
         </video>
         
-        <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
-        
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4">
-            <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
-                LET'S BUILD A COMMUNITY
-            </h1>
-            <p class="font-secondary text-sm mt-6 max-w-2xl">
-                Explore our programs and choose how you'd like to contribute. Your support can make a significant impact on our mission.
-            </p>
+        <div class="relative justify-end flex items-center mx-auto p-4 py-24 h-full">
+            <div class="w-full my-12 mx-auto flex flex-col justify-center items-center md:justify-end gap-8">
+                <x-layouts.container>
+
+                    <livewire:form.champion-form />
+                </x-layouts.container>
+
+            </div>
         </div>
     </div>
-
-    <div class="mt-16 flex flex-col md:flex-row relative about-section scroll-section">
     
-        <x-layouts.container class="relative">
+
+    <div x-cloak class="mt-16 flex flex-col md:flex-row relative about-section scroll-section">
+    
+        <x-layouts.container>
             <div class="flex flex-col md:flex-row md:space-x-12">
                 <div class="flex flex-1 relative image-content">
-                    <img src="{{ Vite::asset('public/images/home-banner-s2.png') }}" 
+                    <img src="{{ asset('images/home-banner-s2.png') }}" 
                         alt="Section 2 Banner" 
                         loading="lazy"
                         class="w-full sm:h-96 sm:object-cover md:object-contain md:h-auto object-contain">
@@ -43,9 +39,11 @@
                             Sorok Uni Foundation Inc. is a non-profit organization for change and development that works for and with: Persons Affected by Leprosy (PALs), Individuals and Families in Street Situations, Underprivileged Children, Disadvantaged Indigenous Peoples, Online Sexually Abused and Exploited Children (OSAEC), and Children and Youth with Disability (CYD).                    
                         </p>
                         <div class="mt-12">
-                            <x-buttons.primary>
-                                READ MORE
-                            </x-buttons.primary>
+                            <a href="{{ route('about') }}">
+                                <x-buttons.primary>
+                                    READ MORE
+                                </x-buttons.primary>
+                            </a>
                         </div>
                         <div class="mt-16 xl:w-2/3">
                             <div class="border-t-4 border-[#00674F] lg:border-l-6 lg:border-t-0 bg-white px-8 py-6 lg:rounded-e-lg shadow-lg">
@@ -72,16 +70,16 @@
     
 
     @if($sponsors->isNotEmpty())
-        <livewire:sponsor.index :sponsors="$sponsors" />
+        <livewire:sponsor.index x-cloak :sponsors="$sponsors" />
     @endif
     
     
-    <div class="mt-12  scroll-section">
+    <div x-cloak class="mt-12  scroll-section">
         <div class="flex flex-col md:flex-row relative">
             <x-layouts.container class="relative">
                 <div class="flex flex-col md:flex-row md:space-x-12">
                     <div class="flex flex-1 relative image-content">
-                        <img src="{{ Vite::asset('public/images/home-chairman.png') }}" 
+                        <img src="{{ asset('images/home-chairman.png') }}" 
                                 alt="Chairman Banner" 
                                 loading="lazy"
                                 class="w-full md:h-auto object-contain">
@@ -99,9 +97,12 @@
                                 As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through...                    
                             </p>
                             <div class="my-12">
-                                <x-buttons.primary>
-                                    READ MORE
-                                </x-buttons.primary>
+                                <a href="{{ route('chairman-corner') }}">
+
+                                    <x-buttons.primary>
+                                        READ MORE
+                                    </x-buttons.primary>
+                                </a>
                             </div>
                         </div>
                        
@@ -115,7 +116,7 @@
 
 
 
-    <div class="relative">
+    <div x-cloak class="relative">
         <div class="bg-gradient-to-b from-[#00674F] to-[#ffffff]/30 pt-20"> 
             <x-layouts.container>
                 <div class="w-full flex flex-col items-center">
@@ -133,7 +134,7 @@
                     <div class="flex flex-wrap flex-col justify-center">
                         <div class="flex flex-col md:flex-row w-full">
                             <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ Vite::asset('public/images/NCR.jpg') }}" loading="lazy" alt="NCR" class="w-full rounded-t-xl h-full object-cover image-content">
+                                <img src="{{ asset('images/NCR.jpg') }}" loading="lazy" alt="NCR" class="w-full rounded-t-xl h-full object-cover image-content">
                                 <div class="absolute inset-0 bg-[#333333] rounded-t-xl opacity-80 flex flex-col py-4 justify-center items-center text-white px-4 text-content">
                                     <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
                                         SOROK NCR
@@ -144,7 +145,7 @@
                                 </div>
                             </div>
                             <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ Vite::asset('public/images/MIMAROPA.jpg') }}" loading="lazy" alt="MIMAROPA" class="w-full rounded-t-xl h-full object-cover image-content">
+                                <img src="{{ asset('images/MIMAROPA.jpg') }}" loading="lazy" alt="MIMAROPA" class="w-full rounded-t-xl h-full object-cover image-content">
                                 <div class="absolute inset-0 bg-[#333333] opacity-80 rounded-t-xl flex flex-col py-4 justify-center items-center text-white px-4 text-content">
                                     <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
                                         SOROK MIMAROPA
@@ -158,7 +159,7 @@
         
                         <div class="flex flex-col md:flex-row w-full">
                             <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ Vite::asset('public/images/R4A.jpg') }}" loading="lazy" alt="Region 4 A" class="w-full rounded-t-xl h-full object-cover image-content">
+                                <img src="{{ asset('images/R4A.jpg') }}" loading="lazy" alt="Region 4 A" class="w-full rounded-t-xl h-full object-cover image-content">
                                 <div class="absolute inset-0 bg-[#333333] opacity-80 rounded-t-xl flex flex-col py-4 justify-center items-center text-white px-4 text-content">
                                     <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
                                         SOROK REGION IV-A
@@ -169,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="relative border-t-6 border-[#FFC000] h-auto rounded-t-xl">
-                                <img src="{{ Vite::asset('public/images/R9.jpg') }}" alt="Region 9"  loading="lazy" class="w-full rounded-t-xl h-full object-cover image-content">
+                                <img src="{{ asset('images/R9.jpg') }}" alt="Region 9"  loading="lazy" class="w-full rounded-t-xl h-full object-cover image-content">
                                 <div class="absolute inset-0 bg-[#333333] rounded-t-xl opacity-80 flex flex-col py-4 justify-center items-center text-white px-4 text-content">
                                     <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
                                         SOROK REGION IX
@@ -190,7 +191,7 @@
     </div>
 
     @if ($programs->isNotEmpty())
-        <div class="flex items-center justify-center mt-16 h-full sm:mt-32">
+        <div x-cloak class="flex items-center justify-center mt-16 h-full sm:mt-32">
             <x-layouts.container>
                 <h1 class="font-bold text-4xl lg:text-5xl text-content mb-8 md:mb-16 text-center">
                     PROGRAMS AND SOCIAL SERVICES
@@ -226,7 +227,7 @@
 
 
     @if ($film)
-        <div class="flex items-center justify-center mt-24 sm:mt-32 scroll-section">
+        <div x-cloak class="flex items-center justify-center mt-24 sm:mt-32 scroll-section">
             <x-layouts.container>
                 <div class="flex flex-col items-center">
                     <h1 class="font-bold text-4xl lg:text-5xl text-content mb-8 md:mb-24 text-center">

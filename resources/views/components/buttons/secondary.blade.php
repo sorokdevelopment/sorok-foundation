@@ -1,3 +1,14 @@
-<div class="bg-white text-[#00674F] border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center">
+<button {{ $attributes->merge(['type' => 'button']) }}
+    class="bg-white focus:bg-[#00674F]] hover:bg-[#fafafa] active:bg-[#00674F]]
+           font-primary text-sm font-bold uppercase 
+           text-[#00674F] tracking-wide
+           py-2 px-8 md:py-3 lg:py-3.5
+           w-full lg:w-auto
+           rounded
+           flex justify-center items-center gap-2
+           transition-all duration-200 ease-in-out
+           focus:outline-none focus:ring-2 focus:ring-[#fafafa] focus:ring-offset-2
+           shadow-md hover:shadow-lg
+           disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer">
     {{ $slot }}
-</div>
+</button>

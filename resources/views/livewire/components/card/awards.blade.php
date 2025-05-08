@@ -1,6 +1,6 @@
 <div class="group relative flex w-full h-80 md:h-96 overflow-hidden rounded-lg shadow-lg cursor-pointer">
     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
-        style="background-image: url('{{ Vite::asset('public/images/'. $imgName) }}');">
+        style="background-image: url('{{ asset('images/'. $imgName) }}');">
     </div>
 
     <div class="absolute inset-0 bg-[#333333] opacity-0 group-hover:opacity-80 transition-opacity duration-500"></div>

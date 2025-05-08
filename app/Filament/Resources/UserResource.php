@@ -16,12 +16,15 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\RelationManagers;
+use Filament\Tables\Actions\ActionGroup;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+    protected static ?string $navigationLabel = 'Admin';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'Admin Management';
 
     public static function getNavigationBadge(): ?string
@@ -95,8 +98,12 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                ->tooltip('Actions')
+                ->color('info')
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

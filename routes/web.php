@@ -2,7 +2,6 @@
 
 use App\Livewire\Home;
 use App\Livewire\Updates;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Updates\Newsletter\NewsletterBlog;
 

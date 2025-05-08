@@ -3,7 +3,7 @@
         <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333] ">
             <div 
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url('{{ Vite::asset('public/images/about-banner.png') }}');">
+                style="background-image: url('{{ asset('images/about-banner.png') }}');">
             </div>
         
             <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
@@ -46,7 +46,7 @@
                     </div>
                 
                     <div class="flex flex-col items-center justify-center space-y-8 image-content">
-                        <img src="{{ Vite::asset('public/images/banner-1.jpg') }}" 
+                        <img src="{{ asset('images/banner-1.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
                             class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
@@ -72,7 +72,7 @@
                     </div>
                 
                     <div class="flex flex-col items-center justify-center space-y-8  md:col-start-1 image-content">
-                        <img src="{{ Vite::asset('public/images/banner-2.jpg') }}" 
+                        <img src="{{ asset('images/banner-2.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
                             class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
@@ -97,7 +97,7 @@
                     </div>
                 
                     <div class="flex flex-col items-center justify-center space-y-8 image-content">
-                        <img src="{{ Vite::asset('public/images/banner-3.jpg') }}" 
+                        <img src="{{ asset('images/banner-3.jpg') }}" 
                             alt="Background" 
                             loading="lazy"
                             class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
@@ -121,7 +121,7 @@
                     </div>
                 
                     <div class="flex flex-col items-center justify-center space-y-8  md:col-start-1 image-content">
-                        <img src="{{ Vite::asset('public/images/banner-2.jpg') }}" 
+                        <img src="{{ asset('images/banner-2.jpg') }}" 
                             alt="Background"
                             loading="lazy" 
                             class="w-full flex justify-center lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
@@ -138,7 +138,7 @@
         <x-layouts.container>
 
             <div class="relative mt-12 lg:pb-24 scroll-section">
-                <img src="{{ Vite::asset('public/images/about-history.png') }}" 
+                <img src="{{ asset('images/about-history.png') }}" 
                      alt="History Banner" 
                      loading="lazy" 
                      class="w-full flex jutify-start items-start max-h-[30vh] sm:max-h-[40vh] lg:max-h-[70vh] object-cover">

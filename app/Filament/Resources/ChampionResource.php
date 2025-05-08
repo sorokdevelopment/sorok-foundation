@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\Champion;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use App\Enums\ChampionMembership;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\ChampionResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\ChampionResource\RelationManagers;
+
+class ChampionResource extends Resource
+{
+    protected static ?string $model = Champion::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = 'Admin Management';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->emptyStateIcon('heroicon-o-user')
+            ->emptyStateDescription('Once you write your first user, it will appear here.')
+            ->columns([
+                TextColumn::make('full_name'),
+                TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('contact_number')
+                    ->label('Contact Number'),
+                TextColumn::make('membership')
+                    ->label('Membership')
+                    ->formatStateUsing(fn ($state) => ChampionMembership::from($state)->name)
+                    ->sortable(),
+                TextColumn::make('full_address')
+                    ->label('Address'),
+                TextColumn::make('birthdate')
+                    ->label('Birthday')
+                    ->sortable()
+                    ->date('F j, Y'),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->sortable()
+                    ->date('F j, Y'),
+                
+            ])
+            ->actions([
+               
+            ])
+            ->filters([
+                //
+            ])
+
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListChampions::route('/'),
+        ];
+    }
+
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with(['barangay', 'city', 'province', 'region']);
+    }
+}

@@ -6,6 +6,7 @@ use App\Models\Film;
 use App\Models\Program;
 use App\Models\Sponsor;
 use Livewire\Component;
+use App\Models\Champion;
 use Livewire\Attributes\Layout;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -23,6 +24,7 @@ class Home extends Component
 
     public ?Collection $sponsors;
 
+    public Champion $champion;
 
     public function mount() 
     {
@@ -34,6 +36,8 @@ class Home extends Component
 
         $this->filmTitle = $this->film->title ?? '';
         $this->filmEmbedId = $this->film->embedId ?? '';
+
+        
 
     }
 
