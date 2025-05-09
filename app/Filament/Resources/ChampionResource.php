@@ -24,7 +24,9 @@ class ChampionResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        // return static::getModel()::count();
+        return cache()->remember('champion-count', now()->addMinutes(10), fn () => static::getModel()::count());
+
     }
 
 

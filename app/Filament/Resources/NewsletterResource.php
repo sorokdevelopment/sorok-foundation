@@ -36,7 +36,8 @@ class NewsletterResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return cache()->remember('newsletter-count', now()->addMinutes(10), fn () => static::getModel()::count());
+
     }
 
 

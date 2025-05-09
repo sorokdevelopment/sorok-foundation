@@ -29,7 +29,7 @@ class UserResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return cache()->remember('user-count', now()->addMinutes(10), fn () => static::getModel()::count());
     }
 
     public static function form(Form $form): Form

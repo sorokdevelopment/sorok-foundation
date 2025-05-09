@@ -33,7 +33,7 @@ class SocialMediaPostingResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return cache()->remember('posting-count', now()->addMinutes(10), fn () => static::getModel()::count());
     }
     protected static ?string $navigationLabel = 'Facebook Posting';
 
