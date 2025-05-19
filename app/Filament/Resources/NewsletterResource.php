@@ -10,19 +10,20 @@ use Filament\Forms\Form;
 use App\Models\Newsletter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use App\Mail\NewsletterMail;
+use App\Jobs\SendBulkEmailJob;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\NewsletterResource\Pages;
-use App\Filament\Resources\NewsletterResource\RelationManagers;
 
 class NewsletterResource extends Resource
 {
@@ -96,6 +97,8 @@ class NewsletterResource extends Resource
                     'codeBlock',
                     'h2',
                     'h3',
+                    'h1',
+                    'h4',
                     'italic',
                     'link',
                     'orderedList',
@@ -155,6 +158,31 @@ class NewsletterResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\Action::make('sendToChampions')
+                        ->icon('heroicon-o-envelope')
+                        ->label('Send to Champions')
+                        ->color('success')
+                        ->modalDescription('Emails will process in background')
+                        ->requiresConfirmation()
+                        ->modalHeading('Send to Champions')
+                        ->action(function (Model $record): void {
+                            dispatch(new SendBulkEmailJob(
+                                Newsletter::class,
+                                NewsletterMail::class,
+                                $record->id,
+                                [
+                                    $record->title,
+                                    $record->content,
+                                ]
+                            ));
+
+                            Notification::make()
+                                ->title('Emails are being sent')
+                                ->body('The process has started and will continue in the background.')
+                                ->success()
+                                ->send();
+                        })
+                        ->deselectRecordsAfterCompletion(),
                 ])
                 ->tooltip('Actions')
                 ->color('info')

@@ -18,11 +18,8 @@
                                         <h1 class="text-xl font-bold">{{ $latestNewsletter->title }}</h1>
                                         <p class="flex-grow font-secondary text-sm lg:text-base">{{ $latestNewsletter->description }}</p>
                                         <div class="flex justify-start">
-                                            <a href="{{ route('updates.show', $latestNewsletter->slug) }}" class="text-primary text-sm font-semibold justify-start flex items-center" wire:navigate>
-                                                Read Article  
-                                                <span class="ml-1 flex items-center">                            
-                                                    <i class="material-icons text-5xl font-bold">keyboard_arrow_right</i>
-                                                </span>
+                                            <a href="{{ route('updates.show', $latestNewsletter->slug) }}" class="hover:font-bold text-primary text-sm font-semibold justify-start flex items-center" wire:navigate>
+                                                Read Article →  
                                             </a>
                                         </div>
                                     </div>
@@ -44,11 +41,8 @@
                                             <h1 class="text-lg font-bold line-clamp-1">{{ $newsletter->title }}</h1>
                                             <p class="flex-grow font-secondary text-sm lg:text-base line-clamp-1">{{ $newsletter->description }}</p>
                                             <div class="flex justify-start">
-                                                <a href="{{ route('updates.show', $newsletter->slug) }}" class="text-primary text-sm font-semibold justify-start flex items-center" wire:navigate>
-                                                    Read Article 
-                                                    <span class="ml-1 flex items-center">                            
-                                                        <i class="material-icons text-5xl font-bold">keyboard_arrow_right</i>
-                                                    </span>
+                                                <a href="{{ route('updates.show', $newsletter->slug) }}" class="text-primary text-sm font-semibold justify-start flex items-center hover:font-bold" wire:navigate>
+                                                    Read Article →
                                                 </a>
                                             </div>
                                         </div>

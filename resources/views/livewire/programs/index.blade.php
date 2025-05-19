@@ -14,15 +14,15 @@
                     <img src="{{ asset('storage/' . $program->image) }}" 
                         alt="Program Image" 
                         loading="lazy"
-                        class="w-full flex justify-center {{ $isEven ? '' : 'md:col-start-2' }} lg:w-[80%] rounded-lg object-cover shadow-lg image-content">
+                        class="w-full flex justify-center {{ $isEven ? '' : 'md:col-start-2' }} rounded-lg object-cover shadow-lg image-content">
                     
-                    <div class="flex flex-col items-center md:items-start h-full justify-center space-y-8 {{ $isEven ? '' : 'md:col-start-1' }} text-content">
-                        <h1 class="text-center md:text-start font-bold text-lg md:text-xl lg:text-2xl text-primary">
+                    <div class="flex flex-col items-center md:items-start h-full justify-center space-y-12 {{ $isEven ? '' : 'md:col-start-1' }} text-content">
+                        <h1 class="text-center md:text-start font-bold text-xl md:text-2xl lg:text-3xl text-primary">
                             {{ strtoupper($program->title) }} 
                         </h1>
                         
-                        <p class="font-secondary text-sm lg:text-lg leading-8">
-                            {{ $program->description }}
+                        <p class="font-secondary text-base md:text-lg lg:text-xl leading-10 ">
+                            {{ $program->description }} 
                         </p>
                     </div>
                 </div>

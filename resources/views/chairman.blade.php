@@ -10,7 +10,7 @@
         <div class="absolute inset-0 flex items-center justify-center text-white flex-col text-center scroll-section">
             <div class="text-content">
                 <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
-                    CAPT. JAE J. JANG
+                    DR. JAE J. JANG
                 </h1>
                 <p class="text-center mt-4 font-secondary text-sm lg:text-xl md:text-base ">
                     Founder & Chairman of SOROK UNI FOUNDATION, INC. 
@@ -19,12 +19,11 @@
         </div>
     </div>
     
-    <!-- White Background Section (Hangs Over Image) -->
     <x-layouts.container>
 
         <div>
             <div class="py-12 scroll-section">
-                <p class="font-secondary text-sm lg:text-lg md:text-base leading-8 lg:leading-10 text-content">
+                <p class="font-secondary text-base md:text-lg lg:text-xl leading-10 text-content">
                     Welcome Friends,
                     <br><br>   
                      As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through empowerment and building sustainable communities, and where compassion, service, and dedication are the cornerstones of mission. Our journey began with a simple vision: a Philippines without forgotten neighbors, and each day, with your support, we are turning that vision into reality. 

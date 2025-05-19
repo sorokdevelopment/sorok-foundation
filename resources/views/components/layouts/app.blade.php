@@ -10,6 +10,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
         <script src="https://kit.fontawesome.com/9d5bf2e3d5.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image" href="{{ asset('images/logo.png') }}" />
         <title>Sorok Foundation</title>
@@ -17,7 +19,7 @@
 
     </head>
     <body class="font-primary overflow-x-hidden">
-        <header>
+        <header >
             @include('components.layouts.navbar')
         </header>
         

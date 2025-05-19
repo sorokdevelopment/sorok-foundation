@@ -6,7 +6,7 @@
     @else
         <div class="flex justify-end items-center">
 
-            <div class="w-full w-auto md:max-w-[600px] bg-white rounded-xl p-2 sm:p-4 md:p-8 shadow-lg">
+            <div class="w-full md:max-w-[600px] bg-white rounded-xl p-2 sm:p-4 md:p-8 shadow-lg">
                 <livewire:components.step-indicator 
                     :steps="$steps" 
                     :currentStep="$currentStep" 

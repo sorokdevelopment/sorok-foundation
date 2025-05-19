@@ -2,7 +2,7 @@
     @if(!session()->has('seen_modal'))
         <livewire:modal.advertise />
     @endif
-    <div class="relative w-full">
+    <div id="hero" class="relative w-full">
         <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
             <source src="{{ asset('images/videos/hero-bg.mp4') }}" type="video/mp4">
         </video>
@@ -20,7 +20,6 @@
     
 
     <div x-cloak class="mt-16 flex flex-col md:flex-row relative about-section scroll-section">
-    
         <x-layouts.container>
             <div class="flex flex-col md:flex-row md:space-x-12">
                 <div class="flex flex-1 relative image-content">
@@ -35,9 +34,20 @@
                         <h2 class="mt-8 font-bold text-2xl lg:text-4xl">
                             ABOUT US 
                         </h2>
-                        <p class="font-secondary text-sm lg:text-lg md:text-base leading-8 lg:leading-10 mt-8">
-                            Sorok Uni Foundation Inc. is a non-profit organization for change and development that works for and with: Persons Affected by Leprosy (PALs), Individuals and Families in Street Situations, Underprivileged Children, Disadvantaged Indigenous Peoples, Online Sexually Abused and Exploited Children (OSAEC), and Children and Youth with Disability (CYD).                    
-                        </p>
+                        <div x-data="{ expanded: false }">
+                            <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mt-8"
+                               x-ref="textContent"
+                               :class="{ 'line-clamp-3': !expanded }">
+                               Sorok Uni Foundation Inc. is a non-profit organization for change that works for and with: Persons Affected by Leprosy (PALs), Individuals and Families in Street Situations, Underprivileged Children, Disadvantaged Indigenous Peoples, Online Sexually Abused and Exploited Children (OSAEC) and Persons with Disability (PWDs). We help the above mentioned marginalized sectors in the Philippines through facilitating their empowerment as individuals and communities and by advancing their interests as a group. Our ways of helping are designed to capacitate fellow Filipinos to help themselves and become significant contributors to nation-building of the Philippines. This is aligned with our vision of having A PHILIPPINES WITHOUT FORGOTTEN NEIGHBORS.                    
+                            </p>
+                            <button @click="expanded = !expanded" 
+                                class="mt-2 text-primary font-semibold hover:underline focus:outline-none flex items-center">
+                                <span x-text="expanded ? 'Show Less' : 'Show More'"></span>
+                                <i class="fa-solid fa-chevron-down ml-2 text-sm transition-transform duration-200" 
+                                :class="{ 'rotate-180': expanded }"></i>
+                            </button>
+                        </div>
+
                         <div class="mt-12">
                             <a href="{{ route('about') }}">
                                 <x-buttons.primary>
@@ -48,12 +58,12 @@
                         <div class="mt-16 xl:w-2/3">
                             <div class="border-t-4 border-[#00674F] lg:border-l-6 lg:border-t-0 bg-white px-8 py-6 lg:rounded-e-lg shadow-lg">
                                 <div class="py-6 space-y-6 flex flex-col items-center">
-                                    <h2 class="text-center font-bold text-lg">
+                                    <h2 class="text-center font-bold text-xl">
                                         Interested? Send us a message
                                     </h2>
                                     <div class="flex justify-center items-center space-x-4">
                                         <i class="material-icons mr-2 text-2xl fill-current opacity-80">mail</i>
-                                        <p class="text-[#00674F] font-medium font-secondary">
+                                        <p class="text-[#00674F] font-medium text-base md:text-lg lg:text-xl leading-relaxed font-secondary">
                                             info@sorokuni.com
                                         </p>
                                     </div>
@@ -61,16 +71,14 @@
                             </div>
                         </div>
                     </div>
-                   
                 </div>
             </div>
-    
         </x-layouts.container>
     </div>
     
 
     @if($sponsors->isNotEmpty())
-        <livewire:sponsor.index x-cloak :sponsors="$sponsors" />
+        <livewire:sponsor.index :sponsors="$sponsors" />
     @endif
     
     
@@ -85,17 +93,36 @@
                                 class="w-full md:h-auto object-contain">
                     </div>
         
-                    <div class="flex items-center justify-center flex-1 xl:flex-2 text-content">
+                    <div class="flex items-center justify-center flex-1 xl:flex-2 text-content" x-data="{ expanded: false }">
                         <div class="mt-8 md:mt-0 flex-col">
                             <h2 class="mt-8 font-bold text-2xl lg:text-4xl">
                                 Message from Chairman
                             </h2>
-                            <p class="font-secondary text-sm lg:text-lg md:text-base leading-8 lg:leading-10 mt-8">
+                            <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mt-8"
+                                x-ref="textContent"
+                                :class="{ 'line-clamp-5': !expanded }">
                                 Welcome Friends, 
                                 <br>
                                 <br>
-                                As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through...                    
+                                 As the Founder and Chairman of SOROK UNI FOUNDATION, INC, I am proud to be a part of a community which aims to emancipate forgotten neighbors in the Philippines from social stigma and lowest level of poverty through empowerment and building sustainable communities, and where compassion, service, and dedication are the cornerstones of mission. Our journey began with a simple vision: a Philippines without forgotten neighbors, and each day, with your support, we are turning that vision into reality. 
+                                <br><br>
+                                Thanks to our passionate volunteers, generous donors, and the hard work of our staff, we have been able to reach out to countless individuals and communities.
+                                <br><br>
+                                 Our website is home to a collection of stories of hope and triumph as well as updates on our current projects and glimpse into our future plans. This is more than just an update; it's a call to join hands and make a better tomorrow for our forgotten neighbors, no matter where we are from.
+                                <br><br>
+                                 Together, we can continue to build on our successes and face the challenges ahead with unwavering optimism. I am both humbled and inspired every day by the incredible impact of our collective efforts and the profound goodness of human spirit that fuels our cause.
+                                <br><br>
+                                 Thank you for being an essential part of our journey. Let us continue to bring light where there is darkness and give hope to those who need it most. 
+                                <br><br>
+                                Warmest regards,                    
                             </p>
+
+                            <button @click="expanded = !expanded" 
+                                class="mt-2 text-primary font-semibold hover:underline focus:outline-none flex items-center">
+                                <span x-text="expanded ? 'Show Less' : 'Show More'"></span>
+                                <i class="fa-solid fa-chevron-down ml-2 text-sm transition-transform duration-200" 
+                                :class="{ 'rotate-180': expanded }"></i>
+                            </button>
                             <div class="my-12">
                                 <a href="{{ route('chairman-corner') }}">
 
@@ -124,64 +151,55 @@
                         <h1 class="font-bold text-4xl lg:text-5xl text-white text-center">
                             What community do we have? 
                         </h1>
-                        <p class="mt-8 text-center font-secondary text-sm lg:text-base text-white">
+                        <p class="mt-8 text-center font-secondary text-base md:text-lg lg:text-xl leading-relaxed text-white">
                             Our community is eager to be empowered to live independently and is full of hope for life's advancement. 
                         </p>
                     </div>
                 </div>
                 <div class="mt-12 mx-auto w-full scroll-section">
             
-                    <div class="flex flex-wrap flex-col justify-center">
-                        <div class="flex flex-col md:flex-row w-full">
-                            <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ asset('images/NCR.jpg') }}" loading="lazy" alt="NCR" class="w-full rounded-t-xl h-full object-cover image-content">
-                                <div class="absolute inset-0 bg-[#333333] rounded-t-xl opacity-80 flex flex-col py-4 justify-center items-center text-white px-4 text-content">
-                                    <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
-                                        SOROK NCR
-                                    </h2>
-                                    <p class="font-secondary xl:px-8 text-xs sm:text-sm lg:text-lg md:text-base text-center mt-2 sm:mt-4 sm:leading-8 md:leading-6 lg:leading-10">
-                                        Within the National Capital Region are communities of underprivileged individuals and families in the National Capital Region whose challenges vary from homelessness, leprosy stigma, illiteracy, and mendicancy.
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        @php
+                            $regions = [
+                                [
+                                    'title' => 'SOROK NCR',
+                                    'image' => 'images/NCR.jpg',
+                                    'desc' => 'Within the National Capital Region are communities of underprivileged individuals and families whose challenges vary from homelessness, leprosy stigma, illiteracy, and mendicancy.',
+                                ],
+                                [
+                                    'title' => 'SOROK MIMAROPA',
+                                    'image' => 'images/MIMAROPA.jpg',
+                                    'desc' => 'A community of disadvantaged IP Learners in Sablayan, Occidental Mindoro, provided a Digital Literacy program to improve the quality of living and social inclusion while preserving their culture.',
+                                ],
+                                [
+                                    'title' => 'SOROK REGION IV-A',
+                                    'image' => 'images/R4A.jpg',
+                                    'desc' => 'A community of cured persons affected by leprosy and homeless families prepared for sustainable living. Focuses on livelihood and educational support through the Sorok Dream Project Scholarship.',
+                                ],
+                                [
+                                    'title' => 'SOROK REGION IX',
+                                    'image' => 'images/R9.jpg',
+                                    'desc' => 'A community of Christian and Muslim persons affected by leprosy and underprivileged children supported with education, and assistance for PALs in Zamboanga City hospital.',
+                                ],
+                            ];
+                        @endphp
+                    
+                        @foreach ($regions as $region)
+                            <div class="relative w-full h-80 md:h-96 overflow-hidden rounded-lg border-t-4 border-[#00674F]">
+                                <img src="{{ asset($region['image']) }}" alt="{{ $region['title'] }}"
+                                    loading="lazy"
+                                    class="w-full h-full object-cover" />
+                    
+                                <div class="absolute inset-0 bg-[#333333]/80 flex flex-col justify-center items-center text-white px-4 py-6 text-center">
+                                    <h2 class="font-bold text-xl md:text-2xl lg:text-3xl">{{ $region['title'] }}</h2>
+                                    <p class="mt-4 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
+                                        {{ $region['desc'] }}
                                     </p>
                                 </div>
                             </div>
-                            <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ asset('images/MIMAROPA.jpg') }}" loading="lazy" alt="MIMAROPA" class="w-full rounded-t-xl h-full object-cover image-content">
-                                <div class="absolute inset-0 bg-[#333333] opacity-80 rounded-t-xl flex flex-col py-4 justify-center items-center text-white px-4 text-content">
-                                    <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
-                                        SOROK MIMAROPA
-                                    </h2>
-                                    <p class="mt-2 sm:mt-4 xl:px-8 text-center font-secondary text-xs sm:text-sm lg:text-base text-white sm:leading-8 md:leading-6 lg:leading-10">
-                                        A community of disadvantaged IP Learners in Sablayan, Occidental Mindoro, provided a Digital Literacy program, to improve the quality of living and social inclusion while promoting the preservation of their culture.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="flex flex-col md:flex-row w-full">
-                            <div class="relative border-t-6 rounded-t-xl h-auto border-[#FFC000]">
-                                <img src="{{ asset('images/R4A.jpg') }}" loading="lazy" alt="Region 4 A" class="w-full rounded-t-xl h-full object-cover image-content">
-                                <div class="absolute inset-0 bg-[#333333] opacity-80 rounded-t-xl flex flex-col py-4 justify-center items-center text-white px-4 text-content">
-                                    <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
-                                        SOROK REGION IV-A
-                                    </h2>
-                                    <p class="mt-2 sm:mt-4 xl:px-8 text-center font-secondary text-xs sm:text-sm lg:text-base text-white sm:leading-8 md:leading-6 lg:leading-10">
-                                        A community of cured persons affected by leprosy and homeless families and individuals being prepared for independent and sustainable living. The community focuses mainly on livelihood projects to provide income for its parent beneficiaries, as well as empower their children through the educational assistance provided under the Sorok Dream Project Scholarship.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="relative border-t-6 border-[#FFC000] h-auto rounded-t-xl">
-                                <img src="{{ asset('images/R9.jpg') }}" alt="Region 9"  loading="lazy" class="w-full rounded-t-xl h-full object-cover image-content">
-                                <div class="absolute inset-0 bg-[#333333] rounded-t-xl opacity-80 flex flex-col py-4 justify-center items-center text-white px-4 text-content">
-                                    <h2 class="font-bold text-xl text-center lg:text-3xl text-white">
-                                        SOROK REGION IX
-                                    </h2>
-                                    <p class="mt-2 sm:mt-4 xl:px-8 text-center font-secondary text-xs sm:text-sm lg:text-base text-white sm:leading-8 md:leading-6 lg:leading-10">
-                                        A community of Christian and Muslim persons affected by leprosy and underprivileged children provided with educational assistance under Sorok Dream Project Scholarship. The community also assists Persons Affected by Leprosy (PALs) admitted in the custodial ward of Mindanao Central Sanitarium General Hospital in Pasabolong, Zamboanga City.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                    
             
                 </div>
             </x-layouts.container>
@@ -202,7 +220,7 @@
                         <div class="swiper-wrapper">
 
                             @foreach ($programs as $program)
-                                <livewire:components.card.programs image="{{ $program->image }}" title="{{ $program->title }}" description="{{ $program->description }}" />
+                                <livewire:components.card.programs key="{{ $program->id }}" image="{{ $program->image }}" title="{{ $program->title }}" description="{{ $program->description }}" />
                             @endforeach
                         </div>
 

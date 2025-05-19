@@ -2,14 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use Filament\Tables;
-use App\Models\Champion;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Jobs\SendBulkEmailJob;
 use Filament\Resources\Resource;
 use App\Models\SocialMediaPosting;
-use App\Jobs\SendChampionEmailsJob;
+use App\Mail\SocialMediaPostingMail;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
@@ -125,7 +124,17 @@ class SocialMediaPostingResource extends Resource
                         ->requiresConfirmation()
                         ->modalHeading('Send to Champions')
                         ->action(function (Model $record): void {
-                            SendChampionEmailsJob::dispatch($record->id);
+                            dispatch(new SendBulkEmailJob(
+                                SocialMediaPosting::class,
+                                SocialMediaPostingMail::class,
+                                $record->id,
+                                [
+                                    $record->title,
+                                    $record->description,
+                                    $record->link,
+                                    $record->image,
+                                ]
+                            ));
 
                             Notification::make()
                                 ->title('Emails are being sent')

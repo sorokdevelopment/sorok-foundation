@@ -38,7 +38,7 @@ class SponsorResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->label('Name')
+                    ->label('Company Name')
                     ->placeholder('Enter company name')
                     ->columnSpan('full'),
                 FileUpload::make('logo')

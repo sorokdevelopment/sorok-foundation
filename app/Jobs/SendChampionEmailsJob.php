@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Champion;
 use Illuminate\Bus\Queueable;
 use App\Models\SocialMediaPosting;
+use Illuminate\Support\Facades\Log;
 use App\Mail\SocialMediaPostingMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
@@ -18,8 +19,8 @@ class SendChampionEmailsJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public function __construct(
-        public readonly int $modelId,
-        public readonly int $chunkSize = 500
+        public int $modelId,
+        public int $chunkSize = 500
     ) {}
 
     public function handle(): void
@@ -29,7 +30,6 @@ class SendChampionEmailsJob implements ShouldQueue
         Champion::query()
             ->whereNotNull('email')
             ->where('email', '!=', '')
-            ->cursor()
             ->chunkById($this->chunkSize, function ($champions) use ($modelValue) {
                 $this->processChunk($champions, $modelValue);
             });
@@ -40,6 +40,7 @@ class SendChampionEmailsJob implements ShouldQueue
         foreach ($champions as $champion) {
             if (filter_var($champion->email, FILTER_VALIDATE_EMAIL)) {
                 try {
+                    Log::info("Sent SocialMediaPostingMail to {$champion->email}");
                     Mail::to($champion->email)->send(new SocialMediaPostingMail(
                         $modelValue->title,
                         $modelValue->description,
@@ -47,9 +48,11 @@ class SendChampionEmailsJob implements ShouldQueue
                         $modelValue->image
                     ));
                 } catch (\Exception $e) {
-                    \Log::error("Email failed to {$champion->email}: {$e->getMessage()}");
+                    Log::error("Email failed to {$champion->email}: {$e->getMessage()}");
                 }
             }
         }
     }
+
+
 }

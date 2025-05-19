@@ -1,4 +1,4 @@
-<footer class="relative mt-32 bg-[#e8e8e8]">
+<footer class="relative mt-32 bg-white">
     <x-layouts.container>
         <div class="relative py-24 mx-auto">
             
@@ -75,38 +75,30 @@
                     </div>  
                 </div>
 
-                <div class="mt-8 flex flex-col items-center justify-center md:justify-start space-y-4">
-                    <div class="left-corner flex flex-col space-y-8">
+                <div class="mt-8 flex flex-col items-center justify-center space-y-4">
                         
-                        <div class="space-y-4">
-                            {{-- <h2 class="font-bold text-lg lg:text-xl text-[#00B0F0]">
-                                Follow Us                                  
-                            </h2>
-                            <div class="flex justify-around">
-                                <i class="fa-brands text-4xl fa-facebook"></i>
-                                <i class="fa-brands text-4xl fa-instagram"></i>
-                                <i class="fa-brands text-4xl fa-youtube"></i>
-                                <i class="fa-brands text-4xl fa-tiktok"></i>
-                                <i class="fa-brands text-4xl fa-linkedin-in"></i>
-                            </div> --}}
-                            
-                        </div>
+                    <livewire:google-map-coordinates />
+                        
+                    <div class="flex mt-4 justify-center items-center">
+                        <h2 class="font-bold text-lg lg:text-xl">
+                            UNISTAR Bldg. 1239 T. San Luis St. Brgy. 847 Pandacan, Manila, Philippines
+                        </h2>
+                    </div>
     
-                    </div>  
                 </div>
             </div>
         </div>  
     </x-layouts.container>
     <div class="bg-[#00674F] text-white w-full py-24 lg:py-8">
         <x-layouts.container>
-            <div class="flex justify-between flex-col-reverse space-y-16 h-full space-y-reverse lg:flex-row  w-full items-center">
+            <div class="flex justify-between flex-col-reverse space-y-16 h-full space-y-reverse lg:space-y-0 lg:flex-row  w-full items-center">
                 <div class="flex flex-col justify-center items-center">
                     <img src="{{ asset('images/logo-secondary.png') }}" 
                         alt="Website Logo" 
                         class="w-full w-sm">
                 </div>
                 <div class="flex justify-around items-center">
-                    <div class="space-x-4 sm:space-x-12">
+                    <div class="space-x-4 sm:space-x-12 lg:space-x-6">
                         <i class="fa-brands text-3xl sm:text-4xl fa-facebook"></i>
                         <i class="fa-brands text-3xl sm:text-4xl fa-instagram"></i>
                         <i class="fa-brands text-3xl sm:text-4xl fa-youtube"></i>

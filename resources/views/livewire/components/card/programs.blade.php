@@ -1,25 +1,25 @@
-<div class="mt-8 swiper-slide">
-    <div class="bg-white rounded-t-lg border-b-4 border-[#00674F] ">
-        <img src="{{ asset('storage/' . $image ) }}" loading="lazy" alt="Background" class="w-full h-auto object-cover rounded-t-lg">
-
-        <div class="space-y-8 py-6 px-8">
-            <h2 class="text-center font-bold text-lg">
-                {{ $title }}
-            </h2>
-            <p class="font-secondary text-sm lg:text-base line-clamp-4">
-                {{ $description }}                   
-            </p>
-            <div class="flex items-center">
-                <a href="{{ route('programs-and-services') }}" class="text-[#00674F] flex items-center font-bold hover:font-extrabold">
-                    See More 
-                    <i class="material-icons text-2xl font-bold fill-current">
-                        keyboard_arrow_right
-                    </i>
-
-                </a>
-            </div>
-
+<div class="swiper-slide h-full mt-8">
+    <div class="h-full bg-white rounded-t-lg border-b-4 border-[#00674F] flex flex-col">
+        <div class="aspect-[4/3] overflow-hidden"> 
+            <img src="{{ asset('storage/' . $image ) }}" 
+                 loading="lazy" 
+                 alt="{{ $title }}"
+                 class="w-full h-full object-cover rounded-t-lg">
         </div>
 
+        <div class="flex-grow space-y-4 p-6 flex flex-col">
+            <h2 class="text-center font-bold text-xl">
+                {{ $title }}
+            </h2>
+            <p class="font-secondary text-base md:text-lg leading-10 line-clamp-4 flex-grow">
+                {{ $description }}                   
+            </p>
+            <div class="mt-auto">
+                <a href="{{ route('programs-and-services') }}" 
+                   class="text-[#00674F] flex items-center font-semibold hover:font-bold">
+                    See More →
+                </a>
+            </div>
+        </div>
     </div>
 </div>

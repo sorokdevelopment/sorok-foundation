@@ -18,10 +18,10 @@
         }
     }"
     :class="{
-        'bg-white shadow-md': scrolled, 
-        'bg-transparent': !scrolled
+        'bg-white shadow-md': scrolled,
+        'bg-transparent shadow-none': !scrolled
     }"
-    class="fixed top-0 left-0 z-50 transition-all duration-300  w-full flex items-center h-24 lg:h-28"
+    class="z-49 fixed top-0 left-0 transition-all duration-300 w-full flex items-center h-24 lg:h-28"
 >
 
     <x-layouts.container>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="items-center justify-end flex-1 hidden 2xl:flex">
-                <ul class="flex space-x-4 justficy-center items-center 2xl:space-x-6">
+                <ul class="flex space-x-4 justficy-center items-center 2xl:space-x-4">
                     @php
                         $links = [
                             'home' => 'HOME',
