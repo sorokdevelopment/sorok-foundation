@@ -17,7 +17,7 @@
                     <i class="fa-solid fa-circle-info fill-current h-6 w-6 text-teal-500 mr-4 text-xl"></i>
                 @elseif($type === 'warning')
                     <i class="fa-solid fa-circle-exclamation fill-current h-6 w-6 text-yellow-500 mr-4 text-xl"></i>
-                @else 
+                @else
                     <i class="fa-solid fa-triangle-exclamation fill-current h-6 w-6 text-red-500 mr-4 text-xl"></i>
                 @endif
             </div>

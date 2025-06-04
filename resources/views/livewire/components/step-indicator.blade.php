@@ -35,7 +35,7 @@
 
                         <span @class([
                             'text-xs sm:text-sm font-medium text-center break-words max-w-[70px] hidden sm:block',
-                            'text-[#00674F] font-semibold' => $isActive,
+                            'text-primary font-semibold' => $isActive,
                             'text-gray-500 group-hover:text-gray-600' => !$isActive
                         ])>
                             {{ $step['label'] }}

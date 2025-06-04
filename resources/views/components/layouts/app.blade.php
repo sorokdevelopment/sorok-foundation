@@ -18,8 +18,10 @@
         @livewireStyles
 
     </head>
-    <body class="font-primary overflow-x-hidden">
-        <header >
+    <body class="font-primary">
+        <x-loader.preloader />
+
+        <header class="w-full">
             @include('components.layouts.navbar')
         </header>
         

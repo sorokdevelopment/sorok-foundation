@@ -15,170 +15,134 @@
     </div>
     
   <!-- Champions Grid -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-dark mb-4">Celebrating Excellence</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">
-          These remarkable leaders are making a tangible difference in our communities and beyond.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <!-- Awareness Champion -->
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-48 bg-[#00674F] flex items-center justify-center">
-            <span class="text-4xl font-bold text-white">Php 100 / Monthly</span> 
-          </div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div>
-                <span class="inline-block px-2 py-1 text-xs font-medium bg-[#E8F5E9] text-[#2E7D32] rounded mb-3">Advocating for Social Causes</span>
-                
-
-                <h3 class="font-bold text-lg">Awareness Champion</h3>
-              </div>
-            </div>
-            <p class="text-gray-600 mb-4">
-              Leading initiatives to raise awareness about critical social issues through campaigns, education, and community engagement.
-            </p>
-            <ul class="text-sm text-gray-500 space-y-1 mb-4">
-              <li class="flex items-center">
-                <span>                    
-                    <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                </span> Organized 50+ awareness workshops
-              </li>
-              <li class="flex items-center">
-                <span>                    
-                    <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                </span> Reached 100,000+ people
-              </li>
-              <li class="flex items-center">
-                <span>
-                    <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>    
-                </span> Partnered with 20+ organizations
-              </li>
-            </ul>
-            <a href="#" class="inline-block text-primary font-medium hover:underline">Learn more →</a>
-          </div>
+  <div class="py-12 md:py-16 lg:py-20 space-y-16 md:space-y-24 w-full scroll-section">
+    <x-layouts.container>
+      <div class="mx-auto px-4">
+        <div class="text-center mb-12">
+          <h1 class="font-bold text-4xl lg:text-5xl text-center">Celebrating Excellence</h1>
+          <p class="mt-8 text-center font-secondary text-base md:text-lg lg:text-xl leading-relaxed">
+            These remarkable leaders are making a tangible difference in our communities and beyond.
+          </p>
         </div>
 
-        <!-- Empowerment Champion -->
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-48 bg-[#00674F] flex items-center justify-center">
-            <span class="text-4xl font-bold text-white">Php 1,000 / Monthly</span> 
-          </div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div>
-                <span class="inline-block px-2 py-1 text-xs font-medium bg-[#E8F5E9] text-[#2E7D32] rounded mb-3">Building Stronger Communities</span>
-                <h3 class="font-bold text-lg">Empowerment Champion</h3>
-              </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Awareness Champion -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-[#00674F] flex items-center justify-center">
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 100 / Monthly</span> 
             </div>
-            <p class="text-gray-600 mb-4">
-              Creating opportunities for marginalized groups through skill development, mentorship programs, and advocacy.
-            </p>
-            <ul class="text-sm text-gray-500 space-y-1 mb-4">
-                <li class="flex items-center">
-                    <span>                    
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                    </span> Organized 50+ awareness workshops
-                  </li>
-                  <li class="flex items-center">
-                    <span>                    
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                    </span> Reached 100,000+ people
-                  </li>
-                  <li class="flex items-center">
-                    <span>
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>    
-                    </span> Partnered with 20+ organizations
-                  </li>
-            </ul>
-            <a href="#" class="inline-block text-primary font-medium hover:underline">Learn more →</a>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Awareness Champion</h3>
+                </div>
+              </div>
+              <blockquote class="italic flex justify-center text-center mb-6 p-2 text-sm items-center font-medium bg-[#00674F]/10 text-primary rounded">
+              "Change starts with me, and I inspire others to do the same."
+              </blockquote>
+              <div class="space-y-4 mb-8">
+                <p class="leading-relaxed">
+                    Inspire care and concern in the Philippines. Become an Awareness Champion.
+                </p>
+                <p class="leading-relaxed">
+                    For students, young professionals, or first-time donors who want to give consistently, stay informed, and grow as advocates for change.
+                </p>
+              </div>
+              <livewire:form.membership.awareness />
+            </div>
           </div>
-        </div>
 
-        <!-- Sustainability Champion -->
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-48 bg-[#00674F] flex items-center justify-center">
-            <span class="text-4xl font-bold text-white">Php 5,000 / Monthly</span> 
-          </div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div>
-                <span class="inline-block px-2 py-1 text-xs font-medium bg-[#E8F5E9] text-[#2E7D32] rounded mb-3">Pioneering Environmental Solutions</span>
-                <h3 class="font-bold text-lg">Sustainability Champion</h3>
-              </div>
+          <!-- Empowerment Champion -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-[#00674F] flex items-center justify-center">
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 1,000 / Monthly</span> 
             </div>
-            <p class="text-gray-600 mb-4">
-              Implementing innovative projects to promote environmental conservation, renewable energy, and sustainable practices.
-            </p>
-            <ul class="text-sm text-gray-500 space-y-1 mb-4">
-                <li class="flex items-center">
-                    <span>                    
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                    </span> Organized 50+ awareness workshops
-                  </li>
-                  <li class="flex items-center">
-                    <span>                    
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>
-                    </span> Reached 100,000+ people
-                  </li>
-                  <li class="flex items-center">
-                    <span>
-                        <i class="fa-solid fa-circle-check text-[#00674F] mr-2"></i>    
-                    </span> Partnered with 20+ organizations
-                  </li>
-            </ul>
-            <a href="#" class="inline-block text-primary font-medium hover:underline">Learn more →</a>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Empowerment Champion</h3>
+                </div>
+              </div>
+              <blockquote class="italic flex justify-center text-center mb-6 p-2 items-center  text-sm font-medium bg-[#00674F]/10 text-primary rounded">
+                "Lifting lives, creating opportunities, and inspiring hope."
+              </blockquote>
+              <div class="space-y-4 mb-8">
+                <p class="leading-relaxed">
+                    Break the cycle of helplessness. Become an Empowerment Champion.
+                </p>
+                <p class="leading-relaxed">
+                    For active professionals and socially conscious individuals who want to both donate and get directly involved through volunteering.
+                </p>
+              </div>
+              <livewire:form.membership.empowerment />
+            </div>
           </div>
+
+
+          <!-- Sustainability Champion -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-[#00674F] flex items-center justify-center">
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 10,000 / Monthly</span> 
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Sustainability Champion</h3>
+                </div>
+              </div>
+              <blockquote class="italic flex justify-center text-center mb-6 p-2 items-center  text-sm font-medium bg-[#00674F]/10 text-primary rounded">
+                "I plant seeds for lasting change."
+              </blockquote>
+              <div class="space-y-4 mb-8">
+                <p class="leading-relaxed">
+                    End dependence. Create sustainable change. Become a Sustainability Champion.
+                </p>
+                <p class="leading-relaxed">
+                    For business owners, philanthropic individuals, or corporate leaders ready to make a long-term, high-impact investment in social change.
+                </p>
+              </div>
+              <livewire:form.membership.sustainability />
+            </div>
+          </div>
+          
         </div>
       </div>
-    </div>
-  </section>
+    </x-layouts.container>
+
+  </div>
 
 
   <!-- Impact Stats -->
-    <section class="py-16 bg-[#00674F] text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Our Collective Impact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="text-5xl font-bold mb-2">50+</div>
-                    <p class="text-indigo-100">Champions Worldwide</p>
-                </div>
-                <div>
-                    <div class="text-5xl font-bold mb-2">1.2M</div>
-                    <p class="text-indigo-100">Lives Impacted</p>
-                </div>
-                <div>
-                    <div class="text-5xl font-bold mb-2">200+</div>
-                    <p class="text-indigo-100">Successful Initiatives</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="pt-20">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto bg-gray-50 rounded-2xl p-8 md:p-12 shadow-sm">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Join Our Movement</h2>
-                <p class="text-lg text-gray-600 mb-8">
-                Whether you're a potential champion or supporter, your contribution matters.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <x-buttons.primary>
-                        <a href="#">
-                            Nominate a Champion
-                        </a>
-                    </x-buttons.primary>
-               
+    <div class="py-16 bg-[#00674F] text-[#333333]">
+      <!-- CTA div -->
+      <x-layouts.container>
+
+        <div>
+            <div class="mx-auto px-4 text-center">
+                <div class="max-w-3xl mx-auto bg-white rounded-lg p-8 md:p-12 shadow-sm">
+                    <h2 class="mt-8 font-bold text-2xl lg:text-4xl">Join Our Movement</h2>
+                    <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mt-8">
+                      Whether you're a potential champion or supporter, your contribution matters.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center mt-8 gap-4">
+                        <x-buttons.primary>
+                            <a href="#">
+                                Nominate a Champion
+                            </a>
+                        </x-buttons.primary>
+                  
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+      </x-layouts.container>
+
+
+    </div>
+
+
+  
 
 </x-layouts.app>

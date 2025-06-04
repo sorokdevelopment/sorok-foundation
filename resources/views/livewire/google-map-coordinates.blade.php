@@ -1,4 +1,4 @@
-<div class="w-full">
+<div class="w-full z-5">
     
     <div id="map" class="w-full h-96 rounded" wire:ignore></div>
 

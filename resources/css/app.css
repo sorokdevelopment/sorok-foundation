@@ -14,8 +14,12 @@
 }
 
 
+[x-cloak] {
+    display: none !important;
+}
+
+
 html, body {
-    overflow-x: hidden;
     height: 100%;
     scroll-behavior: smooth;
     color: #333333;
@@ -23,7 +27,7 @@ html, body {
 }
 
 body {
-    height: 100vh
+    overflow-y:auto;
 }
 
 .font-primary {
@@ -51,7 +55,8 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #00674F !important; 
+    background-color: #00674F !important;
+     
 }
 
 

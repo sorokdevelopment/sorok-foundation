@@ -1,9 +1,12 @@
 <div>
     <div class="flex items-center justify-center mt-12 py-8 md:py-12">
         <x-layouts.container>
-            <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
-                SOCIAL MEDIA POSTING
-            </h1>
+            <div class="text-center mb-16">
+                <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
+                    SOCIAL MEDIA POSTING
+                </h1>
+                <p class="font-secondary max-w-2xl mx-auto text-lg">Keep your audience engaged with regular content</p>
+            </div>
 
             <div class="mt-8" >
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" >

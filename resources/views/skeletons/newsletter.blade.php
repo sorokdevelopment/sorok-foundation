@@ -2,9 +2,12 @@
 <div>
     <div class="flex items-center justify-center mt-12 py-8 md:py-12">
         <x-layouts.container>
-            <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
-                NEWSLETTERS
-            </h1>
+            <div class="text-center mb-16">
+                <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
+                    OUR NEWSLETTER
+                </h1>
+                <p class="font-secondary max-w-2xl mx-auto text-lg">Get the latest news and exclusive content</p>
+            </div>
             <div class="mt-8">            
                 <div class="grid xl:grid-cols-3 gap-6">
                     <div class="xl:col-span-1 h-full">

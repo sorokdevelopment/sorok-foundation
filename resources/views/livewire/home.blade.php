@@ -1,14 +1,11 @@
 <div>
-    @if(!session()->has('seen_modal'))
-        <livewire:modal.advertise />
-    @endif
     <div id="hero" class="relative w-full">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" loading="lazy">
             <source src="{{ asset('images/videos/hero-bg.mp4') }}" type="video/mp4">
         </video>
         
         <div class="relative justify-end flex items-center mx-auto p-4 py-24 h-full">
-            <div class="w-full my-12 mx-auto flex flex-col justify-center items-center md:justify-end gap-8">
+            <div class="w-full my-12 mx-auto flex flex-col justify-center items-center gap-8">
                 <x-layouts.container>
 
                     <livewire:form.champion-form />
@@ -17,9 +14,254 @@
             </div>
         </div>
     </div>
+
+
+    <div class="mt-24 md:mt-32 scroll-section">
+        <x-layouts.container>
+            <div class="grid lg:grid-cols-2 gap-14 items-start">
+                <div>
+                    <h2 class="mb-6 font-bold text-2xl md:text-3xl lg:text-4xl">
+                        Our Accreditations
+                    </h2>
+                    <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mb-8 ">
+                        Certified by leading government agencies and professional networks, ensuring the highest standards of service.
+                    </p>
+    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="text-primary mt-1">
+                                <i class="fa-solid fa-circle-check text-primary text-2xl"></i>    
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Government Certified</h4>
+                                <p class=" mt-2">
+                                    Fully compliant with national standards and regulations.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <div class="flex items-start gap-4">
+                            <div class="text-primary mt-1">
+                                <i class="fa-solid fa-users text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Network Member</h4>
+                                <p class=" mt-2">
+                                    Partnered with professional organizations for enhanced services.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <div class="flex items-start gap-4">
+                            <div class="text-primary mt-1">
+                                <i class="fa-solid fa-eye text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Transparent Operations</h4>
+                                <p class=" mt-2">
+                                    We uphold integrity and openness in all our processes.
+                                </p>
+                            </div>
+                        </div>
+                    
+                        <div class="flex items-start gap-4">
+                            <div class="text-primary mt-1">
+                                <i class="fa-solid fa-hand-holding-heart text-primary text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Community Impact</h4>
+                                <p class=" mt-2">
+                                    Recognized for delivering measurable benefits to the communities we serve.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-2  gap-6 w-full">
+                    <div class="rounded-lg p-6 space-y-4 text-center">
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/dswd.png') }}" alt="DSWD Logo" class="w-2/3 sm:w-full lg:w-2/3 xl:w-full">
+                        </div>
+                        
+                        
+                        <div class="flex flex-wrap space-y-2 space-x-2 justify-center items-center">
+                            {{-- <span class="px-4 py-2 block text-xs font-semibold text-primary">
+                                DSWD-SB-R-000131-2021
+                            </span>
+                            <span class="px-4 py-2 block text-xs font-semibold text-primary">
+                                DSWD-SB-L-000100-2021
+                            </span>
+                            <span class="px-4 py-2 block text-xs font-semibold text-primary">
+                                DSWD-SB-A-00099-2022
+                            </span> --}}
+                        </div>
+                    </div>
+    
+                    <div class="rounded-lg p-6 space-y-4 text-center">
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/pcnc.png') }}" alt="PCNC Logo" class="w-2/3  sm:w-full lg:w-2/3 xl:w-full">
+                        </div>
+
+                        {{-- <span class="px-4 py-2 block text-xs font-semibold text-primary">
+                            CERTIFATE #. 2023062867
+                        </span> --}}
+                    </div>
+    
+                    <div class="rounded-lg p-6 space-y-4 text-center">
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/absnet.jpg') }}" alt="ABSNET Logo" class="w-1/2  sm:w-2/3 lg:w-1/2 xl:w-full 2xl:w-2/3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-layouts.container>
+    </div>
     
 
-    <div x-cloak class="mt-16 flex flex-col md:flex-row relative about-section scroll-section">
+
+    
+    <div class="mt-24 md:mt-32 bg-[#00674F] py-20 scroll-section">
+        <x-layouts.container>
+            <div class="mx-auto text-center mb-16 px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Joining the Champions for Change
+                </h2>
+                <p class="text-lg text-white/90">
+                    Follow these simple steps to become part of our movement and create lasting impact.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="hidden 2xl:block absolute top-16 left-1/2 h-1 w-full max-w-4xl bg-white/20 transform -translate-x-1/2">
+                    <div class="h-full bg-white transition-all duration-500" style="width: 100%"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6 relative z-10 px-4">
+                    <div class="group">
+                        <div class="h-full bg-white rounded-xl px-2 py-6 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="relative mb-6">
+                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#00674F] rounded-full flex items-center justify-center text-xl font-bold text-white border-4 border-white">
+                                    1
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-center">Choose Membership Tier</h3>
+                            <p class="mb-4 text-center leading-relaxed">
+                                Select your commitment level:
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 leading-relaxed 2xl:grid-cols-1 gap-4">
+                                <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
+                                    <p class="font-medium text-primary text-center">₱100/month</p>
+                                    <p class="text-sm text-center">Awareness</p>
+                                </div>
+                                <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
+                                    <p class="font-medium text-primary text-center">₱1,000/month</p>
+                                    <p class="text-sm text-center">Empowerment</p>
+                                </div>
+                                <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
+                                    <p class="font-medium text-primary text-center">₱10,000/month</p>
+                                    <p class="text-sm text-center">Sustainability</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <div class="h-full bg-white rounded-xl px-2 py-6 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="relative mb-6">
+                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#00674F] rounded-full flex items-center justify-center text-xl font-bold text-white border-4 border-white">
+                                    2
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-center">Sign Up Online</h3>
+                            <p class="mb-4 text-center">
+                                Navigate to the Champions for Change section, and click <span class="font-bold">"Join Now"</span>. Fill out the registration form with your name, contact details, and payment information.
+                            </p>
+                            
+                            <div class="flex justify-center items-center">
+                                <a href="https://www.sorokuni.com">
+                                    <x-buttons.primary>
+                                        Register Now
+                                    </x-buttons.primary>
+                                </a>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <div class="h-full bg-white rounded-xl px-2 py-6 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="relative mb-6">
+                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#00674F] rounded-full flex items-center justify-center text-xl font-bold text-white border-4 border-white">
+                                    3
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-center">Set Up Donation</h3>
+                            <p class="leading-relaxed text-center">
+                                Choose a payment method (Credit/Debit Card, Online Banking, or E-Wallet) and enable auto-debit for convenience to ensure your monthly contribution continues automatically.
+                            </p>
+                            <div class="flex justify-center items-center flex-wrap mt-6 gap-4">
+                                <div class="p-2 bg-[#00674F]/10 text-primary rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <span class="ml-1 text-xs font-medium">Cards</span>
+                                </div>
+                                
+                                <div class="p-2 bg-[#00674F]/10 text-primary rounded-lg  flex items-center justify-center">
+                                    <i class="fa-solid fa-wallet"></i>
+                                    <span class="ml-1 text-xs font-medium">E-wallet</span>
+                                </div>
+                                
+                                <div class="p-2 bg-[#00674F]/10 text-primary rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <span class="ml-1 text-xs font-medium">Online</span>
+                                </div>
+                                
+                                <div class="p-2 bg-[#00674F]/10 text-primary rounded-lg flex items-center justify-center">
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                    <span class="ml-1 text-xs font-medium">Visa</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <div class="h-full bg-white rounded-xl px-2 py-6 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                            <div class="relative mb-6">
+                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#00674F] rounded-full flex items-center justify-center text-xl font-bold text-white border-4 border-white">
+                                    4
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-center">Make an Impact</h3>
+                            <p class="leading-relaxed text-center">
+                                Join the Champions community, participate in events and webinars, and spread awareness using 
+                                <span class="px-3 block py-2 my-2 bg-white border border-[#00674F] text-primary rounded-lg text-center font-medium">
+                                    #ChampionsForChangePH
+                                </span>
+                                to invite others to join the movement
+                            </p>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </x-layouts.container>
+    </div>
+
+    
+    
+
+    <div x-cloak class="mt-24 md:mt-32 flex flex-col md:flex-row relative scroll-section">
         <x-layouts.container>
             <div class="flex flex-col md:flex-row md:space-x-12">
                 <div class="flex flex-1 relative image-content">
@@ -63,7 +305,7 @@
                                     </h2>
                                     <div class="flex justify-center items-center space-x-4">
                                         <i class="material-icons mr-2 text-2xl fill-current opacity-80">mail</i>
-                                        <p class="text-[#00674F] font-medium text-base md:text-lg lg:text-xl leading-relaxed font-secondary">
+                                        <p class="text-primary font-medium text-base md:text-lg lg:text-xl leading-relaxed font-secondary">
                                             info@sorokuni.com
                                         </p>
                                     </div>
@@ -82,7 +324,7 @@
     @endif
     
     
-    <div x-cloak class="mt-12  scroll-section">
+    <div x-cloak class="mt-24 md:mt-32 scroll-section">
         <div class="flex flex-col md:flex-row relative">
             <x-layouts.container class="relative">
                 <div class="flex flex-col md:flex-row md:space-x-12">
@@ -209,7 +451,7 @@
     </div>
 
     @if ($programs->isNotEmpty())
-        <div x-cloak class="flex items-center justify-center mt-16 h-full sm:mt-32">
+        <div x-cloak class="flex items-center justify-center mt-16 h-full">
             <x-layouts.container>
                 <h1 class="font-bold text-4xl lg:text-5xl text-content mb-8 md:mb-16 text-center">
                     PROGRAMS AND SOCIAL SERVICES
@@ -227,10 +469,10 @@
 
 
                         <div class="absolute mt-16 inset-y-0 w-full flex justify-between items-center">
-                            <div class="program-button-prev flex items-center justify-center z-5 w-12 h-12 md:w-14 md:h-14 bg-[#00674F] hover:bg-white text-white hover:text-[#00674F] rounded-full shadow-lg cursor-pointer absolute left-0">
+                            <div class="program-button-prev flex items-center justify-center z-5 w-12 h-12 md:w-14 md:h-14 bg-[#00674F] text-white hover:text-primary rounded-full shadow-lg cursor-pointer absolute left-0">
                                 <i class="material-icons text-5xl font-bold">keyboard_arrow_left</i>
                             </div>
-                            <div class="program-button-next flex items-center justify-center z-5 w-12 h-12 md:w-14 md:h-14 bg-[#00674F] hover:bg-white text-white hover:text-[#00674F] rounded-full shadow-lg cursor-pointer absolute right-0">
+                            <div class="program-button-next flex items-center justify-center z-5 w-12 h-12 md:w-14 md:h-14 bg-[#00674F] text-white hover:text-primary rounded-full shadow-lg cursor-pointer absolute right-0">
                                 <i class="material-icons text-5xl font-bold">keyboard_arrow_right</i>
                             </div>
                         </div>
@@ -245,7 +487,7 @@
 
 
     @if ($film)
-        <div x-cloak class="flex items-center justify-center mt-24 sm:mt-32 scroll-section">
+        <div x-cloak class="flex items-center justify-center mt-24 md:mt-32 scroll-section">
             <x-layouts.container>
                 <div class="flex flex-col items-center">
                     <h1 class="font-bold text-4xl lg:text-5xl text-content mb-8 md:mb-24 text-center">

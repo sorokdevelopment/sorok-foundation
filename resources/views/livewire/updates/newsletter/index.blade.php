@@ -2,10 +2,13 @@
     @if ($newsletters->isNotEmpty())
         <div class="flex items-center justify-center mt-12 py-8 md:py-12">
             <x-layouts.container>
-
-                <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
-                    NEWSLETTERS
-                </h1>
+                <div class="text-center mb-16">
+                    <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
+                        OUR NEWSLETTER
+                    </h1>
+                     <p class="font-secondary max-w-2xl mx-auto text-lg">Get the latest news and exclusive content</p>
+                </div>
+                
 
                 <div class="mt-8">            
                     <div class="grid xl:grid-cols-3 gap-6">
@@ -54,12 +57,12 @@
 
                     <div class="flex justify-center mt-12 space-x-4">
                         @if ($hasMore)
-                            <div wire:click="loadMore" class="cursor-pointer bg-white text-[#00674F] border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
+                            <div wire:click="loadMore" class="cursor-pointer bg-white text-primary border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
                                 SHOW MORE
                             </div>
                         @endif
                         @if ($expanded)
-                            <div wire:click="showLess" class="cursor-pointer bg-white text-[#00674F] border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
+                            <div wire:click="showLess" class="cursor-pointer bg-white text-primary border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
                                 SHOW LESS
                             </div>
                         @endif
@@ -71,15 +74,17 @@
         </div>
 
     @else
-        <div class="flex items-center justify-center py-8 mt-12">
+        <div class="flex items-center justify-center py-8 md:py-12">
             <x-layouts.container>
-                <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
-                    NEWSLETTERS
-                </h1>
+                <div class="text-center">
+                    <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
+                        OUR NEWSLETTER
+                    </h1>
+                     <p class="font-secondary max-w-2xl mx-auto text-lg">Get the latest news and exclusive content</p>
+                </div>
 
                 <div class="flex flex-col items-center justify-center space-y-4 py-12 px-4 text-center">
-                    <img src="{{ asset('images/newsletter.svg') }}" alt="Newsletter SVG" class="w-40 h-40 md:w-48 md:h-48 mb-6">
-
+                    <i class="fa-solid fa-newspaper text-8xl mb-6 text-[#33333]"></i>
 
                     <h2 class="text-xl font-primary font-bold md:text-2xl mb-4">
                         No Newsletters Yet

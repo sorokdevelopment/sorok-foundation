@@ -1,5 +1,5 @@
 <div x-cloak>
-    <div class="my-20">
+    <div class="my-16">
         <x-layouts.container class="relative">
             <p class="text-center font-secondary text-base md:text-lg lg:text-xl leading-10">
                 Trusted by different known companies

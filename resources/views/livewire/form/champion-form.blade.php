@@ -1,12 +1,11 @@
 <div>
 
-    @if ($currentStep === 1)
+    @if ($currentStep === 0)
         <livewire:form.champion-details />
-
     @else
         <div class="flex justify-end items-center">
 
-            <div class="w-full md:max-w-[600px] bg-white rounded-xl p-2 sm:p-4 md:p-8 shadow-lg">
+            <div class="w-full lg:max-w-[600px] bg-white rounded-xl p-2 sm:p-4 md:p-8 shadow-lg">
                 <livewire:components.step-indicator 
                     :steps="$steps" 
                     :currentStep="$currentStep" 
@@ -14,17 +13,13 @@
                     class="p-8 pb-0"
                 />
                 
-                <div class="p-6 md:p-8 pt-4">
+                <div class="p-1 py-4">
                     @switch($currentStep)
-                        @case(2)
+                        @case(1) 
                             <livewire:form.champion-membership />
                             @break
-
-                        @case(3) 
+                        @case(2)
                             <livewire:form.user-info />
-                            @break
-                        @case(4) 
-                            <livewire:form.user-address /> 
                             @break
                         @default 
                             <livewire:form.champion-payment />

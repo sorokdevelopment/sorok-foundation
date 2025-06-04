@@ -23,9 +23,9 @@ class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static ?string $navigationGroup = 'Posting';
+    protected static ?string $navigationGroup = 'Community Engagements';
 
     public static function getNavigationBadge(): ?string
     {
@@ -71,7 +71,7 @@ class ProgramResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->emptyStateIcon('heroicon-o-rectangle-stack')
+            ->emptyStateIcon('heroicon-o-folder')
             ->emptyStateDescription('Once you write your first program, it will appear here.')
             ->columns([
                 ImageColumn::make('image')

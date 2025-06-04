@@ -15,9 +15,12 @@
     </div>
 
     
+    <!--- EVENTS INDEX ---->
+    <livewire:updates.events.index lazy/>
 
     <!--- VIDEO  INDEX ---->
     <livewire:updates.video.index />
+    
 
 
     <!--- NEWSLETTER INDEX ---->

@@ -35,4 +35,14 @@ return [
         ],
     ],
 
+    // PISOPAY PAYMENT GATEWAY
+
+    'pisopay' => [
+        'endpoint' => env('PISOYPAY_ENDPOINT'),
+        'api' => env('PISOPAY_API_VERSION'),
+        'username' => env('PISOPAY_API_USERNAME'),
+        'password' => env('PISOPAY_API_PASSWORD'),
+    ],
+
+
 ];

@@ -8,7 +8,7 @@
 
         
         <div class="mt-8 flex justify-end">
-            <x-buttons.primary wire:click.prevent="submit">Submit</x-buttons.primary>
+            <x-buttons.primary wire:click="submit">Submit</x-buttons.primary>
         </div>
       </div>
 </div>

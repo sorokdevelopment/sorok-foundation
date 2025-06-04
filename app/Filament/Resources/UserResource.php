@@ -25,7 +25,7 @@ class UserResource extends Resource
 
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    protected static ?string $navigationGroup = 'Admin Management';
+    protected static ?string $navigationGroup = 'User Management';
 
     public static function getNavigationBadge(): ?string
     {

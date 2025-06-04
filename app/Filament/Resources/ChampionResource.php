@@ -20,7 +20,7 @@ class ChampionResource extends Resource
     protected static ?string $model = Champion::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
-    protected static ?string $navigationGroup = 'Admin Management';
+    protected static ?string $navigationGroup = 'User Management';
 
     public static function getNavigationBadge(): ?string
     {
@@ -34,7 +34,7 @@ class ChampionResource extends Resource
     {
         return $table
             ->emptyStateIcon('heroicon-o-user')
-            ->emptyStateDescription('Once you write your first user, it will appear here.')
+            ->emptyStateDescription('No champion yet.')
             ->columns([
                 TextColumn::make('full_name'),
                 TextColumn::make('email')
@@ -46,12 +46,6 @@ class ChampionResource extends Resource
                     ->label('Membership')
                     ->formatStateUsing(fn ($state) => ChampionMembership::from($state)->name)
                     ->sortable(),
-                TextColumn::make('full_address')
-                    ->label('Address'),
-                TextColumn::make('birthdate')
-                    ->label('Birthday')
-                    ->sortable()
-                    ->date('F j, Y'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->sortable()
@@ -86,10 +80,4 @@ class ChampionResource extends Resource
         ];
     }
 
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->with(['barangay', 'city', 'province', 'region']);
-    }
 }

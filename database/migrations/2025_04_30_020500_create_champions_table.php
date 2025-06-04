@@ -18,9 +18,6 @@ return new class extends Migration
             $table->tinyInteger('membership');
             $table->string('email')->unique();
             $table->string('contact_number');
-            $table->date('birthdate');
-            $table->address();
-            $table->string('postal_code');
             $table->timestamps();
         });
     }

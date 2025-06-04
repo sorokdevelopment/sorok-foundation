@@ -1,5 +1,5 @@
 <div class="swiper-slide w-full">
-    <h1 class="font-bold text-center p-4 text-2xl md:text-3xl lg:text-5xl">
+    <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
         {{ $title }}
     </h1>
     <div class="h-1 w-1/3 mx-auto bg-[#00674F]"></div>

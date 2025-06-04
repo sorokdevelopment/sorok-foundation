@@ -16,7 +16,7 @@
             </p>
             <div class="mt-auto">
                 <a href="{{ route('programs-and-services') }}" 
-                   class="text-[#00674F] flex items-center font-semibold hover:font-bold">
+                   class="text-primary flex items-center font-semibold hover:font-bold">
                     See More →
                 </a>
             </div>

@@ -11,7 +11,6 @@ class UserInfo extends Component
     public string $last_name;
     public string $email;
     public string $contact_number;
-    public string $birthdate;
 
     public array $championInfo = [];
 
@@ -21,11 +20,10 @@ class UserInfo extends Component
     public function rules()
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|max:100|email|unique:champions,email',
-            'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
-            'birthdate' => 'required|date',
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'email' => ['required', 'max:100', 'email', 'unique:champions,email'],
+            // 'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
         ];
     }
        
@@ -61,7 +59,6 @@ class UserInfo extends Component
             'last_name' => $this->last_name,
             'email' => $this->email,
             'contact_number' =>  $this->contact_number,
-            'birthdate' => $this->birthdate,
         ]);
 
         $this->dispatch('goToNextStep');

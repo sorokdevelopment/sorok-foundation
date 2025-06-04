@@ -16,12 +16,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 //*********************  SWIPER JS   *********** */
 
-document.addEventListener("livewire:navigated", function() {
+document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
+        const swiperEl = document.querySelector('.mySwiper');
+        const slideCount = swiperEl?.querySelectorAll('.swiper-slide').length || 0;
 
         new Swiper('.mySwiper', {
             modules: [Autoplay],
-            loop: true, 
+            loop: slideCount > 10, // Only enable loop if enough slides
             speed: 10000,
             autoplay: {
                 delay: 0,
@@ -38,11 +40,15 @@ document.addEventListener("livewire:navigated", function() {
     }, 100);
 });
 
+
 document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
+        const swiperEl = document.querySelector('.swiper-programs');
+        const slideCount = swiperEl?.querySelectorAll('.swiper-slide').length || 0;
+
         new Swiper(".swiper-programs", {
             modules: [Navigation, Pagination],
-            loop: true,
+            loop: slideCount > 2,
             slidesPerView: 1,
             spaceBetween: 40,
             navigation: {
@@ -63,11 +69,15 @@ document.addEventListener("livewire:navigated", function () {
     }, 100);
 });
 
+
 document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
+        const swiperEl = document.querySelector('.update-swiper');
+        const slideCount = swiperEl?.querySelectorAll('.swiper-slide').length || 0;
+
         new Swiper(".update-swiper", {
-            modules: [Navigation, Pagination], 
-            loop: true,
+            modules: [Navigation, Pagination],
+            loop: slideCount > 1,
             slidesPerView: 1,
             spaceBetween: 1000,
             navigation: {
@@ -81,8 +91,8 @@ document.addEventListener("livewire:navigated", function () {
             },
         });
     }, 100);
-    
 });
+
 
 
 

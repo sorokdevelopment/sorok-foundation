@@ -7,7 +7,7 @@ use Livewire\Component;
 class ChampionForm extends Component
 {
     public array $steps;
-    public int $currentStep = 1;
+    public int $currentStep = 0;
 
     protected $listeners = [
         'goToNextStep' => 'incrementStep',
@@ -31,13 +31,16 @@ class ChampionForm extends Component
     public function mount()
     {
 
-        $this->steps =  [
-            ['number' => 1, 'label' => 'Mode'],
-            ['number' => 2, 'label' => 'Details'],
-            ['number' => 3, 'label' => 'Personal Info'],
-            ['number' => 4, 'label' => 'Address'],
-            ['number' => 5, 'label' => 'Payment'],
+        $allSteps = [
+            ['number' => 0, 'label' => 'Champion'],
+            ['number' => 1, 'label' => 'About'],
+            ['number' => 2, 'label' => 'Profile Data'],
+            ['number' => 3, 'label' => 'Payment'],
         ];
+    
+        $this->steps = collect($allSteps)->filter(function ($step) {
+            return $step['number'] !== 0;
+        })->values()->toArray();
     }
 
 

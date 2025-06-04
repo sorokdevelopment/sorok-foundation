@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Livewire\Home;
 use App\Livewire\Updates;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +13,7 @@ Route::get('/', function () {
 Route::get('/home', Home::class)->name('home');
 
 
-Route::get('/about', function () {
+Route::get('/about-us', function () {
     return view('about');
 })->name('about');
 Route::get('/programs-and-services', function () {
@@ -33,3 +34,16 @@ Route::get('/champions', function () {
 Route::get('/updates', Updates::class)->name('updates');
 
 Route::get('/updates/newsletters/{slug}', NewsletterBlog::class)->name('updates.show');
+
+Route::get('/privacy-policy', function() {
+    return view('privacy');
+})->name('privacy-policy');
+
+Route::get('events/{event:slug}/form', function (Event $event) {
+    return view('event-form-submission', ['event' => $event]);
+})->name('event-form');
+
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+})->name('not-found');
