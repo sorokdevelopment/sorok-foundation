@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Payment;
 use Yajra\Address\HasAddress;
 use App\Enums\ChampionMembership;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Champion extends Model
 {
@@ -27,6 +29,11 @@ class Champion extends Model
         );
     }
 
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 
 
 

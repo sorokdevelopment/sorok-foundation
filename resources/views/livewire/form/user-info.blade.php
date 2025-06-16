@@ -46,7 +46,7 @@
             Contact support
         </a>
     </p>
-    <x-buttons.primary wire:click="nextStep">
+    <x-buttons.primary wire:click="nextStep" wire:loading.attr="disabled">
       Next
       <i class="fa-solid fa-arrow-right ml-2"></i>
     </x-buttons.primary>

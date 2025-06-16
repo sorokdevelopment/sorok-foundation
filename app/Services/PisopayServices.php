@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\ConnectionException;
 
 
 /**
@@ -10,10 +11,9 @@ use Illuminate\Support\Facades\Http;
  *
  * @category Module
  * @package  CheckoutApi
- * @author   Christian Villegas <cv@pisopay.com.ph>
  * @license  Proprietary License
  **/
-class PisopayPaymentServices
+class PisopayServices
 {
 
 
@@ -22,18 +22,17 @@ class PisopayPaymentServices
     public $version;
     public $creds;
 
-    public function __construct(string $url, string $version, string $creds)
+    public function __construct()
     {
-        $this->url = $url;
-        $this->version = $version;
-        $this->creds = $creds;
+        $this->url = config('services.pisopay.endpoint');
+        $this->version = config('services.pisopay.api');
+        $this->creds = base64_encode(config('services.pisopay.username') . ":" . config('services.pisopay.password'));
     }
 
     /**
      * SessionGenerate Function
      *
      * @return bool|string
-     * @author   Christian Villegas <cv@pisopay.com.ph>
      */
     public function sessionGenerate()
     {
@@ -48,7 +47,6 @@ class PisopayPaymentServices
         }
 
         $data = $response->json();
-        dd($data);
         if (!isset($data['status']) || $data['status'] != 0) {
             return false;
         }
@@ -62,28 +60,36 @@ class PisopayPaymentServices
      * @param array $details
      * @param array $arrayData
      * @return bool|string
-     * @author   Christian Villegas <cv@pisopay.com.ph>
      */
     public function generateToken(array $details, array $arrayData)
     {
-        $details = [[
+        $details = json_encode([[
             "payment" => $details,
-            "name" => null, // Add company name if needed
-        ]];
+            "name" => null, // company name if exists
+        ]]);
 
-        $arrayData["details"] = json_encode($details);
+        $arrayData["details"] = $details;
 
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Authorization' => "Basic {$this->creds}",
-            'Content-Type' => 'application/json',
-        ])->post("{$this->url}/api/{$this->version}/token", $arrayData);
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => "Basic {$this->creds}",
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ])
+            ->post("{$this->url}/api/{$this->version}/token", $arrayData);
 
-        if ($response->failed()) {
-            throw new \Exception("PisoPay token generation failed: " . $response->body());
+            if ($response->failed()) {
+                \Log::error('PisoPay Token Generation Failed', [
+                    'response' => $response->body(),
+                    'status' => $response->status()
+                ]);
+                return false;
+            }
+            return $response->body(); // You can also return $response->json() if you want it decoded
+        } catch (\Exception $e) {
+            \Log::error('PisoPay Token Exception', ['error' => $e->getMessage()]);
+            return false;
         }
-
-        return $response->body();
     }
 
 
@@ -92,7 +98,6 @@ class PisopayPaymentServices
      *
      * @param array $arrayData
      * @return bool|string
-     * @author   Christian Villegas <cv@pisopay.com.ph>
      */
     public function generateReferenceNumber(array $arrayData)
     {
@@ -117,7 +122,6 @@ class PisopayPaymentServices
      * @param string merchant_trace_no
      * @param string $payment_channel_code
      * @return bool|string
-     * @author   Christian Villegas <cv@pisopay.com.ph>
      */
     public function hashMaker(int $time, string $merchant_trace_no, string $payment_channel_code)
     {
@@ -131,13 +135,14 @@ class PisopayPaymentServices
      * @param string $merchant_trace_no
      * @param int $time
      * @return false|string
-     * @author   Christian Villegas <cv@pisopay.com.ph>
      */
     public function hashMaker1(string $y, string $merchant_trace_no, int $time)
     {
         $auth = substr($y, strlen($y) - 30, strlen($y));
         return hash_hmac("sha256", $auth . $merchant_trace_no, $time);
     }
+
+    
 
 
     

@@ -1,56 +1,53 @@
-<div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
-    <div class="relative w-72 h-72 flex items-center justify-center">
-        <div class="absolute w-64 h-64 bg-[#00674F] rounded-lg animate-morph"></div>
-        <img src="{{ asset('images/logo-secondary.png') }}" 
-             class="w-full opacity-0 animate-fadeIn" 
-             alt="Logo"
-             style="animation-delay: 2s;">
+<div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm">
+    <div class="flex space-x-3 mb-6">
+        <div class="w-3.5 h-3.5 bg-[#00674F] rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+        <div class="w-3.5 h-3.5 bg-[#00674F]/90 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+        <div class="w-3.5 h-3.5 bg-[#00674F]/80 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
     </div>
-    
-    <div class="mt-8 text-center">
-        <div class="text-xl font-semibold text-gray-800">
-            <span class="inline-block animate-wave" style="animation-delay: 0.1s">L</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.2s">o</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.3s">a</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.4s">d</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.5s">i</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.6s">n</span>
-            <span class="inline-block animate-wave" style="animation-delay: 0.7s">g</span>
-        </div>
-    </div>
+    <p class="text-gray-700 font-medium tracking-wide animate-fadeIn">
+        Loading your experience<span class="animate-pulse">...</span>
+    </p>
 </div>
 
 <style>
-    @keyframes morph {
-        0% { border-radius: 20% 60% 40% 80%; transform: rotate(0deg); }
-        25% { border-radius: 60% 20% 80% 40%; transform: rotate(90deg); }
-        50% { border-radius: 40% 80% 20% 60%; transform: rotate(180deg); }
-        75% { border-radius: 80% 40% 60% 20%; transform: rotate(270deg); }
-        100% { border-radius: 20% 60% 40% 80%; transform: rotate(360deg); }
+    @keyframes bounce {
+        0%, 100% { 
+            transform: translateY(0); 
+            opacity: 0.8;
+        }
+        50% { 
+            transform: translateY(-12px); 
+            opacity: 1;
+        }
     }
-    .animate-morph {
-        animation: morph 4s ease-in-out infinite;
+    .animate-bounce {
+        animation: bounce 1.2s infinite ease-in-out;
     }
     
     @keyframes fadeIn {
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     .animate-fadeIn {
-        animation: fadeIn 0.5s ease-out forwards;
+        animation: fadeIn 0.8s ease-out both;
     }
     
-    @keyframes wave {
-        0%, 40%, 100% { transform: translateY(0); }
-        20% { transform: translateY(-10px); }
+    @keyframes pulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
     }
-    .animate-wave {
-        animation: wave 1.5s ease-in-out infinite;
+    .animate-pulse {
+        animation: pulse 1.5s infinite;
+        display: inline-block;
+        width: 1.2em;
+        text-align: left;
     }
     
     @media (prefers-reduced-motion: reduce) {
-        * {
+        .animate-bounce,
+        .animate-fadeIn,
+        .animate-pulse {
             animation: none !important;
-            transform: none !important;
         }
     }
 </style>
@@ -59,11 +56,26 @@
     document.addEventListener('DOMContentLoaded', () => {
         const preloader = document.getElementById('preloader');
         
+        // Add a minimum display time (1.5s) even if page loads faster
+        const minDisplayTime = 700;
+        const startTime = Date.now();
+        
         window.addEventListener('load', () => {
+            const loadTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minDisplayTime - loadTime);
+            
             setTimeout(() => {
                 preloader.classList.add('opacity-0', 'transition-opacity', 'duration-500');
                 setTimeout(() => preloader.remove(), 500);
-            }, 2500);
+            }, remainingTime);
         });
+        
+        // Fallback in case load event doesn't fire
+        setTimeout(() => {
+            if (document.readyState === 'complete' && preloader) {
+                preloader.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                setTimeout(() => preloader.remove(), 500);
+            }
+        }, 1000);
     });
 </script>

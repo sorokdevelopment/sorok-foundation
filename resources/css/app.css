@@ -30,6 +30,21 @@ body {
     overflow-y:auto;
 }
 
+
+::-webkit-scrollbar-track {
+    background: #07110f;
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00674F;
+}
+
+
+
+
+
 .font-primary {
     font-family: 'Montserrat', sans-serif;
 }
@@ -85,4 +100,5 @@ body {
     transform-style: preserve-3d;
     will-change: transform;
   }
+
 

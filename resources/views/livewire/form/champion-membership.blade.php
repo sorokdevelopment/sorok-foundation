@@ -1,4 +1,4 @@
-<div class="mx-auto sm:px-6 lg:px-8">
+<div class="mx-auto">
 
     <div class="text-center mb-10">
         <h1 class="text-2xl sm:text-3xl font-bold leading-tight">{{ $membership }} CHAMPION</h1>
@@ -18,11 +18,11 @@
     </div>
 
     <div class="mt-10 bg-white p-4 sm:p-6 rounded-xl border border-gray-200 shadow">
-        <label class="flex items-start gap-4">
+        <label class="flex items-start justify-between gap-4">
             <input 
                 type="checkbox" 
                 wire:model="agreed" 
-                class="h-8 w-8 text-primary border-[#00674F] rounded focus:ring-[#00674F] transition"
+                class="h-6 w-6 text-primary border-[#00674F] rounded focus:ring-[#00674F] transition"
             >
             <div class="text-sm sm:text-base">
                 <p class="font-semibold mb-1">
@@ -46,7 +46,7 @@
                 Contact support
             </a>
         </p>
-        <button wire:click="nextStep" class="w-full sm:w-auto px-6 py-3 bg-[#00674F] hover:bg-[#004C3C] text-white font-medium rounded-lg shadow-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#00674F] focus:ring-offset-2">
+        <button wire:loading.attr="disabled" wire:click="nextStep" class="w-full sm:w-auto px-6 py-3 bg-[#00674F] hover:bg-[#004C3C] text-white font-medium rounded-lg shadow-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#00674F] focus:ring-offset-2">
             Next <i class="fa-solid fa-arrow-right ml-2"></i>
         </button>
     </div>

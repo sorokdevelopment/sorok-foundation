@@ -4,6 +4,7 @@ use App\Models\Event;
 use App\Livewire\Home;
 use App\Livewire\Updates;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 use App\Livewire\Updates\Newsletter\NewsletterBlog;
 
 
@@ -42,6 +43,14 @@ Route::get('/privacy-policy', function() {
 Route::get('events/{event:slug}/form', function (Event $event) {
     return view('event-form-submission', ['event' => $event]);
 })->name('event-form');
+
+
+
+//callback route
+
+Route::post('/pisopay/payment/callback', PaymentController::class)->name('pisopay-callback');
+
+
 
 
 Route::fallback(function () {

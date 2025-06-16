@@ -158,31 +158,31 @@ class NewsletterResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\Action::make('sendToChampions')
-                        ->icon('heroicon-o-envelope')
-                        ->label('Send to Champions')
-                        ->color('success')
-                        ->modalDescription('Emails will process in background')
-                        ->requiresConfirmation()
-                        ->modalHeading('Send to Champions')
-                        ->action(function (Model $record): void {
-                            dispatch(new SendBulkEmailJob(
-                                Newsletter::class,
-                                NewsletterMail::class,
-                                $record->id,
-                                [
-                                    $record->title,
-                                    $record->content,
-                                ]
-                            ));
+                    // Tables\Actions\Action::make('sendToChampions')
+                    //     ->icon('heroicon-o-envelope')
+                    //     ->label('Send to Champions')
+                    //     ->color('success')
+                    //     ->modalDescription('Emails will process in background')
+                    //     ->requiresConfirmation()
+                    //     ->modalHeading('Send to Champions')
+                    //     ->action(function (Model $record): void {
+                    //         dispatch(new SendBulkEmailJob(
+                    //             Newsletter::class,
+                    //             NewsletterMail::class,
+                    //             $record->id,
+                    //             [
+                    //                 $record->title,
+                    //                 $record->content,
+                    //             ]
+                    //         ));
 
-                            Notification::make()
-                                ->title('Emails are being sent')
-                                ->body('The process has started and will continue in the background.')
-                                ->success()
-                                ->send();
-                        })
-                        ->deselectRecordsAfterCompletion(),
+                    //         Notification::make()
+                    //             ->title('Emails are being sent')
+                    //             ->body('The process has started and will continue in the background.')
+                    //             ->success()
+                    //             ->send();
+                    //     })
+                    //     ->deselectRecordsAfterCompletion(),
                 ])
                 ->tooltip('Actions')
                 ->color('info')

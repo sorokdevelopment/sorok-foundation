@@ -2,7 +2,7 @@
     <div class="mx-auto flex flex-col items-center gap-12">
         <div class="text-center space-y-4">
             <div class="inline-flex items-center gap-3 bg-[#00674F]/30 px-5 py-2.5 rounded-full border border-[#00C897]/30">
-                <span class="h-2 w-2 bg-[#00C897] rounded-full animate-pulse"></span>
+                <span class="h-2 w-3 bg-[#00C897] rounded-full animate-pulse"></span>
                 <span class="text-sm font-semibold text-[#00C897] tracking-wide">JOIN THE MOVEMENT</span>
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -43,7 +43,7 @@
                     
 
                     <div x-cloak class="flex items-end justify-center">
-                        <x-buttons.primary  wire:click="nextStep(1)">Support Awareness</x-buttons.primary>
+                        <x-buttons.primary  wire:click="nextStep(1)" wire:loading.attr="disabled">Support Awareness</x-buttons.primary>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     </div>
                     
                     <div x-cloak class="flex items-end justify-center">
-                        <x-buttons.primary   wire:click="nextStep(2)">Support Empowerment</x-buttons.primary>
+                        <x-buttons.primary   wire:click="nextStep(2)" wire:loading.attr="disabled">Support Empowerment</x-buttons.primary>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,9 @@
                     
                     
                     <div x-cloak class="flex items-end justify-center">
-                        <x-buttons.primary  wire:click="nextStep(3)">Support Sustainability</x-buttons.primary>
+                        <x-buttons.primary  wire:click="nextStep(3)" wire:loading.attr="disabled">
+                            Support Sustainability
+                        </x-buttons.primary>
                     </div>
                 </div>
             </div>

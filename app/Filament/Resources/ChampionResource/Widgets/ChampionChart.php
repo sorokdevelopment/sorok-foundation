@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class ChampionChart extends ChartWidget
 {
     protected static ?string $heading = 'Champion Membership Type';
-    protected static ?string $maxHeight = '400px';
     
     public ?string $filter = null; 
 

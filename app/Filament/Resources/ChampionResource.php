@@ -7,8 +7,10 @@ use Filament\Tables;
 use App\Models\Champion;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Enums\PaymentStatus;
 use Filament\Resources\Resource;
 use App\Enums\ChampionMembership;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ChampionResource\Pages;
@@ -45,6 +47,20 @@ class ChampionResource extends Resource
                 TextColumn::make('membership')
                     ->label('Membership')
                     ->formatStateUsing(fn ($state) => ChampionMembership::from($state)->name)
+                    ->badge()
+                    ->color(function ($state) {
+                        try {
+                            $enum = ChampionMembership::from($state);
+                        } catch (\ValueError $e) {
+                            return 'gray';
+                        }
+
+                        return match ($enum) {
+                            ChampionMembership::AWARENESS => 'warning',
+                            ChampionMembership::EMPOWERMENT => 'secondary',
+                            ChampionMembership::SUSTAINABILITY => 'primary',
+                        };
+                    })
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Created At')
@@ -56,7 +72,12 @@ class ChampionResource extends Resource
                
             ])
             ->filters([
-                //
+                Filter::make('Paid Payment Champions')
+                    ->query(fn (Builder $query) => $query->whereHas('payments', fn ($q) => $q->where('status', PaymentStatus::COMPLETED->value))),
+                Filter::make('Pending Payment Champions')
+                    ->query(fn (Builder $query) => $query->whereHas('payments', fn ($q) => $q->where('status', PaymentStatus::PENDING->value))),
+                Filter::make('Failed Payment Champions')
+                    ->query(fn (Builder $query) => $query->whereHas('payments', fn ($q) => $q->where('status', PaymentStatus::FAILED->value))),
             ])
 
             ->bulkActions([

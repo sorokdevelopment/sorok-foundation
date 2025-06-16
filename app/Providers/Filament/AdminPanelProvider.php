@@ -34,7 +34,8 @@ class AdminPanelProvider extends PanelProvider
             ->font('Montserrat')
             ->colors([
                 'primary' => '#00674F',
-                'info' => Color::Blue,
+                'secondary' => Color::Purple,
+                'info' => Color::Indigo,
                 'danger' => Color::Rose,
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,

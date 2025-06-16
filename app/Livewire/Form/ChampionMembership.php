@@ -18,6 +18,21 @@ class ChampionMembership extends Component
         $this->membership = $membership;
         $this->membershipId = $membershipId;
 
+        $price = 0;
+        
+        if ($this->membershipId === 1) {
+            $price = 100;
+        } elseif ($this->membershipId === 2) {
+            $price = 1000;
+        } else {
+            $price = 10000;
+        }
+    
+        
+        session()->put([
+            'champion_membership_price' => $price
+        ]);
+
     }
 
     

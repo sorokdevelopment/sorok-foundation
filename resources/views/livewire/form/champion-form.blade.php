@@ -33,6 +33,7 @@
 
     <!-- Success alert -->
     <livewire:modal.alert />
+
 </div>
 
 
