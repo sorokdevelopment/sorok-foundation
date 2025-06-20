@@ -6,17 +6,17 @@
             </p>
 
 
-            <div class="swiper mySwiper w-full overflow-hidden mt-8 mx-auto">
-                <div class="swiper-wrapper flex items-center">
+            <div class="swiper mt-8 mySwiper">
+                <div class="swiper-wrapper">
                     @foreach ($sponsors as $sponsor)
-                        <div class="swiper-slide w-auto flex-shrink-0 mx-4"> 
+                        <div class="swiper-slide" style="width: auto;">
                             <img src="{{ asset('storage/' . $sponsor->logo) }}" 
-                                alt="Sponsor - [{{ $sponsor->name }}]" 
+                                alt="{{ $sponsor->name }}" 
                                 class="h-16 md:h-24 object-contain">
                         </div>
                     @endforeach
                 </div>
             </div>
-        </x-layouts.container>
+        </x-layouts.container>  
     </div>
 </div>

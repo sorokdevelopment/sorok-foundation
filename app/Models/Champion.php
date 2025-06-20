@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Payment;
+use App\Enums\ChampionStatus;
 use Yajra\Address\HasAddress;
 use App\Enums\ChampionMembership;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,8 @@ class Champion extends Model
         'last_name',
         'email',
         'contact_number',
-        'membership'
+        'membership',
+        'status'
     ];
 
 

@@ -44,6 +44,8 @@ class ChampionParticipantResource extends Resource
                 TextColumn::make('name'),
                 TextColumn::make('email')
                     ->sortable()
+                    ->url(fn ($record) => 'mailto:'.$record->email)
+                    ->color('primary')
                     ->searchable(),
                 TextColumn::make('event.title')
                     ->label('Event')

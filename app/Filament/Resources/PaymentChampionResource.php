@@ -19,7 +19,7 @@ class PaymentChampionResource extends Resource
 {
     protected static ?string $model = Payment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationGroup = 'User Management';
 
     public static function getNavigationBadge(): ?string
@@ -36,11 +36,13 @@ class PaymentChampionResource extends Resource
             ->emptyStateIcon('heroicon-o-user')
             ->emptyStateDescription('No payment yet.')
             ->columns([
-                TextColumn::make('champion_id')
+                TextColumn::make('champion.email')
                     ->label('Champion Email')
-                    ->formatStateUsing(fn ($state) => $state->champion->email ?? '')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->url(fn ($record) => $record->champion ? 'mailto:'.$record->champion->email : null)
+                    ->color('primary')
+                    ->description(fn ($record) => $record->champion->name ?? ''),
                 TextColumn::make('trace_no')
                     ->label('Trace Number'),
                 TextColumn::make('status')
@@ -55,9 +57,9 @@ class PaymentChampionResource extends Resource
                         }
 
                         return match ($enum) {
-                            PaymentStatus::AWARENESS => 'warning',
-                            PaymentStatus::EMPOWERMENT => 'secondary',
-                            PaymentStatus::SUSTAINABILITY => 'primary',
+                            PaymentStatus::PENDING => 'info',
+                            PaymentStatus::FAILED => 'danger',
+                            PaymentStatus::COMPLETED => 'primary',
                         };
                     })
                     ->sortable(),

@@ -3,7 +3,8 @@
          style="background-image: url('{{ asset('images/'. $imgName) }}');">
     </div>
     
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-500"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-500">
+    </div>
     
     <div class="absolute bottom-0 left-0 right-0 p-6 text-white transition-all duration-500 ease-in-out transform translate-y-0 group-hover:-translate-y-2">
         <h3 class="text-xl md:text-2xl font-bold tracking-tight drop-shadow-md">

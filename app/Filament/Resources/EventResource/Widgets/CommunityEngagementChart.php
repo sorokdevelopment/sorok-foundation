@@ -12,11 +12,10 @@ use Illuminate\Support\Facades\DB;
 class CommunityEngagementChart extends ChartWidget
 {
 
-   protected static ?string $heading = 'Event Sign-ups';
+    protected static ?string $heading = 'Event Sign-ups';
     
     public ?string $filter = null;
     
-
 
     protected function getFilters(): ?array
     {
@@ -34,21 +33,18 @@ class CommunityEngagementChart extends ChartWidget
         if ($this->filter) {
             $query->where('event_id', $this->filter);
         }
-        
+     
         $decisionCounts = $query->groupBy('decision')->get();
-        
-        $data = [
-            ChampionDecision::UNDECIDED->value => 0,
-            ChampionDecision::GOING->value => 0,
-            ChampionDecision::NOTGOING->value => 0,
-        ];
+
+        $data = array_fill_keys(array_column(ChampionDecision::cases(), 'value'), 0);
+
         
         foreach ($decisionCounts as $record) {
             $decision = is_int($record->decision) ? $record->decision : $record->decision->value;
             $data[$decision] = $record->total;
         }
         
-        $eventTitle = $this->filter 
+        $eventTitle = $this->filter
             ? Event::find($this->filter)?->title 
             : 'All Events';
 

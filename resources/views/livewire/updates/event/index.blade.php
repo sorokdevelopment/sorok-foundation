@@ -7,7 +7,7 @@
                     <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
                         UPCOMING EVENTS
                     </h1>
-                    <p class="font-secondary max-w-2xl mx-auto text-lg">Curated experiences to elevate your career</p>
+                    <p class="font-secondary max-w-2xl mx-auto text-lg">Don’t Miss Out! Upcoming Events</p>
                 </div>
             
                 @if ($events->isNotEmpty())

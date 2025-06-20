@@ -99,20 +99,20 @@
                 </div>
                 <div class="flex justify-around items-center">
                     <div class="space-x-4 sm:space-x-12 lg:space-x-6">
-                        <a href="https://www.facebook.com/sorokunifoundation">
+                        <a target="__blank" href="https://www.facebook.com/sorokunifoundation">
                             <i class="fa-brands text-3xl sm:text-4xl fa-facebook">
                             </i>
                         </a>
-                        <a href="https://www.instagram.com/sorokunifoundation">
+                        <a target="__blank" href="https://www.instagram.com/sorokunifoundation">
                             <i class="fa-brands text-3xl sm:text-4xl fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/@sorokunifoundationinc">
+                        <a target="__blank" href="https://www.youtube.com/@sorokunifoundationinc">
                             <i class="fa-brands text-3xl sm:text-4xl fa-youtube"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@sorokunifoundationinc">
+                        <a target="__blank" href="https://www.tiktok.com/@sorokunifoundationinc">
                             <i class="fa-brands text-3xl sm:text-4xl fa-tiktok"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/sorok-uni-foundation-inc./">
+                        <a target="__blank" href="https://www.linkedin.com/company/sorok-uni-foundation-inc./">
                             <i class="fa-brands text-3xl sm:text-4xl fa-linkedin-in"></i>
                         </a>
                     </div>

@@ -10,10 +10,10 @@ class ListPaymentChampions extends ListRecords
 {
     protected static string $resource = PaymentChampionResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\CreateAction::make(),
-        ];
-    }
+    // protected function getHeaderActions(): array
+    // {
+    //     return [
+    //         Actions\CreateAction::make(),
+    //     ];
+    // }
 }

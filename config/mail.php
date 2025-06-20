@@ -115,4 +115,10 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+
+
+    'admin_email' => [
+        'email' => env('ADMIN_EMAIL_ADDRESS', 'fcd@sorokuni.com'),
+    ],
+
 ];

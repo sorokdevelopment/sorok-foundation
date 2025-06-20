@@ -18,6 +18,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Resources\ChampionResource\Widgets\ChampionChart;
+use App\Filament\Resources\EventResource\Widgets\EventSignUpTrendsChart;
 use App\Filament\Resources\ChampionResource\Widgets\ChampionStatOverview;
 use App\Filament\Resources\EventResource\Widgets\CommunityEngagementChart;
 
@@ -55,7 +56,8 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 ChampionStatOverview::class,
                 CommunityEngagementChart::class,
-                ChampionChart::class
+                ChampionChart::class,
+                EventSignUpTrendsChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

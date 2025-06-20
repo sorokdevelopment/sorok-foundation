@@ -30,7 +30,7 @@ body {
     overflow-y:auto;
 }
 
-
+/* 
 ::-webkit-scrollbar-track {
     background: #07110f;
 }
@@ -39,9 +39,16 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #00674F;
+} */
+
+
+
+
+.active {
+    color: #00674F;
+    text-decoration: underline #00674F;
+    font-weight: bold;
 }
-
-
 
 
 
@@ -74,6 +81,10 @@ body {
      
 }
 
+/* 
+.swiper-slide {
+    transition-timing-function: linear !important;
+} */
 
 
 

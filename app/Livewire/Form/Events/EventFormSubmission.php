@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\EventForm;
 use Illuminate\Http\Request;
 use App\Enums\ChampionDecision;
+use App\Enums\ChampionStatus;
 use Illuminate\Validation\Rule;
 
 class EventFormSubmission extends Component
@@ -36,13 +37,27 @@ class EventFormSubmission extends Component
     {
         return [
             'full_name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'max:100', 'email', Rule::unique('event_forms', 'email')->where('event_id', $this->event->id)],
+            'email' => ['required', 'max:100', 'email', 
+                Rule::unique('event_forms', 'email')->where('event_id', $this->event->id), 
+                Rule::exists('champions', 'email')->where(function ($query) {
+                    $query->where('status', ChampionStatus::ACTIVE->value);
+                })
+            ],
             'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
             'action' => [
                 'required',
                 Rule::in(collect($this->championDecision)->pluck('value')->toArray())
             ],
             'notes' => ['nullable', 'string', 'max:500'],
+        ];
+    }
+
+
+    public function messages()
+    {
+        return [
+            'email.exists' => 'This email is not registered as a champion or not active. Register first!',
+            'email.unique' => 'You’ve already registered for this event.',
         ];
     }
 

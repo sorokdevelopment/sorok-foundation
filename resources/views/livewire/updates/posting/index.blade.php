@@ -6,7 +6,7 @@
                     <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
                         SOCIAL MEDIA POSTING
                     </h1>
-                     <p class="font-secondary max-w-2xl mx-auto text-lg">Keep your audience engaged with regular content</p>
+                     <p class="font-secondary max-w-2xl mx-auto text-lg">Keep engaged with regular content</p>
                 </div>
 
                 <div class="mt-8" >
@@ -50,7 +50,7 @@
                     <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
                         SOCIAL MEDIA POSTING
                     </h1>
-                     <p class="font-secondary max-w-2xl mx-auto text-lg">Keep your audience engaged with regular content</p>
+                     <p class="font-secondary max-w-2xl mx-auto text-lg">Keep engaged with regular content</p>
                 </div>
     
                 <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
@@ -65,19 +65,19 @@
                     </p>
     
                     <div class="flex gap-4 mb-8">
-                        <a href="https://www.facebook.com/sorokunifoundation">
+                        <a target="__blank" href="https://www.facebook.com/sorokunifoundation">
                             <i class="fa-brands text-2xl hover:text-[#00674F] fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/sorokunifoundation">
+                        <a target="__blank" href="https://www.instagram.com/sorokunifoundation">
                             <i class="fa-brands text-2xl hover:text-[#00674F] fa-instagram"></i>
                         </a>
-                        <a href="https://www.youtube.com/@sorokunifoundationinc">
+                        <a target="__blank" href="https://www.youtube.com/@sorokunifoundationinc">
                             <i class="fa-brands text-2xl hover:text-[#00674F] fa-youtube"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@sorokunifoundationinc">
+                        <a target="__blank" href="https://www.tiktok.com/@sorokunifoundationinc">
                             <i class="fa-brands text-2xl hover:text-[#00674F] fa-tiktok"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/sorok-uni-foundation-inc./">
+                        <a target="__blank" href="https://www.linkedin.com/company/sorok-uni-foundation-inc./">
                             <i class="fa-brands text-2xl hover:text-[#00674F] fa-linkedin-in"></i>
                         </a>
                     </div>

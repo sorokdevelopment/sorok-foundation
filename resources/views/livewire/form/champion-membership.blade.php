@@ -29,7 +29,7 @@
                     Membership Perks Acknowledgement
                 </p>
                 <p class="leading-relaxed">
-                    I have read and agree to the terms and <a href="{{ route('privacy-policy') }}" class="hover:underline text-blue-600 font-medium">privacy policy</a> of the <strong>{{ $membership }}</strong> Champions membership.
+                    I have read and agree to the terms and <a target="__blank" href="{{ route('privacy-policy') }}" class="hover:underline text-blue-600 font-medium">privacy policy</a> of the <strong>{{ $membership }}</strong> Champions membership.
                 </p>
             </div>
         </label>

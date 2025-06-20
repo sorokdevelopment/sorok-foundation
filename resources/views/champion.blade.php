@@ -2,7 +2,7 @@
     <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333] ">
         <div 
             class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/program-5.png') }}');">
+            style="background-image: url('{{ asset('images/champion-banner.jpg') }}');">
         </div>
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
@@ -14,7 +14,6 @@
         </div>
     </div>
     
-  <!-- Champions Grid -->
   <div class="py-12 md:py-16 lg:py-20 space-y-16 md:space-y-24 w-full scroll-section">
     <x-layouts.container>
       <div class="mx-auto px-4">
@@ -27,7 +26,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          <!-- Awareness Champion -->
           <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
               <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 100 / Monthly</span> 
@@ -53,7 +51,6 @@
             </div>
           </div>
 
-          <!-- Empowerment Champion -->
         <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
               <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 1,000 / Monthly</span> 
@@ -80,7 +77,6 @@
           </div>
 
 
-          <!-- Sustainability Champion -->
         <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
               <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 10,000 / Monthly</span> 
@@ -113,10 +109,8 @@
   </div>
 
 
-  <!-- Impact Stats -->
 
     <div class="py-16 bg-[#00674F] text-[#333333]">
-      <!-- CTA div -->
       <x-layouts.container>
 
         <div>
@@ -128,7 +122,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center mt-8 gap-4">
                         <x-buttons.primary>
-                            <a href="#">
+                            <a href="{{ route('home') }}">
                                 Nominate a Champion
                             </a>
                         </x-buttons.primary>

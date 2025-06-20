@@ -23,7 +23,7 @@ class UserInfo extends Component
             'first_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
             'email' => ['required', 'max:100', 'email', 'unique:champions,email'],
-            // 'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
+            'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
         ];
     }
        

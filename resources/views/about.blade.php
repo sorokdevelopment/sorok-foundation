@@ -3,7 +3,7 @@
         <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333] ">
             <div 
                 class="absolute inset-0 bg-cover bg-center"
-                style="background-image: url('{{ asset('images/about-banner.png') }}');">
+                style="background-image: url('{{ asset('images/about-banner.jpg') }}');">
             </div>
         
             <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
@@ -67,7 +67,7 @@
                 
                     <div class="order-1 md:col-start-1 flex justify-center">
                         <div class="relative w-full max-w-lg overflow-hidden rounded-xl shadow-xl">
-                            <img src="{{ asset('images/banner-2.jpg') }}" 
+                            <img src="{{ asset('images/banner-2.png') }}" 
                                 alt="Our Mission" 
                                 loading="lazy"
                                 class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
@@ -128,7 +128,7 @@
                 
                     <div class="order-1 md:col-start-1 flex justify-center">
                         <div class="relative w-full max-w-lg overflow-hidden rounded-xl shadow-xl">
-                            <img src="{{ asset('images/banner-2.jpg') }}" 
+                            <img src="{{ asset('images/banner-4.jpg') }}" 
                                 alt="Core Values" 
                                 loading="lazy"
                                 class="w-full h-auto object-cover transition-transform duration-500 hover:scale-105">
@@ -142,12 +142,12 @@
         <x-layouts.container>
 
             <div class="relative mt-12 lg:pb-24 scroll-section">
-                <img src="{{ asset('images/about-history.png') }}" 
+                <img src="{{ asset('images/history-bg.jpg') }}" 
                      alt="History Banner" 
                      loading="lazy" 
                      class="w-full flex jutify-start items-start max-h-[30vh] sm:max-h-[40vh] lg:max-h-[70vh] object-cover">
                 
-                <div class="lg:absolute space-y-8 xl:space-y-12 lg:right-0 lg:top-0  bg-[#00674F] text-white w-full lg:rounded-l-3xl lg:w-1/2 2xl:h-full py-12 lg:py-8 xl:py-12 px-6 sm:px-8 md:px-12 lg:px-16 shadow-lg text-content">
+                <div class="lg:absolute space-y-8 xl:space-y-12 lg:right-0 lg:top-0  bg-[#00674fd0] text-white w-full lg:rounded-l-3xl lg:w-1/2 2xl:h-full py-12 lg:py-8 xl:py-12 px-6 sm:px-8 md:px-12 lg:px-16 shadow-lg text-content">
                     <h1 class="font-bold xl:mt-4 text-center text-3xl md:text-4xl lg:text-5xl">
                         OUR HISTORY
                     </h1>

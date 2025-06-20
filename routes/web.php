@@ -7,52 +7,44 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Livewire\Updates\Newsletter\NewsletterBlog;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. 
+| 
+|
+*/
 
-Route::get('/', function () {
-    return redirect('/home');
-});
+// Redirect root to home
+Route::redirect('/', '/home');
+
+// Main Pages
 Route::get('/home', Home::class)->name('home');
+Route::get('/about-us', fn () => view('about'))->name('about');
+Route::get('/programs-and-services', fn () => view('programs'))->name('programs-and-services');
+Route::get('/chairman-corner', fn () => view('chairman'))->name('chairman-corner');
+Route::get('/contact-us', fn () => view('contact-us'))->name('contact-us');
+Route::get('/champions', fn () => view('champion'))->name('champions');
+Route::get('/privacy-policy', fn () => view('privacy'))->name('privacy-policy');
 
+// Updates Section
+Route::prefix('updates')->group(function () {
+    Route::get('/', Updates::class)->name('updates');
+    Route::get('/newsletters/{slug}', NewsletterBlog::class)->name('updates.show');
+});
 
-Route::get('/about-us', function () {
-    return view('about');
-})->name('about');
-Route::get('/programs-and-services', function () {
-    return view('programs');
-})->name('programs-and-services');
-Route::get('/chairman-corner', function () {
-    return view('chairman');
-})->name('chairman-corner');
-
-Route::get('/contact-us', function () {
-    return view('contact-us');
-})->name('contact-us');
-
-Route::get('/champions', function () {
-    return view('champion');
-})->name('champions');
-
-Route::get('/updates', Updates::class)->name('updates');
-
-Route::get('/updates/newsletters/{slug}', NewsletterBlog::class)->name('updates.show');
-
-Route::get('/privacy-policy', function() {
-    return view('privacy');
-})->name('privacy-policy');
-
+// Events
 Route::get('events/{event:slug}/form', function (Event $event) {
     return view('event-form-submission', ['event' => $event]);
 })->name('event-form');
 
-
-
-//callback route
-
+// Payment Routes
 Route::post('/pisopay/payment/callback', PaymentController::class)->name('pisopay-callback');
+Route::get('/champion/payment/success-payment', fn () => view('payment-success'))->name('payment.success');
 
-
-
-
+// Fallback 404 Route
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 })->name('not-found');

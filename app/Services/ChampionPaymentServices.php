@@ -6,11 +6,13 @@ use App\Models\Payment;
 use App\Models\Champion;
 use Illuminate\Support\Str;
 use App\Enums\PaymentStatus;
+use App\Enums\ChampionStatus;
 use App\Services\PisopayServices;
-use Illuminate\Container\Attributes\DB as AttributesDB;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Container\Attributes\DB as AttributesDB;
 
 class ChampionPaymentServices
 {
@@ -39,8 +41,9 @@ class ChampionPaymentServices
                 'email'          => $championInfo['email'],
                 'contact_number' => $championInfo['contact_number'],
                 'membership'     => $membership->value,
+                'status'         => ChampionStatus::INACTIVE->value,
             ]);
-            $merchantTraceNo = "sok-" . time() . "-" . rand(100, 999);
+            $merchantTraceNo = "sok-" . time() . "-" . rand(1000, 9999);
             $sessionId = $this->pisopay->sessionGenerate();
 
             $postData = [
@@ -54,7 +57,7 @@ class ChampionPaymentServices
                 'customer_address' => 'PH',
                 'merchant_trace_no' => $merchantTraceNo,
                 'merchant_callback_url' => route('pisopay-callback'),
-                // 'callback_url' => 
+                'callback_url' => route('payment.success'),
                 'ip_address' => request()->ip(),
                 'expiry_date' => now()->addDay()->format('Y-m-d H:i:s')
             ];
@@ -79,7 +82,7 @@ class ChampionPaymentServices
             $decoded = json_decode($tokenData, true);
 
             if (!isset($decoded['data']['url'])) {
-                \Log::error('PisoPay Error: Invalid checkout URL', $decoded);
+                Log::error('PisoPay Error: Invalid checkout URL', $decoded);
                 throw new \Exception('Payment gateway error. Please try again.');
             }
                         
@@ -89,6 +92,59 @@ class ChampionPaymentServices
 
 
        
+    }
+
+
+
+
+
+    public function submitRecurring(Champion $champion, string $membership, float $price, string $traceNo): string
+    {
+        return DB::transaction(function () use ($champion, $membership, $price, $traceNo) {
+
+            $sessionId = $this->pisopay->sessionGenerate();
+
+            $postData = [
+                'session_id' => $sessionId,
+                'amount' => $price,
+                'delivery_fees' => 0,
+                'processor_name' => 'NA',
+                'customer_name' => $champion->first_name . ' ' . $champion->last_name,
+                'customer_email' => $champion->email,
+                'customer_phone' => $champion->contact_number,
+                'customer_address' => 'PH',
+                'merchant_trace_no' => $traceNo,
+                'merchant_callback_url' => route('pisopay-callback'),
+                'ip_address' => request()->ip(),
+                'expiry_date' => now()->addDay()->format('Y-m-d H:i:s'),
+            ];
+
+            $tokenData = $this->pisopay->generateToken([
+                [
+                    "name" => $membership,
+                    "price" => $price,
+                    "quantity" => 1
+                ],
+            ], $postData);
+
+            Payment::create([
+                'champion_id' => $champion->id,
+                'amount' => $price,
+                'trace_no' => $traceNo,
+                'status' => PaymentStatus::PENDING->value,
+            ]);
+
+            $decoded = json_decode($tokenData, true);
+
+            if (!isset($decoded['data']['url'])) {
+                Log::error('PisoPay Recurring Payment Error: Missing URL', [
+                    'response' => $decoded,
+                ]);
+                throw new \Exception('Unable to generate recurring payment link.');
+            }
+
+            return $decoded['data']['url'];
+        });
     }
 
 }

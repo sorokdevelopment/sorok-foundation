@@ -1,5 +1,5 @@
 <div>
-    @if ($newsletters->isNotEmpty())
+    @if ($newsletters->isNotEmpty() || $latestNewsletter)
         <div class="flex items-center justify-center mt-12 py-8 md:py-12">
             <x-layouts.container>
                 <div class="text-center mb-16">
@@ -21,7 +21,7 @@
                                         <h1 class="text-xl font-bold">{{ $latestNewsletter->title }}</h1>
                                         <p class="flex-grow font-secondary text-sm lg:text-base">{{ $latestNewsletter->description }}</p>
                                         <div class="flex justify-start">
-                                            <a href="{{ route('updates.show', $latestNewsletter->slug) }}" class="hover:font-bold text-primary text-sm font-semibold justify-start flex items-center" wire:navigate>
+                                            <a href="{{ route('updates.show', $latestNewsletter->slug) }}" class="hover:font-bold text-primary text-sm font-semibold justify-start flex items-center">
                                                 Read Article →  
                                             </a>
                                         </div>
@@ -44,7 +44,7 @@
                                             <h1 class="text-lg font-bold line-clamp-1">{{ $newsletter->title }}</h1>
                                             <p class="flex-grow font-secondary text-sm lg:text-base line-clamp-1">{{ $newsletter->description }}</p>
                                             <div class="flex justify-start">
-                                                <a href="{{ route('updates.show', $newsletter->slug) }}" class="text-primary text-sm font-semibold justify-start flex items-center hover:font-bold" wire:navigate>
+                                                <a href="{{ route('updates.show', $newsletter->slug) }}" class="text-primary text-sm font-semibold justify-start flex items-center hover:font-bold">
                                                     Read Article →
                                                 </a>
                                             </div>

@@ -19,23 +19,48 @@ gsap.registerPlugin(ScrollTrigger);
 document.addEventListener("livewire:navigated", function () {
     setTimeout(() => {
         const swiperEl = document.querySelector('.mySwiper');
-        const slideCount = swiperEl?.querySelectorAll('.swiper-slide').length || 0;
+        if (!swiperEl) return;
 
         new Swiper('.mySwiper', {
             modules: [Autoplay],
-            loop: slideCount > 10, // Only enable loop if enough slides
-            speed: 10000,
+            loop: true,
+            speed: 3000,
             autoplay: {
                 delay: 0,
-                disableOnInteraction: true,
+                disableOnInteraction: false, 
+                pauseOnMouseEnter: true,
+                reverseDirection: false, 
+                waitForTransition: true 
             },
+            freeMode: {
+                enabled: true,
+                momentum: false,
+                sticky: false
+            },
+            grabCursor: false,
+            watchSlidesProgress: true,
+            slidesPerView: 'auto',
+            spaceBetween: 20,
             breakpoints: {
-                320: { slidesPerView: 4 },
-                640: { slidesPerView: 8 },
-                1024: { slidesPerView: 10 },
+                320: { 
+                    spaceBetween: 10,
+                    slidesPerView: 3 
+                },
+                640: { 
+                    spaceBetween: 15,
+                    slidesPerView: 5 
+                },
+                1024: { 
+                    spaceBetween: 20,
+                    slidesPerView: 8 
+                },
             },
-            slidesPerView: "auto",
-            spaceBetween: 5,
+            // Disable unnecessary features
+            effect: 'slide',
+            resistance: false,
+            resistanceRatio: 0,
+            followFinger: false,
+            preventInteractionOnTransition: true
         });
     }, 100);
 });

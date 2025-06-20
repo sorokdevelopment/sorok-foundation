@@ -2,12 +2,12 @@
     <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
         <div 
             class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/chairman-bg.png') }}');">
+            style="background-image: url('{{ asset('images/chairman-banner.jpg') }}');">
         </div>
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
     
-        <div class="absolute inset-0 flex items-center justify-center text-white flex-col text-center scroll-section">
+        <div class="absolute inset-0 flex items-center justify-end pb-12 text-white flex-col text-center scroll-section">
             <div class="text-content">
                 <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
                     DR. JAE J. JANG
@@ -60,8 +60,7 @@
                     <livewire:components.card.awards 
                         title="Doctors Degree in Humanities"
                         imgName="awards-3.png"
-                        description="Chairman Jang received his Doctors Degree in Humanaties at the Calvin University in March 2019.
-                                    Michigan, U.S.A."
+                        description="Chairman Jang received his Doctors Degree in Humanaties at the Calvin University in March 2019. Michigan, U.S.A."
                     />
                     <livewire:components.card.awards 
                         title="Plaque of Recognition (The General Assembly of the Presbyterian Church of the Philippines, Inc.)"

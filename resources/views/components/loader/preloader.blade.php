@@ -20,10 +20,6 @@
             opacity: 1;
         }
     }
-    .animate-bounce {
-        animation: bounce 1.2s infinite ease-in-out;
-    }
-    
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(5px); }
         to { opacity: 1; transform: translateY(0); }
@@ -32,24 +28,7 @@
         animation: fadeIn 0.8s ease-out both;
     }
     
-    @keyframes pulse {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 1; }
-    }
-    .animate-pulse {
-        animation: pulse 1.5s infinite;
-        display: inline-block;
-        width: 1.2em;
-        text-align: left;
-    }
-    
-    @media (prefers-reduced-motion: reduce) {
-        .animate-bounce,
-        .animate-fadeIn,
-        .animate-pulse {
-            animation: none !important;
-        }
-    }
+
 </style>
 
 <script>

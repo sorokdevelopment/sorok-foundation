@@ -2,7 +2,7 @@
     <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
         <div 
             class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/program-banner.png') }}');">
+            style="background-image: url('{{ asset('images/program-banner.jpg') }}');">
         </div>
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
@@ -29,7 +29,7 @@
                 <livewire:components.card.communities 
                     key="communities-1"
                     title="SOROK NCR"
-                    imgName="program-1.png"
+                    imgName="NCR.jpg"
                     description="
                         Within the National Capital Region are communities of underprivileged individuals and
                         families in the National Capital Region whose challenges vary from homelessness, leprosy
@@ -38,7 +38,7 @@
                 <livewire:components.card.communities 
                     key="communities-2"
                     title="SOROK REGION IV-A"
-                    imgName="program-2.png"
+                    imgName="R4A.jpg"
                     description="
                         A community of cured persons affected by leprosy and homeless families and individuals
                         being prepared for independent and sustainable living. The community focuses mainly on
@@ -48,7 +48,7 @@
                 <livewire:components.card.communities
                     key="communities-3"
                     title="SOROK MIMAROPA"
-                    imgName="program-3.png"
+                    imgName="MIMAROPA.jpg"
                     description="
                         A community of disadvantaged IP Learners in Sablayan, Occidental Mindoro, provided a
                         Digital Literacy program, to improve the quality of living and social inclusion while promoting
@@ -58,7 +58,7 @@
                 <livewire:components.card.communities 
                     key="communities-4"
                     title="SOROK REGION IX"
-                    imgName="program-4.png"
+                    imgName="R9.jpg"
                     description="
                         A community of Christian and Muslim persons affected by leprosy and underprivileged
                         children provided with educational assistance under Sorok Dream Project Scholarship. The

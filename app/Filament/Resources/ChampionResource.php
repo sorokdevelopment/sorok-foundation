@@ -8,6 +8,7 @@ use App\Models\Champion;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Enums\PaymentStatus;
+use App\Enums\ChampionStatus;
 use Filament\Resources\Resource;
 use App\Enums\ChampionMembership;
 use Filament\Tables\Filters\Filter;
@@ -38,9 +39,27 @@ class ChampionResource extends Resource
             ->emptyStateIcon('heroicon-o-user')
             ->emptyStateDescription('No champion yet.')
             ->columns([
+                TextColumn::make('status')
+                    ->formatStateUsing(fn ($state) => ChampionStatus::from($state)->name)
+                    ->badge()
+                    ->color(function ($state) {
+                        try {
+                            $enum = ChampionStatus::from($state);
+                        } catch (\ValueError $e) {
+                            return 'gray';
+                        }
+
+                        return match ($enum) {
+                            ChampionStatus::ACTIVE => 'primary',
+                            ChampionStatus::INACTIVE => 'danger',
+                        };
+                    })
+                    ->sortable(),
                 TextColumn::make('full_name'),
                 TextColumn::make('email')
                     ->sortable()
+                    ->url(fn ($record) => 'mailto:'.$record->email)
+                    ->color('primary')
                     ->searchable(),
                 TextColumn::make('contact_number')
                     ->label('Contact Number'),

@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <a href="{{ $link }}" class="absolute bottom-3 right-3 bg-[#00674F] px-4 py-2 rounded-full transition transform group-hover:scale-110">
+    <a target="__blank" href="{{ $link }}" class="absolute bottom-3 right-3 bg-[#00674F] px-4 py-2 rounded-full transition transform group-hover:scale-110">
         <i class="fa-solid fa-arrow-up-long rotate-45 text-white"></i>
     </a>
 </div>
