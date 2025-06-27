@@ -9,7 +9,7 @@
     
         <div class="absolute inset-0 flex items-center justify-center text-white text-center scroll-section">
             <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl text-content">
-                CHAMPIONS
+                CHAMPIONS FOR CHANGE
             </h1>
         </div>
     </div>

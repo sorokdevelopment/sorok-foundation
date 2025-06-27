@@ -50,7 +50,7 @@
                 ]
             ],
             [
-                'label' => 'CHAMPIONS',
+                'label' => 'CHAMPIONS FOR CHANGE',
                 'route' => 'champions'
             ],
             [

@@ -24,7 +24,7 @@
                         Our Accreditations
                     </h2>
                     <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mb-8 ">
-                        Certified by leading government agencies and professional networks, ensuring the highest standards of service.
+                        Trusted. Transparent. Impactful.
                     </p>
     
                     <div class="space-y-6">
@@ -35,7 +35,7 @@
                             <div>
                                 <h4 class="font-semibold text-lg">Government Certified</h4>
                                 <p class=" mt-2">
-                                    Fully compliant with national standards and regulations.
+                                    We meet national standards and follow all required regulations.
                                 </p>
                             </div>
                         </div>
@@ -45,9 +45,9 @@
                                 <i class="fa-solid fa-users text-primary text-2xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-lg">Network Member</h4>
+                                <h4 class="font-semibold text-lg">Official Network Partner</h4>
                                 <p class=" mt-2">
-                                    Partnered with professional organizations for enhanced services.
+                                    We work with trusted groups to improve our programs.
                                 </p>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div>
                                 <h4 class="font-semibold text-lg">Transparent Operations</h4>
                                 <p class=" mt-2">
-                                    We uphold integrity and openness in all our processes.
+                                    We value honestly and openness in everything we do.
                                 </p>
                             </div>
                         </div>
@@ -69,9 +69,9 @@
                                 <i class="fa-solid fa-hand-holding-heart text-primary text-2xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-lg">Community Impact</h4>
+                                <h4 class="font-semibold text-lg">Proven Community Impact</h4>
                                 <p class=" mt-2">
-                                    Recognized for delivering measurable benefits to the communities we serve.
+                                    Recognized for creating real, positive change in the lives we serve.
                                 </p>
                             </div>
                         </div>
@@ -79,10 +79,10 @@
                     
                 </div>
     
-                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-2  gap-6 w-full">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2  gap-6 w-full">
                     <div class="rounded-lg p-6 space-y-4 text-center">
                         <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/dswd.png') }}" alt="DSWD Logo" class="w-2/3 sm:w-full lg:w-2/3 xl:w-full">
+                            <img src="{{ asset('images/dswd.png') }}" alt="DSWD Logo" class="w-2/3 sm:w-full lg:w-full">
                         </div>
                         
                         
@@ -101,7 +101,7 @@
     
                     <div class="rounded-lg p-6 space-y-4 text-center">
                         <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/pcnc.png') }}" alt="PCNC Logo" class="w-2/3  sm:w-full lg:w-2/3 xl:w-full">
+                            <img src="{{ asset('images/pcnc.png') }}" alt="PCNC Logo" class="w-2/3  sm:w-full lg:w-full">
                         </div>
 
                         {{-- <span class="px-4 py-2 block text-xs font-semibold text-primary">
@@ -111,7 +111,12 @@
     
                     <div class="rounded-lg p-6 space-y-4 text-center">
                         <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/absnet.jpg') }}" alt="ABSNET Logo" class="w-1/2  sm:w-2/3 lg:w-1/2 xl:w-full 2xl:w-2/3">
+                            <img src="{{ asset('images/absnet.jpg') }}" alt="ABSNET Logo" class="w-1/2  sm:w-2/3 lg:w-full 2xl:w-2/3">
+                        </div>
+                    </div>
+                    <div class="rounded-lg p-6 space-y-4 text-center">
+                        <div class="flex items-center justify-center">
+                            <img src="{{ asset('images/ijm.png') }}" alt="IJM Logo" class="w-1/2  sm:w-2/3 lg:w-full 2xl:w-1/2">
                         </div>
                     </div>
                 </div>
@@ -243,8 +248,8 @@
                             <h3 class="text-xl font-semibold mb-4 text-center">Make an Impact</h3>
                             <p class="leading-relaxed text-center">
                                 Join the Champions community, participate in events and webinars, and spread awareness using 
-                                <span class="px-3 block py-2 my-2 bg-white border border-[#00674F] text-primary rounded-lg text-center font-medium">
-                                    #ChampionsForChangePH
+                                <span class="inline-flex items-center text-xs sm:text-sm px-2 py-1 my-1 bg-white border border-[#00674F] text-primary rounded-lg font-medium">
+                                    #SorokUniChampionForChangePH
                                 </span>
                                 to invite others to join the movement
                             </p>

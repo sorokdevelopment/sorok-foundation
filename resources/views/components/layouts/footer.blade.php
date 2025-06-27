@@ -117,15 +117,27 @@
                         </a>
                     </div>
                 </div>
+                <div class="flex flex-col justify-between space-y-3">
+                    <h2 class="font-secondary text-sm lg:text-base text-white">
+                    DSWD-SB-R-000131-2021                                  
+                    </h2>
+                    <h2 class="font-secondary text-sm lg:text-base text-white">
+                        DSWD-SB-L-000100-2021                                  
+                    </h2>
+                    <h2 class="font-secondary text-sm lg:text-base text-white">
+                        DSWD-SB-A-00099-2022                                  
+                    </h2>
+                </div>
                 <div class="flex flex-col justify-center space-y-4">
                     <x-buttons.secondary>
-                        JOIN US
+                        <a href="{{ route('home') }}">
+                            JOIN US
+                        </a>
                     </x-buttons.secondary>
-                    <h2 class="font-secondary text-sm lg:text-base text-white">
-                        DSWD-SB-00001-2025                                  
-                    </h2>
+                
 
                 </div>
+               
 
             </div>
         </x-layouts.container>

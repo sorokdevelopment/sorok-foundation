@@ -10,7 +10,7 @@
         <div class="absolute inset-0 flex items-center justify-end pb-12 text-white flex-col text-center scroll-section">
             <div class="text-content">
                 <h1 class="font-bold text-3xl md:text-5xl lg:text-6xl">
-                    DR. JAE J. JANG
+                    DR. JAE JUNG JANG
                 </h1>
                 <p class="text-center mt-4 font-secondary text-sm lg:text-xl md:text-base ">
                     Founder & Chairman of SOROK UNI FOUNDATION, INC. 

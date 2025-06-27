@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Payment;
 use App\Enums\PaymentStatus;
 use App\Enums\ChampionStatus;
+use App\Mail\ChampionWelcomeEmail;
 use App\Mail\NewChampionMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -55,6 +56,9 @@ class PisopayCallbackServices
 
             Mail::to(config('mail.admin_email.email'))
                 ->send(new NewChampionMail($data['customerName']));
+
+            Mail::to($data["customerEmai"])
+                ->send(new ChampionWelcomeEmail($data['customerName']));
 
             return true;
         });
