@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->tinyInteger('membership');
             $table->tinyInteger('status');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('contact_number');
             $table->timestamps();
         });
