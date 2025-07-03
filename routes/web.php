@@ -41,7 +41,7 @@ Route::get('events/{event:slug}/form', function (Event $event) {
 })->name('event-form');
 
 // Payment Routes
-Route::post('/pisopay/payment/callback', PaymentController::class)->name('pisopay-callback');
+Route::post('/pisopay/payment/callback', PaymentController::class)->withoutMiddleware('web')->name('pisopay-callback');
 Route::get('/champion/payment/success-payment', fn () => view('payment-success'))->name('payment.success');
 
 // Fallback 404 Route

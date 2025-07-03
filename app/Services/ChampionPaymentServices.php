@@ -72,6 +72,19 @@ class ChampionPaymentServices
                 ],
             ], $postData);
 
+
+
+            $decoded = json_decode($tokenData, true);
+
+            if (empty($decoded['data']['url'])) {
+                throw new \RuntimeException('PisoPay API error: No payment URL returned');
+            }
+
+            if (!isset($decoded['data']['url'])) {
+                Log::error('PisoPay Error: Invalid checkout URL', $decoded);
+                throw new \Exception('Payment gateway error. Please try again.');
+            }
+
             Payment::create([
                 'champion_id' => $champion->id,
                 'amount' => $price,
@@ -79,12 +92,6 @@ class ChampionPaymentServices
                 'status' => PaymentStatus::PENDING->value,
             ]);
 
-            $decoded = json_decode($tokenData, true);
-
-            if (!isset($decoded['data']['url'])) {
-                Log::error('PisoPay Error: Invalid checkout URL', $decoded);
-                throw new \Exception('Payment gateway error. Please try again.');
-            }
                         
             return $decoded['data']['url'];
         });

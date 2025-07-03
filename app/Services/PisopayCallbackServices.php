@@ -20,6 +20,7 @@ class PisopayCallbackServices
     public function handle(array $data): bool
     {
         $requiredFields = ['timestamp', 'traceNo', 'amount', 'hd', 'transactionId', 'customerEmail'];
+
         foreach ($requiredFields as $field) {
             if (empty($data[$field])) {
                 Log::error("PisoPay callback missing field: {$field}");
@@ -57,7 +58,7 @@ class PisopayCallbackServices
             Mail::to(config('mail.admin_email.email'))
                 ->send(new NewChampionMail($data['customerName']));
 
-            Mail::to($data["customerEmai"])
+            Mail::to($data["customerEmail"])
                 ->send(new ChampionWelcomeEmail($data['customerName']));
 
             return true;
@@ -71,13 +72,22 @@ class PisopayCallbackServices
      */
     private function verifyHmac(array $data): bool
     {
+
         $username = config('services.pisopay.username');
         $password = config('services.pisopay.password');
         $combined = $username . ':' . $password;
 
-        $auth = substr(hash('sha256', $combined . $data['timestamp']), 0, 10);
-        $computedHd = hash_hmac('sha256', $auth . $data['traceNo'] . $data['amount'], $data['timestamp']);
+        $timestamp = $data['timestamp'];
+        $traceNo   = $data['traceNo'];
+
+        $amount = (string) $data['amount'];
+
+        Log::info('Verifying PisoPay HMAC', compact('amount', 'traceNo', 'timestamp'));
+
+        $auth = substr(hash('sha256', $combined . $timestamp), 0, 10);
+        $computedHd = hash_hmac('sha256', $auth . $traceNo . $amount, $timestamp);
 
         return hash_equals($computedHd, $data['hd']);
     }
+
 }

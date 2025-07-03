@@ -134,6 +134,10 @@
                             JOIN US
                         </a>
                     </x-buttons.secondary>
+                    <h2 class="font-secondary text-sm text-center lg:text-base text-white">
+                        Permit To Solicite <br>DSWD-SB-SP-00001-2025                                  
+                    </h2>
+                    
                 
 
                 </div>
