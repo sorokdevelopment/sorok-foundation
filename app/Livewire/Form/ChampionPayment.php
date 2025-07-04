@@ -85,6 +85,12 @@ class ChampionPayment extends Component
 
     }
 
+
+    public function backStep(): void
+    {
+        $this->dispatch('goToPreviousStep');
+    }
+
     
 
 

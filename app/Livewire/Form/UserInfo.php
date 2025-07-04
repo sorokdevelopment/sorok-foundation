@@ -7,10 +7,10 @@ use Livewire\Component;
 class UserInfo extends Component
 {
 
-    public string $first_name;
-    public string $last_name;
-    public string $email;
-    public string $contact_number;
+    public string $first_name = '';
+    public string $last_name = '';
+    public string $email = '';
+    public string $contact_number = '';
 
     public array $championInfo = [];
 
@@ -41,6 +41,11 @@ class UserInfo extends Component
 
         $this->championInfo = session()->get('champion_info', []);
 
+        $this->first_name = $this->championInfo['first_name'] ?? '';
+        $this->last_name = $this->championInfo['last_name'] ?? '';
+        $this->email = $this->championInfo['email'] ?? '';
+        $this->contact_number = $this->championInfo['contact_number'] ?? '';
+
     }
 
 
@@ -52,6 +57,9 @@ class UserInfo extends Component
      */
     public function nextStep(): void
     {
+        $this->first_name = ucfirst(strtolower($this->first_name));
+        $this->last_name = ucfirst(strtolower($this->last_name));
+
         $this->validate();
 
         session()->put('champion_info', [
@@ -62,6 +70,12 @@ class UserInfo extends Component
         ]);
 
         $this->dispatch('goToNextStep');
+    }
+
+
+    public function backStep(): void
+    {
+        $this->dispatch('goToPreviousStep');
     }
 
 

@@ -1,4 +1,4 @@
-<div class="w-full rounded-2xl py-16 sm:px-4">
+<div class="w-full rounded-2xl py-16 sm:px-4" >
     <div class="mx-auto flex flex-col items-center gap-12">
         <div class="text-center space-y-4">
             <div class="inline-flex items-center gap-3 bg-[#00674F]/30 px-5 py-2.5 rounded-full border border-[#00C897]/30">

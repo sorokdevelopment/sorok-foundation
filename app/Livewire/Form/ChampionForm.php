@@ -11,7 +11,8 @@ class ChampionForm extends Component
 
     protected $listeners = [
         'goToNextStep' => 'incrementStep',
-        'refreshItem' => '$refresh'
+        'refreshItem' => '$refresh',
+        'goToPreviousStep' => 'decrementStep'
     ];
 
 
@@ -41,6 +42,13 @@ class ChampionForm extends Component
         $this->steps = collect($allSteps)->filter(function ($step) {
             return $step['number'] !== 0;
         })->values()->toArray();
+    }
+
+    public function decrementStep(): void
+    {
+        if ($this->currentStep > 0) {
+            $this->currentStep--;
+        }
     }
 
 

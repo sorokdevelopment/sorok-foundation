@@ -1,4 +1,4 @@
-<div class="mx-auto">
+<div class="mx-auto" wire:keydown.enter="nextStep">
 
     <div class="text-center mb-10">
         <h1 class="text-2xl sm:text-3xl font-bold leading-tight">{{ $membership }} CHAMPION</h1>

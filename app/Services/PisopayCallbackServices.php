@@ -78,7 +78,7 @@ class PisopayCallbackServices
 
         $timestamp = $data['timestamp'];
         $traceNo   = $data['traceNo'];
-        $amount    = number_format((float) $data['amount'], 2, '.', '');
+        $amount = $data['amount'];
 
         Log::info('Verifying PisoPay HMAC', compact('amount', 'traceNo', 'timestamp'));
 
