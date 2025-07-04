@@ -72,15 +72,13 @@ class PisopayCallbackServices
      */
     private function verifyHmac(array $data): bool
     {
-
         $username = config('services.pisopay.username');
         $password = config('services.pisopay.password');
         $combined = $username . ':' . $password;
 
         $timestamp = $data['timestamp'];
         $traceNo   = $data['traceNo'];
-
-        $amount = (string) $data['amount'];
+        $amount    = number_format((float) $data['amount'], 2, '.', '');
 
         Log::info('Verifying PisoPay HMAC', compact('amount', 'traceNo', 'timestamp'));
 
