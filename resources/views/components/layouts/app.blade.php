@@ -14,6 +14,15 @@
 
         <script src="https://kit.fontawesome.com/9d5bf2e3d5.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image" href="{{ asset('images/logo.png') }}" />
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6Q9E8VE1Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-J6Q9E8VE1Q');
+        </script>
         <title>Sorok Foundation</title>
         @livewireStyles
 
