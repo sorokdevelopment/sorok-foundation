@@ -65,6 +65,10 @@ body {
 }
 
 
+.bg-primary {
+    background: #00674F;
+}
+
 
 /* .program-swiper-pagination {
     position: absolute !important;

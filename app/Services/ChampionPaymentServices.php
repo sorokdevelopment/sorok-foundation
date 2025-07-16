@@ -7,10 +7,14 @@ use App\Models\Champion;
 use Illuminate\Support\Str;
 use App\Enums\PaymentStatus;
 use App\Enums\ChampionStatus;
+use App\Enums\PaymentPlanType;
+use App\Mail\NewChampionMail;
 use App\Services\PisopayServices;
+use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Container\Attributes\DB as AttributesDB;
 
@@ -31,10 +35,11 @@ class ChampionPaymentServices
      * @return string
      */
 
-    public function submit(array $championInfo, $membership, float $price): string
+    public function submit(array $championInfo, $membership, float $price, PaymentPlanType $planType): string
     {       
-        return DB::transaction(function () use ($championInfo, $membership, $price)
+        return DB::transaction(function () use ($championInfo, $membership, $price, $planType)
         {
+
               $champion = Champion::create([
                 'first_name'     => $championInfo['first_name'],
                 'last_name'      => $championInfo['last_name'],
@@ -61,7 +66,6 @@ class ChampionPaymentServices
                 'ip_address' => request()->ip(),
                 'expiry_date' => now()->addDay()->format('Y-m-d H:i:s')
             ];
-
         
 
             $tokenData = $this->pisopay->generateToken([
@@ -85,10 +89,14 @@ class ChampionPaymentServices
                 throw new \Exception('Payment gateway error. Please try again.');
             }
 
+
+
+
             Payment::create([
                 'champion_id' => $champion->id,
                 'amount' => $price,
                 'trace_no' => $merchantTraceNo,
+                'plan_type' => $planType->value,
                 'status' => PaymentStatus::PENDING->value,
             ]);
 
@@ -96,9 +104,6 @@ class ChampionPaymentServices
             return $decoded['data']['url'];
         });
            
-
-
-       
     }
 
 

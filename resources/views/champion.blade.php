@@ -28,14 +28,9 @@
           
           <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
-              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 100 / Monthly</span> 
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Awareness Champion</span> 
             </div>
             <div class="p-6">
-              <div class="flex items-center mb-4">
-                <div>
-                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Awareness Champion</h3>
-                </div>
-              </div>
               <blockquote class="italic flex justify-center text-center mb-6 p-2 text-sm items-center font-medium bg-[#00674F]/10 text-primary rounded">
               "Change starts with me, and I inspire others to do the same."
               </blockquote>
@@ -53,14 +48,9 @@
 
         <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
-              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 1,000 / Monthly</span> 
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Empowerment Champion</span> 
             </div>
             <div class="p-6">
-              <div class="flex items-center mb-4">
-                <div>
-                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Empowerment Champion</h3>
-                </div>
-              </div>
               <blockquote class="italic flex justify-center text-center mb-6 p-2 items-center  text-sm font-medium bg-[#00674F]/10 text-primary rounded">
                 "Lifting lives, creating opportunities, and inspiring hope."
               </blockquote>
@@ -79,14 +69,9 @@
 
         <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
             <div class="h-48 bg-[#00674F] flex items-center justify-center">
-              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Php 10,000 / Monthly</span> 
+              <span class="text-3xl sm:text-4xl text-center font-bold text-white ">Sustainability Champion</span> 
             </div>
             <div class="p-6">
-              <div class="flex items-center mb-4">
-                <div>
-                  <h3 class="text-2xl sm:text-3xl font-bold mb-4">Sustainability Champion</h3>
-                </div>
-              </div>
               <blockquote class="italic flex justify-center text-center mb-6 p-2 items-center  text-sm font-medium bg-[#00674F]/10 text-primary rounded">
                 "I plant seeds for lasting change."
               </blockquote>

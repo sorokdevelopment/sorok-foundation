@@ -159,16 +159,16 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 leading-relaxed 2xl:grid-cols-1 gap-4">
                                 <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
-                                    <p class="font-medium text-primary text-center">₱100/month</p>
-                                    <p class="text-sm text-center">Awareness</p>
+                                    {{-- <p class="font-medium text-primary text-center">₱100/month</p> --}}
+                                    <p class="text-sm font-semibold text-primary text-center uppercase">Awareness</p>
                                 </div>
                                 <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
-                                    <p class="font-medium text-primary text-center">₱1,000/month</p>
-                                    <p class="text-sm text-center">Empowerment</p>
+                                    {{-- <p class="font-medium text-primary text-center">₱1,000/month</p> --}}
+                                    <p class="text-sm font-semibold text-primary text-center uppercase">Empowerment</p>
                                 </div>
                                 <div class="px-3 py-2 bg-[#00674F]/10 rounded-lg">
-                                    <p class="font-medium text-primary text-center">₱10,000/month</p>
-                                    <p class="text-sm text-center">Sustainability</p>
+                                    {{-- <p class="font-semibold text-primary text-center">₱10,000/month</p> --}}
+                                    <p class="text-sm font-semibold text-primary text-center uppercase">Sustainability</p>
                                 </div>
                             </div>
                         </div>

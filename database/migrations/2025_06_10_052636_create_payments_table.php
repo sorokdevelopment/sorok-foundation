@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('champion_id')->constrained()->onDelete('cascade');
             $table->tinyInteger('status');
+            $table->enum('plan_type', ['monthly', 'annually'])->default('monthly');
             $table->string('trace_no');
             $table->decimal('amount');
             $table->string('transaction_id')->nullable();

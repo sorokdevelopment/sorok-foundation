@@ -28,9 +28,9 @@
                         "Change starts with me, and I inspire others to do the same."
                     </blockquote>
                     
-                    <div class="my-5">
+                    {{-- <div class="my-5">
                         <p class="text-3xl font-bold text-center text-[#00C897]">PHP 100 <span class="text-white text-lg">/ month</span></p>
-                    </div>
+                    </div> --}}
                     
                     <div class="space-y-4 mb-8">
                         <p class="text-white/80 leading-relaxed">
@@ -62,9 +62,9 @@
                         "Lifting lives, creating opportunities, and inspiring hope."
                     </blockquote>
                     
-                    <div class="my-5">
+                    {{-- <div class="my-5">
                         <p class="text-3xl font-bold text-center text-[#00C897]">PHP 1,000 <span class="text-white text-lg">/ month</span></p>
-                    </div>
+                    </div> --}}
                     
 
                     <div class="space-y-4 mb-8">
@@ -96,9 +96,9 @@
                         "I plant seeds for lasting change."
                     </blockquote>
                     
-                    <div class="my-5">
+                    {{-- <div class="my-5">
                         <p class="text-3xl font-bold text-center text-[#00C897]">PHP 10,000 <span class="text-white text-lg">/ month</span></p>
-                    </div>
+                    </div> --}}
                     
                     <div class="space-y-4 mb-8">
                         <p class="text-white/80 leading-relaxed">

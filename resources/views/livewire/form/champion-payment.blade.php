@@ -15,26 +15,56 @@
             <p class="mt-2">Review your order details before completing payment</p>
         </div>
 
-        <div class="mt-8 bg-gray-50 rounded-xl p-4 sm:p-6 relative z-10">
+        <div class="mt-8 bg-gray-50 border-gray-200 shadow-sm rounded-xl p-4 sm:p-6 relative z-10">
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex rounded-md">
+                    <button
+                        type="button"
+                        wire:click="setBillingType('monthly')"
+                        @class([
+                            'px-6 py-3 text-sm font-medium rounded-l-lg border',
+                            'bg-primary text-white border-primary' => $billingType === 'monthly',
+                            'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' => $billingType !== 'monthly'
+                        ])
+                    >
+                        Monthly
+                    </button>
+                    <button
+                        type="button"
+                        wire:click="setBillingType('annually')"
+                        @class([
+                            'px-6 py-3 text-sm font-medium rounded-r-lg border',
+                            'bg-primary text-white border-primary' => $billingType === 'annually',
+                            'bg-white text-primary border-gray-300 hover:bg-gray-50' => $billingType !== 'annually'
+                        ])
+                    >
+                        Annually
+                    </button>
+                </div>
+            </div>
 
-            <h2 class="text-lg font-semibold mb-4 flex items-center" >
-                <i class="fa-solid fa-cart-shopping text-base mr-2 text-gray-400"></i>
-            
-                Order Details
-            </h2>
-            
-            <div class="space-y-3">
-                <div class="flex justify-between items-center ">
-                    <span class="text-gray-600 text-sm sm:text-base">Membership</span>
-                    <span class="font-medium text-sm sm:text-base">{{ $membership }}</span>
+
+            <div class="text-center mb-6">
+                <div class="text-4xl font-bold text-gray-900 mb-2">
+                    ₱{{ number_format($finalPrice) }}
                 </div>
-                <div class="flex justify-between items-center ">
-                    <span class="text-gray-600 text-sm sm:text-base">Subtotal</span>
-                    <span class="font-medium text-sm sm:text-base">₱{{ $price }}.00</span>
+                <div class="text-gray-600">
+                    {{ $billingDescription }}
                 </div>
-                <div class="pt-3 mt-3 border-t border-gray-200 flex items-center justify-between">
-                    <span class="font-semibold text-sm sm:text-base">Total Amount</span>
-                    <span class="text-lg font-bold text-primary">₱{{ $price }}.00</span>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-600">Membership:</span>
+                    <span class="font-medium">{{ $membership }}</span>
+                </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-gray-600">Billing Cycle:</span>
+                    <span class="font-medium">{{ ucfirst($billingType) }}</span>
+                </div>
+                <div class="flex justify-between py-2 font-semibold border-t border-gray-200 mt-2">
+                    <span>Total Amount:</span>
+                    <span class="text-primary">₱{{ number_format($finalPrice) }}</span>
                 </div>
             </div>
         </div>

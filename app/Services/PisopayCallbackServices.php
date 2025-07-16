@@ -5,8 +5,9 @@ namespace App\Services;
 use App\Models\Payment;
 use App\Enums\PaymentStatus;
 use App\Enums\ChampionStatus;
-use App\Mail\ChampionWelcomeEmail;
 use App\Mail\NewChampionMail;
+use App\Enums\PaymentPlanType;
+use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -48,7 +49,7 @@ class PisopayCallbackServices
                 'status' => PaymentStatus::COMPLETED->value,
                 'transaction_id' => $data['transactionId'],
                 'paid_at' => now(),
-                'next_payment_at' => now()->addMonth(),
+                'next_payment_at' => $this->calculateNextPaymentDate($payment),
             ]);
 
             $payment->champion->update([
@@ -86,6 +87,22 @@ class PisopayCallbackServices
         $computedHd = hash_hmac('sha256', $auth . $traceNo . $amount, $timestamp);
 
         return hash_equals($computedHd, $data['hd']);
+    }
+
+
+    /**
+     * Choosing between yearly or monthly payment
+     * 
+     * @param Payment $payment 
+     * @return DateTime
+     */
+    protected function calculateNextPaymentDate(Payment $payment): \DateTime
+    {
+        return match($payment->plan_type) {
+            PaymentPlanType::MONTHLY => now()->addMonth(),
+            PaymentPlanType::ANNUALLY => now()->addYear(),
+            default => now()->addMonth()
+        };
     }
 
 }
