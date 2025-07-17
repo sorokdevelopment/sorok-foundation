@@ -6,7 +6,7 @@
                 <span class="text-sm font-semibold text-[#00C897] tracking-wide">JOIN THE MOVEMENT</span>
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Become a <span class=" text-[#00C897] bg-clip-text">Champion of Change</span>
+                Become a <span class=" text-[#00C897] bg-clip-text">Champion for Change</span>
             </h1>
             <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                 Choose your mission. Fuel transformation. Support local champions creating lasting impact.
