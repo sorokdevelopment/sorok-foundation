@@ -10,14 +10,14 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ChampionMonthlyPaymentNotice extends Mailable implements ShouldQueue
+class ChampionPaymentNotice extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(private Champion $champion, private string $url)
+    public function __construct(private Champion $champion, private string $url, private array $data)
     {
         //
     }
@@ -28,7 +28,7 @@ class ChampionMonthlyPaymentNotice extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Champion Monthly Payment Notice',
+            subject: 'Champion Payment Notice',
         );
     }
 
@@ -38,10 +38,11 @@ class ChampionMonthlyPaymentNotice extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.champion-monthly-payment-notice',
+            view: 'mail.champion-payment-notice',
             with: [
                 'champion' => $this->champion,
                 'url' => $this->url,
+                'data' => $this->data
             ]
         );
     }

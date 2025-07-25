@@ -13,4 +13,4 @@ Artisan::command('inspire', function () {
 
 
 // Champion subscription task scheduler
-Schedule::command('app:champion-subscriptions')->daily();
+Schedule::command('app:champion-subscriptions')->everyMinute();

@@ -19,6 +19,7 @@ class Payment extends Model
         'paid_at',
         'next_payment_at',
         'plan_type',
+        'meta_data'
     ];
 
 
@@ -26,7 +27,14 @@ class Payment extends Model
     protected $casts = [
         'payment' => PaymentStatus::class,
         'plan_type' => PaymentPlanType::class,
+        'meta_data' => 'array',
     ];
+
+
+    public function getRouteKeyName()
+    {
+        return 'trace_no';
+    }
 
 
     public function champion(): BelongsTo

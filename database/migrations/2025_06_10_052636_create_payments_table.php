@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('champion_id')->constrained()->onDelete('cascade');
+            $table->foreignId('champion_id')->nullable()->constrained()->onDelete('cascade');
             $table->tinyInteger('status');
             $table->enum('plan_type', ['monthly', 'annually'])->default('monthly');
             $table->string('trace_no');
             $table->decimal('amount');
             $table->string('transaction_id')->nullable();
+            $table->json('meta_data')->nullable();
             $table->timestamp('paid_at')->nullable();
             $table->timestamp('next_payment_at')->nullable();
             $table->timestamps();

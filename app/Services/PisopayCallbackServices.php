@@ -3,14 +3,18 @@
 namespace App\Services;
 
 use App\Models\Payment;
+use App\Models\Champion;
 use App\Enums\PaymentStatus;
 use App\Enums\ChampionStatus;
 use App\Mail\NewChampionMail;
 use App\Enums\PaymentPlanType;
+use Illuminate\Support\Carbon;
+use App\Enums\ChampionMembership;
 use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ChampionAnotherTransaction;
 
 class PisopayCallbackServices
 {
@@ -38,29 +42,50 @@ class PisopayCallbackServices
         }
 
         return DB::transaction(function () use ($data) {
-            $payment = Payment::where('trace_no', $data['traceNo'])->first();
+            $payment = Payment::with('champion')->where('trace_no', $data['traceNo'])->first();
 
-            if (!$payment) {
-                Log::error("Payment not found for trace_no: {$data['traceNo']}");
-                return false;
+            $isInitialPayment = $payment->status === PaymentStatus::PENDING && 
+                $payment->champion_id === null;
+
+            if ($isInitialPayment) {
+                $this->handleInitialPayment($payment, $data);
+            } else {
+                $this->handleRecurringPayment($payment, $data);
             }
 
+
             $payment->update([
-                'status' => PaymentStatus::COMPLETED->value,
+                'status' => PaymentStatus::COMPLETED,
                 'transaction_id' => $data['transactionId'],
                 'paid_at' => now(),
-                'next_payment_at' => $this->calculateNextPaymentDate($payment),
+                'next_payment_at' => $this->calculateNextPaymentDate($payment->plan_type)
             ]);
 
-            $payment->champion->update([
-                'status' => ChampionStatus::ACTIVE->value,
-            ]);
+            $this->sendNotifications($payment, $data, $isInitialPayment);
 
-            Mail::to(config('mail.admin_email.email'))
-                ->send(new NewChampionMail($data['customerName']));
+            return true;
 
-            Mail::to($data["customerEmail"])
-                ->send(new ChampionWelcomeEmail($data['customerName']));
+            // if (!$payment) {
+            //     Log::error("Payment not found for trace_no: {$data['traceNo']}");
+            //     return false;
+            // }
+
+            // $payment->update([
+            //     'status' => PaymentStatus::COMPLETED->value,
+            //     'transaction_id' => $data['transactionId'],
+            //     'paid_at' => now(),
+            //     'next_payment_at' => $this->calculateNextPaymentDate($payment),
+            // ]);
+
+            // $payment->champion->update([
+            //     'status' => ChampionStatus::ACTIVE->value,
+            // ]);
+
+            // Mail::to(config('mail.admin_email.email'))
+            //     ->send(new NewChampionMail($data['customerName']));
+
+            // Mail::to($data["customerEmail"])
+            //     ->send(new ChampionWelcomeEmail($data['customerName']));
 
             return true;
         });
@@ -104,5 +129,107 @@ class PisopayCallbackServices
             default => now()->addMonth()
         };
     }
+
+
+    /**
+     * Handle the First payment of the user
+     * 
+     * @param Payment $payment
+     * @param array $data
+     * @return void
+     * 
+     */
+    protected function handleInitialPayment(Payment $payment, array $data): void
+    {
+        $pendingData = session('pending_champion');
+
+        if ($pendingData) {
+            $champion = Champion::create([
+                'first_name' => $pendingData['info']['first_name'],
+                'last_name' => $pendingData['info']['last_name'],
+                'email' => $data['customerEmail'],
+                'contact_number' => $pendingData['info']['contact_number'],
+                'membership' => $pendingData['membership']->value,
+                'status' => ChampionStatus::ACTIVE,
+            ]);
+            
+            session()->forget('pending_champion');
+        } else {
+            $champion = Champion::firstOrCreate(
+                ['email' => $data['customerEmail']],
+                [
+                    'status' => ChampionStatus::ACTIVE,
+                ]
+            );
+        }
+
+        $payment->update(['champion_id' => $champion->id]);
+    }
+
+
+    /**
+     * Handle Monthy or Annually Payment of the champion
+     * 
+     * @param Payment $payment
+     * @param array $data
+     * 
+     * @return void
+     * 
+     */
+    protected function handleRecurringPayment(Payment $payment, array $data): void
+    {
+
+        $payment->champion->update([
+            'status' => ChampionStatus::ACTIVE,
+        ]);
+    }
+
+
+
+    /**
+     * Email Notification for Champion
+     * 
+     * @param Payment $payment
+     * @param array $data
+     * @param bool $isInitial
+     * 
+     * @return void
+     */
+
+    
+    protected function sendNotifications(Payment $payment, array $data, bool $isInitial): void
+    {
+
+        //add Mail for email send to admin if the champion renew their subscription.
+        // $adminMailClass = $isInitial ? NewChampionMail::class : ChampionExtension::class;
+
+
+
+        Mail::to(config('mail.admin_email.email'))
+            ->send(new NewChampionMail(
+                $data['customerName'],
+                // $payment->amount,
+                // $payment->plan_type->value
+            ));
+
+
+        $mailClass = $isInitial ? ChampionWelcomeEmail::class : ChampionAnotherTransaction::class;
+
+        $nextPayment = Carbon::parse($payment->next_payment_at)->format('F j, Y');
+        $membership = ChampionMembership::from($payment->champion->membership)->name;
+
+        
+        Mail::to($data['customerEmail'])->send(new $mailClass(
+            $data['customerName'],
+            $payment->amount,
+            $payment->plan_type->value,
+            $payment->champion->membership->name,
+            $membership,
+            $nextPayment
+        ));
+    }
+
+
+
 
 }

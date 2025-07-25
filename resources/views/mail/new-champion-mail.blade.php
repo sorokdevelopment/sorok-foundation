@@ -7,7 +7,7 @@
     <div class="content">
         <h1 style="color: #d32f2f; font-size: 20px; margin-bottom: 20px;">
             <span style="background-color: #ffebee; padding: 4px 8px; border-radius: 4px;">
-                🚨 New Champion Alert
+                New Champion Alert
             </span>
         </h1>
 

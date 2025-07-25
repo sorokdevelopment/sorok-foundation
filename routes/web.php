@@ -2,9 +2,11 @@
 
 use App\Models\Event;
 use App\Livewire\Home;
+use App\Models\Payment;
 use App\Livewire\Updates;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
+use App\Livewire\Form\Updates\UserPlanManager;
 use App\Livewire\Updates\Newsletter\NewsletterBlog;
 
 /*
@@ -40,9 +42,17 @@ Route::get('events/{event:slug}/form', function (Event $event) {
     return view('event-form-submission', ['event' => $event]);
 })->name('event-form');
 
+
+
 // Payment Routes
 Route::post('/pisopay/payment/callback', PaymentController::class)->withoutMiddleware('web')->name('pisopay-callback');
 Route::get('/champion/payment/success-payment', fn () => view('payment-success'))->name('payment.success');
+
+Route::get('/champion/{payment}/edit', function (Payment $payment) {
+    return view('champion-plan-manager', ['payment' => $payment]);
+})->name('champion.plan-manager');
+
+
 
 // Fallback 404 Route
 Route::fallback(function () {

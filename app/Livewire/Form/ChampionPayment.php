@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use App\Models\Payment;
 use Livewire\Component;
 use App\Models\Champion;
+use Illuminate\Support\Str;
 use App\Enums\PaymentStatus;
 use App\Mail\NewChampionMail;
 use App\Enums\PaymentPlanType;
@@ -120,13 +121,26 @@ class ChampionPayment extends Component
         }
 
         try {
-            $planType = PaymentPlanType::from($this->billingType);
+
+            $pendingData = [
+                'info' => session('champion_info'),
+                'membership' => session('champion_membership'),
+                'price' => $this->finalPrice,
+                'plan_type' => $this->billingType,
+                'token' => Str::random(40),
+                'last_updated' => now()->timestamp
+            ];
+
+            session()->put('pending_champion', $pendingData);
+
+
 
             $url = $paymentService->submit(
-                $this->info,
-                session()->get('champion_membership'),
-                $this->finalPrice,
-                $planType,
+                $pendingData['info'],
+                $pendingData['membership'],
+                $pendingData['price'],
+                PaymentPlanType::from($pendingData['plan_type']),
+                $pendingData['token']
             );
 
             session()->forget([

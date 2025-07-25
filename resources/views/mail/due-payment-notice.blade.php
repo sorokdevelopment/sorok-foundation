@@ -11,9 +11,24 @@
             </span>
         </h1>
 
+        <h2 style="font-size: 18px; color: #d32f2f; margin-bottom: 12px;">
+            <strong>DUE PAYMENT NOTICE</strong>
+        </h2>
+
+
+        <div style="background-color: #e8f5e9; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="margin: 0; font-weight: 600;">Your Subscription Details:</p>
+            <ul style="list-style: none; padding-left: 0; margin: 8px 0 0 0; font-size: 16px; line-height: 1.6;">
+                <li><strong>Membership:</strong> {{ $data['membership'] }}</li>
+                <li><strong>Payment Amount:</strong> ₱{{ number_format($data['amount'], 2) }}</li>
+                <li><strong>Plan Type:</strong> {{ ucfirst($data['plan_type']) }}</li>
+                <li><strong>Payment Due:</strong> {{ $data['next_payment'] }}</li>
+            </ul>
+        </div>
+
         <div style="background-color: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
             <p style="margin: 0; font-weight: 600;">
-                It's time to renew your monthly subscription. Click the button below to proceed with your payment:
+                It's time to renew your champion subscription. Click the button below to proceed with your payment:
             </p>
         </div>
         
