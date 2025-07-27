@@ -65,6 +65,7 @@ class ChampionSubscriptions extends Command
                     'plan_type' => $payment->plan_type->value,
                     'membership' => $membership,
                     'next_payment' => $nextPayment,
+                    'change_plan_link' => route('champion.plan-manager', $payment)
                 ];
 
 
@@ -79,7 +80,7 @@ class ChampionSubscriptions extends Command
                         $payment->champion, 
                         $checkoutUrl,
                         $addedData,
-
+                        
                     )
                 );
 
@@ -118,7 +119,7 @@ class ChampionSubscriptions extends Command
 
         $upcomingPayments = Payment::with('champion')
             ->where('status', PaymentStatus::COMPLETED->value)
-            ->whereDate('next_payment_at', $reminderDate)
+            ->whereDate('next_payment_at', $reminderDate)   
             ->get();
 
         if ($upcomingPayments->isEmpty()) {

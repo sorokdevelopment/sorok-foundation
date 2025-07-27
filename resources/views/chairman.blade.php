@@ -1,8 +1,8 @@
 <x-layouts.app>
-    <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
+    <div class="relative w-full h-[80vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
         <div 
-            class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/chairman-banner.jpg') }}');">
+            class="absolute inset-0 bg-no-repeat bg-center bg-origin-content bg-contain"
+            style="background-image: url('{{ asset('images/capt.jang.jpg') }}');">
         </div>
     
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
@@ -18,6 +18,7 @@
             </div>
         </div>
     </div>
+    
     
     <x-layouts.container>
 

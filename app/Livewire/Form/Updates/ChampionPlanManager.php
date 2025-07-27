@@ -97,6 +97,10 @@ class ChampionPlanManager extends Component
             );
 
 
+            $this->payment->champion->update([
+                'membership' => $this->membership,
+            ]);
+
             return redirect()->away($checkoutUrl);
 
 

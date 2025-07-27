@@ -1,65 +1,57 @@
 <x-layouts.email.app>
-
-    <div class="header">
+    <div class="header" style="text-align: center; padding: 20px 0; background-color: #f8f9fa;">
         <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;">
     </div>
 
-    <div class="content">
-        <h1 style="color: #d32f2f; font-size: 20px; margin-bottom: 20px;">
-            <span style="background-color: #ffebee; padding: 4px 8px; border-radius: 4px;">
+    <div class="content" style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px;">
+        <!-- Added visual hierarchy for greeting -->
+        <h1 style="color: #d32f2f; font-size: 22px; margin-bottom: 25px; border-left: 4px solid #d32f2f; padding-left: 12px;">
+            <span style="background-color: #ffebee; padding: 6px 12px; border-radius: 4px; display: inline-block;">
                 Hello, {{ $champion->first_name }}
             </span>
         </h1>
 
-        
-        <div style="background-color: #e8f5e9; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin: 0; font-weight: 600;">Your Subscription Details:</p>
-            <ul style="list-style: none; padding-left: 0; margin: 8px 0 0 0; font-size: 16px; line-height: 1.6;">
-                <li><strong>Membership:</strong> {{ $data['membership'] }}</li>
-                <li><strong>Payment Amount:</strong> ₱{{ number_format($data['amount'], 2) }}</li>
-                <li><strong>Plan Type:</strong> {{ ucfirst($data['plan_type']) }}</li>
-                <li><strong>Payment Due:</strong> {{ $data['next_payment'] }}</li>
+        <!-- Enhanced subscription details card -->
+        <div style="background-color: #e8f5e9; padding: 18px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #c8e6c9; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <p style="margin: 0 0 10px 0; font-weight: 600; font-size: 17px; color: #2e7d32;">Your Subscription Details:</p>
+            <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 15px; line-height: 1.8;">
+                <li style="padding: 4px 0; border-bottom: 1px dashed #c8e6c9;"><strong style="display: inline-block; width: 130px;">Membership:</strong> {{ $data['membership'] }}</li>
+                <li style="padding: 4px 0; border-bottom: 1px dashed #c8e6c9;"><strong style="display: inline-block; width: 130px;">Payment Amount:</strong> <span style="color: #d32f2f; font-weight: 600;">₱{{ number_format($data['amount'], 2) }}</span></li>
+                <li style="padding: 4px 0; border-bottom: 1px dashed #c8e6c9;"><strong style="display: inline-block; width: 130px;">Plan Type:</strong> {{ ucfirst($data['plan_type']) }}</li>
+                <li style="padding: 4px 0;"><strong style="display: inline-block; width: 130px;">Payment Due:</strong> <span style="color: #d32f2f; font-weight: 600;">{{ $data['next_payment'] }}</span></li>
             </ul>
         </div>
 
-
-        <div style="background-color: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin: 0; font-weight: 600;">
-                It's time to renew your {{ $data['plan_type'] }} subscription. Click the button below to proceed with your payment:
+        <!-- Improved call-to-action section -->
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 25px; text-align: center;">
+            <p style="margin: 0 0 15px 0; font-weight: 600; font-size: 16px;">
+                It's time to renew your <strong>{{ $data['plan_type'] }}</strong> subscription. Click below to pay:
             </p>
-        </div>
-        
-        <div style="margin-top: 24px;">
-            <p style="margin-bottom: 12px;">Quick Actions:</p>
             <a href="{{ $url }}" 
-               class="cta-button">
-               Pay Now
+                style="display: inline-block; padding: 12px 30px; background-color: #d32f2f; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px; transition: all 0.3s;"
+                onmouseover="this.style.backgroundColor='#b71c1c'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"
+                onmouseout="this.style.backgroundColor='#d32f2f'; this.style.transform='none'; this.style.boxShadow='none';">
+                Pay Now
             </a>
         </div>
 
-        <div style="margin-top: 32px;">
-            <p style="margin-bottom: 4px; font-weight: 500;">Need a different plan?</p>
-            <p style="margin-bottom: 12px; font-size: 14px; color: #555;">
+        <!-- Better plan change section -->
+        <div style="margin-top: 30px; padding: 18px; background-color: #e3f2fd; border-radius: 8px; border-left: 4px solid #1976d2;">
+            <p style="margin: 0 0 8px 0; font-weight: 500; font-size: 16px; color: #0d47a1;">Need a different plan?</p>
+            <p style="margin: 0 0 15px 0; font-size: 14px; color: #555; line-height: 1.5;">
                 If the current plan doesn't meet your needs, you can choose a different subscription plan that suits you better.
             </p>
             <a href="{{ $data['change_plan_link'] }}" 
-            style="
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #1976d2;
-                color: #ffffff;
-                text-decoration: none;
-                border-radius: 4px;
-                font-weight: bold;
-            ">
-            Change Plan
+                style="display: inline-block; padding: 10px 20px; background-color: #1976d2; color: #ffffff; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#1565c0'"
+                onmouseout="this.style.backgroundColor='#1976d2'">
+                Change Plan
             </a>
         </div>
 
-        
-        <div style="margin-top: 24px; font-size: 14px; color: #757575;">
-            <p>This notification was automatically generated by the system.</p>
+        <!-- Refined footer -->
+        <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee; font-size: 13px; color: #757575; text-align: center;">
+            <p style="margin: 5px 0;">This notification was automatically generated by the system.</p>
         </div>
     </div>
-
 </x-layouts.email.app>

@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewChampionMail extends Mailable implements ShouldQueue
+class AdminChampionExtension extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class NewChampionMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Champion Mail',
+            subject: 'Champion Extension',
         );
     }
 
@@ -39,10 +39,8 @@ class NewChampionMail extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
-
-
         return new Content(
-            view: 'mail.new-champion-mail',
+            view: 'mail.admin-champion-extension',
             with: [
                 'name' => $this->name,
                 'amount' => $this->amount,

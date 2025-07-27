@@ -10,6 +10,7 @@ use App\Mail\NewChampionMail;
 use App\Enums\PaymentPlanType;
 use Illuminate\Support\Carbon;
 use App\Enums\ChampionMembership;
+use App\Mail\AdminChampionExtension;
 use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -201,15 +202,15 @@ class PisopayCallbackServices
     {
 
         //add Mail for email send to admin if the champion renew their subscription.
-        // $adminMailClass = $isInitial ? NewChampionMail::class : ChampionExtension::class;
-
+        $adminMailClass = $isInitial ? NewChampionMail::class : AdminChampionExtension::class;
+        
 
 
         Mail::to(config('mail.admin_email.email'))
-            ->send(new NewChampionMail(
+            ->send(new $adminMailClass(
                 $data['customerName'],
-                // $payment->amount,
-                // $payment->plan_type->value
+                $payment->amount,
+                $payment->plan_type->value
             ));
 
 
