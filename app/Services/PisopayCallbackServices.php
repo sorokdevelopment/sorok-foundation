@@ -201,7 +201,6 @@ class PisopayCallbackServices
     protected function sendNotifications(Payment $payment, array $data, bool $isInitial): void
     {
 
-        //add Mail for email send to admin if the champion renew their subscription.
         $adminMailClass = $isInitial ? NewChampionMail::class : AdminChampionExtension::class;
         
 

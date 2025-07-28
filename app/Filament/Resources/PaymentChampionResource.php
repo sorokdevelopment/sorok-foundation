@@ -43,6 +43,12 @@ class PaymentChampionResource extends Resource
                     ->url(fn ($record) => $record->champion ? 'mailto:'.$record->champion->email : null)
                     ->color('primary')
                     ->description(fn ($record) => $record->champion->name ?? ''),
+                TextColumn::make('plan_type')
+                    ->label('Plan Type')
+                    ->sortable(),
+                TextColumn::make('amount')
+                    ->label('Amount')
+                    ->money('PHP'),
                 TextColumn::make('trace_no')
                     ->label('Trace Number'),
                 TextColumn::make('status')
@@ -63,6 +69,14 @@ class PaymentChampionResource extends Resource
                         };
                     })
                     ->sortable(),
+                TextColumn::make('paid_at')
+                    ->label('Paid')
+                    ->sortable()
+                    ->date('F j, Y'),
+                TextColumn::make('next_payment_at')
+                    ->label('Next Payment')
+                    ->sortable()
+                    ->date('F j, Y'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->sortable()
