@@ -13,25 +13,50 @@
                     <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
                         @foreach($events as $event)
                             <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                                <div class="relative h-48 overflow-hidden">
+                                <div x-data="{ showModal: false }" class="relative h-48 overflow-hidden rounded-lg">
                                     @if($event->image)
-                                        <img src="{{ asset('storage/' . $event->image) }}" 
-                                                alt="{{ $event->title }}" 
-                                                class="w-full h-full object-cover">
+                                        <img 
+                                            src="{{ asset('storage/' . $event->image) }}" 
+                                            alt="{{ $event->title }}" 
+                                            @click="showModal = true"
+                                            class="w-full h-full object-contain cursor-pointer"
+                                        >
                                     @else
                                         <div class="w-full h-full bg-gradient-to-br from-[#00674F]/20 to-[#00A676]/20 flex items-center justify-center">
                                             <i class="fa-solid fa-calendar-days text-4xl text-[#00674F]/60"></i>
                                         </div>
                                     @endif
-                                    
+
                                     <div class="absolute top-4 right-4">
                                         <span class="inline-block px-3 py-1 text-xs font-bold uppercase bg-white/95 text-[#00674F] rounded-full shadow-lg backdrop-blur-sm border border-[#00674F]/20">
                                             {{ $event->type_of_events }}
                                         </span>
                                     </div>
-                                    
                                     <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+                                    <div 
+                                        x-show="showModal"
+                                        x-transition
+                                        x-cloak
+                                        class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+                                    >
+                                        <div class="relative max-w-4xl w-full p-4">
+                                            <img 
+                                                src="{{ asset('storage/' . $event->image) }}" 
+                                                alt="{{ $event->title }}" 
+                                                class="w-full h-auto max-h-[80vh] object-contain rounded shadow-lg"
+                                            >
+                                            <button 
+                                                @click="showModal = false" 
+                                                class="absolute top-0 right-0 cursor-pointer text-red-500 text-4xl bg-white px-2.5 py-0.5 rounded-full hover:text-red-600 transition-colors duration-200"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                                 
                                 <div class="p-6">
                                     <h3 class="text-xl font-bold mb-3 group-hover:text-[#00674F] transition-colors duration-300 line-clamp-2">
@@ -39,23 +64,30 @@
                                     </h3>
                                     
                                     <div class="mb-4">
-                                        <p class="font-secondary text-gray-600 text-sm leading-relaxed" 
-                                            x-data="{ 
-                                                expanded: false, 
-                                                description: '{{ addslashes($event->description) }}',
-                                                get truncated() { 
-                                                    return this.description.length > 120 ? this.description.substring(0, 120) + '...' : this.description;
+                                        <p 
+                                            class="font-secondary text-gray-600 text-sm leading-relaxed"
+                                            x-data="{
+                                                expanded: false,
+                                                description: '',
+                                                get truncated() {
+                                                    return this.description.length > 120 
+                                                        ? this.description.substring(0, 120) + '...' 
+                                                        : this.description;
                                                 },
                                                 get shouldShowToggle() {
                                                     return this.description.length > 120;
                                                 }
-                                            }">
+                                            }"
+                                            x-init="description = {{ json_encode($event->description) }}"
+                                        >
                                             <span x-show="!expanded" x-text="truncated"></span>
                                             <span x-show="expanded" x-text="description"></span>
-                                            
-                                            <button x-show="shouldShowToggle" 
-                                                    x-on:click="expanded = !expanded"
-                                                    class="text-[#00674F] hover:text-[#00A676] font-medium text-xs ml-1 transition-colors duration-200">
+
+                                            <button 
+                                                x-show="shouldShowToggle" 
+                                                x-on:click="expanded = !expanded"
+                                                class="text-[#00674F] hover:text-[#00A676] font-medium text-xs ml-1 transition-colors duration-200"
+                                            >
                                                 <span x-show="!expanded">See More</span>
                                                 <span x-show="expanded">See Less</span>
                                             </button>
