@@ -15,6 +15,7 @@
 
                     <div>
                         <div class="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                            <x-skeletons.item class="w-full h-48" />
                             
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-primary rounded-full">
                                 <x-skeletons.item class="w-16 h-4" />
