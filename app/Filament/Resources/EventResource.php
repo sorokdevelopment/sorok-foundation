@@ -80,7 +80,6 @@ class EventResource extends Resource
                     ->image()
                     ->previewable(false)
                     ->imageEditor()
-                    ->required()
                     ->imageEditorAspectRatios([
                         null,
                         '16:9',
