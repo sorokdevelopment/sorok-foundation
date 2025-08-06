@@ -14,6 +14,7 @@ class Event extends Model
         'location',
         'type_of_events',
         'start_at',
+        'image',
         'slug'
     ];
 

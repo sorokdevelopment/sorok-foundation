@@ -14,6 +14,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\EventResource\Pages;
@@ -73,7 +75,20 @@ class EventResource extends Resource
                     ->label('Description')
                     ->columnSpan('full'),
 
-               
+                FileUpload::make('image')
+                    ->directory('event')
+                    ->image()
+                    ->previewable(false)
+                    ->imageEditor()
+                    ->required()
+                    ->imageEditorAspectRatios([
+                        null,
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->maxSize(2048)
+                    ->columnSpan('full'),
             ]);
     }
 
@@ -83,6 +98,8 @@ class EventResource extends Resource
             ->emptyStateIcon('heroicon-o-calendar-days')
             ->emptyStateDescription('Once you write your first event, it will appear here.')
             ->columns([
+                ImageColumn::make('image')
+                    ->size(50),
                 TextColumn::make('title')
                     ->sortable()
                     ->limit(30)

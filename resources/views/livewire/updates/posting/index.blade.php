@@ -29,12 +29,12 @@
 
                     <div class="flex justify-center mt-12 space-x-4">
                         @if ($hasMore)
-                            <div wire:click="loadMore" class="cursor-pointer bg-white text-primary border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
+                            <div wire:click="loadMore" class="cursor-pointer bg-white text-[#00674F] border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
                                 SHOW MORE
                             </div>
                         @endif
                         @if ($expanded)
-                            <div wire:click="showLess" class="cursor-pointer bg-white text-primary border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
+                            <div wire:click="showLess" class="cursor-pointer bg-white text-[#00674F] border-2 border-[#00674F] font-primary text-sm md:text-base font-bold uppercase py-2.5 w-full md:py-4 lg:w-1/2 rounded-3xl flex justify-center items-center hover:bg-[#00674F] hover:text-white transition duration-300">
                                 SHOW LESS
                             </div>
                         @endif
@@ -50,7 +50,7 @@
                     <h1 class="font-bold mb-4 text-center text-3xl md:text-4xl lg:text-5xl">
                         SOCIAL MEDIA POSTING
                     </h1>
-                     <p class="font-secondary max-w-2xl mx-auto text-lg">Keep engaged with regular content</p>
+                    <p class="font-secondary max-w-2xl mx-auto text-lg">Keep engaged with regular content</p>
                 </div>
     
                 <div class="flex flex-col items-center justify-center py-16 px-4 text-center">
