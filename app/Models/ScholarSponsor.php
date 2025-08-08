@@ -3,16 +3,12 @@
 namespace App\Models;
 
 use App\Models\Payment;
-use App\Enums\ChampionStatus;
-use Yajra\Address\HasAddress;
-use App\Enums\ChampionMembership;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Champion extends Model
+class ScholarSponsor extends Model
 {
-    
     protected $fillable = [
         'first_name',
         'last_name',
@@ -36,5 +32,4 @@ class Champion extends Model
     {
         return $this->morphMany(Payment::class, 'paymentable');
     }
-
 }

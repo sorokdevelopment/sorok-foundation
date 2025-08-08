@@ -99,9 +99,8 @@ class ChampionPaymentServices
                     'session_token' => $sessionToken,
                     'user_email' => $championInfo['email'],
                     'membership' => $membership->value
-                ]
+                ],
             ]);
-
 
             // Payment::create([
             //     'champion_id' => $champion->id,

@@ -89,31 +89,31 @@
             </div>
         </div>  
     </x-layouts.container>
-    <div class="bg-[#00674F] text-white w-full py-24 lg:py-8">
+    <div class="bg-[#00674F] text-white w-full py-24 xl:py-8">
         <x-layouts.container>
-            <div class="flex justify-between flex-col-reverse space-y-16 h-full space-y-reverse lg:space-y-0 lg:flex-row  w-full items-center">
-                <div class="flex flex-col justify-center items-center">
+            <div class="flex justify-between flex-col-reverse space-y-16 h-full space-y-reverse xl:space-y-0 xl:flex-row  w-full items-center">
+                <div class="">
                     <img src="{{ asset('images/logo-secondary.png') }}" 
                         alt="Website Logo" 
-                        class="w-sm">
+                        class="w-60 sm:w-72">
                 </div>
                 <div class="flex justify-around items-center">
-                    <div class="space-x-4 sm:space-x-12 lg:space-x-6">
+                    <div class="space-x-4 sm:space-x-12 xl:space-x-6">
                         <a target="__blank" href="https://www.facebook.com/sorokunifoundation">
-                            <i class="fa-brands text-3xl sm:text-4xl fa-facebook">
+                            <i class="fa-brands text-3xl fa-facebook">
                             </i>
                         </a>
                         <a target="__blank" href="https://www.instagram.com/sorokunifoundation">
-                            <i class="fa-brands text-3xl sm:text-4xl fa-instagram"></i>
+                            <i class="fa-brands text-3xl fa-instagram"></i>
                         </a>
                         <a target="__blank" href="https://www.youtube.com/@sorokunifoundationinc">
-                            <i class="fa-brands text-3xl sm:text-4xl fa-youtube"></i>
+                            <i class="fa-brands text-3xl fa-youtube"></i>
                         </a>
                         <a target="__blank" href="https://www.tiktok.com/@sorokunifoundationinc">
-                            <i class="fa-brands text-3xl sm:text-4xl fa-tiktok"></i>
+                            <i class="fa-brands text-3xl fa-tiktok"></i>
                         </a>
                         <a target="__blank" href="https://www.linkedin.com/company/sorok-uni-foundation-inc./">
-                            <i class="fa-brands text-3xl sm:text-4xl fa-linkedin-in"></i>
+                            <i class="fa-brands text-3xl fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>

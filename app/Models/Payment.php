@@ -18,6 +18,8 @@ class Payment extends Model
         'transaction_id',
         'paid_at',
         'next_payment_at',
+        'paymentable_type',
+        'paymentable_id',
         'plan_type',
         'meta_data'
     ];
@@ -40,5 +42,10 @@ class Payment extends Model
     public function champion(): BelongsTo
     {
         return $this->belongsTo(Champion::class);
+    }
+
+    public function paymentable(): BelongsTo
+    {
+        return $this->morphTo();
     }
 }

@@ -53,6 +53,10 @@
                 'label' => 'CHAMPIONS FOR CHANGE',
                 'route' => 'champions'
             ],
+            // [
+            //     'label' => 'DREAM PROJECT SCHOLARSHIP',
+            //     'route' => 'project-scholarship'
+            // ],
             [
                 'label' => 'UPDATES',
                 'route' => 'updates'
@@ -61,7 +65,7 @@
                 'label' => 'CONTACT US',
                 'route' => 'contact-us'
             ],
-           
+
         ];
     @endphp
     <x-layouts.container>
@@ -78,12 +82,12 @@
                 </a>
             </div>
 
-            <div class="items-center justify-end flex-1 hidden xl:flex">
-                <ul class="flex justify-center items-center xl:space-x-8 2xl:space-x-12">
+            <div class="items-center justify-end flex-1 hidden 2xl:flex">
+                <ul class="flex justify-center items-center 2xl:space-x-8">
                     @foreach ($menuItems as $index => $item)
                         <li class="flex justify-center items-center text-center relative group" x-data="{ isOpen: false }" @mouseenter="isOpen = true" @mouseleave="isOpen = false">
                             @if(isset($item['dropdown']))
-                                <div class="px-3 py-2 text-sm font-primary font-bold tracking-wide transition-colors hover:border-[#00674F] hover:text-primary
+                                <div class="px-3 py-2 text-xs font-primary font-bold tracking-wide transition-colors hover:border-[#00674F] hover:text-primary
                                     {{ request()->routeIs($item['route']) || request()->routeIs(collect($item['dropdown'])->pluck('route')->toArray()) ? 'text-primary border-b-2 border-[#00674F]' : '' }}"
                                     :class="{'text-white border-white': !scrolled}">
                                     {{ $item['label'] }}
@@ -101,7 +105,7 @@
                                     @foreach($item['dropdown'] as $dropdownItem)
                                         <li>
                                             <a href="{{ route($dropdownItem['route']) }}" 
-                                            class="block p-4 text-sm font-primary border-b border-b-gray-300 font-bold tracking-wide hover:bg-[#00674F] hover:text-white
+                                            class="block p-4 text-xs font-primary border-b border-b-gray-300 font-bold tracking-wide hover:bg-[#00674F] hover:text-white
                                             {{ request()->routeIs($dropdownItem['route']) ? 'bg-[#00674F] text-white' : '' }}">
                                                 {{ $dropdownItem['label'] }}
                                             </a>
@@ -110,7 +114,7 @@
                                 </ul>
                             @else
                                 <a href="{{ route($item['route']) }}" 
-                                    class="px-3 py-2 text-sm font-primary font-bold tracking-wide transition-colors hover:border-[#00674F] hover:text-primary
+                                    class="px-3 py-2 text-xs font-primary font-bold tracking-wide transition-colors hover:border-[#00674F] hover:text-primary
                                     {{ request()->routeIs($item['route']) ? 'text-primary border-b-2 border-[#00674F]' : '' }}"
                                     :class="{'text-white border-white': !scrolled}">
                                     {{ $item['label'] }}
@@ -123,7 +127,7 @@
 
             <div class="flex items-center justify-end">
                 <button @click="open = true" 
-                        class="p-2 rounded block xl:hidden hover:bg-gray-50"
+                        class="p-2 rounded block 2xl:hidden hover:bg-gray-50"
                         :class="{'': scrolled, 'bg-white': !scrolled}">
                     <span class="sr-only">Open menu</span>
                     <img src="{{ asset('images/menu-bar.png') }}" alt="menu bar" class="w-auto h-6">
@@ -138,7 +142,7 @@
             x-transition:leave="transition-opacity ease-linear duration-200"
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
-            class="fixed inset-0 z-40 bg-black opacity-50 xl:hidden"
+            class="fixed inset-0 z-40 bg-black opacity-50 2xl:hidden"
             x-cloak>
         </div>
 
@@ -150,7 +154,7 @@
             x-transition:leave="transition ease-in-out duration-300 transform"
             x-transition:leave-start="translate-x-0"
             x-transition:leave-end="translate-x-full"
-            class="fixed inset-y-0 right-0 z-50 block max-w-full overflow-y-auto bg-white shadow-xl xl:hidden w-80"
+            class="fixed inset-y-0 right-0 z-50 block max-w-full overflow-y-auto bg-white shadow-xl 2xl:hidden w-80"
             x-cloak>
             
             <div class="flex items-center justify-between px-6 py-4 border-b">
