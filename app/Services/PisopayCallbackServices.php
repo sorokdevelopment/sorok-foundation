@@ -10,15 +10,18 @@ use App\Mail\NewChampionMail;
 use App\Enums\PaymentPlanType;
 use Illuminate\Support\Carbon;
 use App\Enums\ChampionMembership;
-use App\Mail\AdminChampionExtension;
 use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Mail\AdminChampionExtension;
 use Illuminate\Support\Facades\Mail;
+use App\Enums\ScholarSponsorMembership;
 use App\Mail\ChampionAnotherTransaction;
+use App\Models\ScholarSponsor;
 
 class PisopayCallbackServices
 {
+
     /**
      * @param array $data a callback response from pisopay
      * @return bool
@@ -43,9 +46,22 @@ class PisopayCallbackServices
         }
 
         return DB::transaction(function () use ($data) {
-            $payment = Payment::with('champion')->where('trace_no', $data['traceNo'])->first();
+            $payment = Payment::where('trace_no', $data['traceNo'])->first();
 
-            $isInitialPayment = $payment->status === PaymentStatus::PENDING && 
+            if (! $payment) {
+                Log::error("Payment not found for trace_no: {$data['traceNo']}");
+                return false;
+            }
+
+            if ($payment->status === PaymentStatus::COMPLETED) {
+                Log::info("PisoPay callback skipped — already completed", [
+                    'traceNo'       => $data['traceNo'],
+                    'transactionId' => $data['transactionId'],
+                ]);
+                return true;
+            }
+
+            $isInitialPayment = $payment->status === PaymentStatus::PENDING->value &&
                 $payment->champion_id === null;
 
             if ($isInitialPayment) {
@@ -63,6 +79,13 @@ class PisopayCallbackServices
             ]);
 
             $this->sendNotifications($payment, $data, $isInitialPayment);
+
+
+            Log::info("PisoPay payment processed successfully", [
+                'traceNo'       => $data['traceNo'],
+                'transactionId' => $data['transactionId'],
+                'isInitial'     => $isInitialPayment,
+            ]);
 
             return true;
 
@@ -88,7 +111,6 @@ class PisopayCallbackServices
             // Mail::to($data["customerEmail"])
             //     ->send(new ChampionWelcomeEmail($data['customerName']));
 
-            return true;
         });
     }
 
@@ -142,29 +164,70 @@ class PisopayCallbackServices
      */
     protected function handleInitialPayment(Payment $payment, array $data): void
     {
-        $pendingData = session('pending_champion');
+        $pendingData = session('pending_user');
 
-        if ($pendingData) {
-            $champion = Champion::create([
-                'first_name' => $pendingData['info']['first_name'],
-                'last_name' => $pendingData['info']['last_name'],
-                'email' => $data['customerEmail'],
-                'contact_number' => $pendingData['info']['contact_number'],
-                'membership' => $pendingData['membership']->value,
-                'status' => ChampionStatus::ACTIVE,
+        // If no pending user in session, fallback to firstOrCreate champion
+        if (!$pendingData) {
+            Log::warning("No pending user data found in session for payment", [
+                'payment_id' => $payment->id,
+                'trace_no' => $data['traceNo'] ?? null,
+                'email' => $data['customerEmail']
             ]);
             
-            session()->forget('pending_champion');
-        } else {
+            $fullName = $data['customerName'] ?? '';
+            $nameParts = explode(' ', trim($fullName), 2);
+            
             $champion = Champion::firstOrCreate(
                 ['email' => $data['customerEmail']],
                 [
+                    'first_name' => $nameParts[0] ?? null,
+                    'last_name' => $nameParts[1] ?? null,
+                    'email' => $data['customerEmail'],
+                    'contact_number' => $data['customerPhone'] ?? null,
                     'status' => ChampionStatus::ACTIVE,
+                    'membership' => ChampionMembership::AWARENESS,
                 ]
             );
+            
+            $payment->update([
+                'champion_id' => $champion->id,
+            ]);
+            
+            Log::info("Champion created/found for payment without session data", [
+                'champion_id' => $champion->id,
+                'payment_id' => $payment->id,
+                'email' => $data['customerEmail'],
+                'used_fallback_data' => true
+            ]);
+            
+            return;
         }
 
-        $payment->update(['champion_id' => $champion->id]);
+        $baseData = [
+            'first_name'     => $pendingData['info']['first_name'] ?? null,
+            'last_name'      => $pendingData['info']['last_name'] ?? null,
+            'email'          => $data['customerEmail'],
+            'contact_number' => $pendingData['info']['contact_number'] ?? null,
+            'status'         => ChampionStatus::ACTIVE,
+            'membership'     => $pendingData['membership']->value,
+
+        ];
+
+        $champion = Champion::create($baseData);
+
+        $payment->update([
+            'champion_id'   => $champion->id,
+        ]);
+
+        Log::info("New champion created from session data", [
+            'champion_id' => $champion->id,
+            'payment_id' => $payment->id,
+            'email' => $data['customerEmail']
+        ]);
+        
+
+        session()->forget('pending_user');
+
     }
 
 
@@ -179,10 +242,17 @@ class PisopayCallbackServices
      */
     protected function handleRecurringPayment(Payment $payment, array $data): void
     {
-
-        $payment->champion->update([
-            'status' => ChampionStatus::ACTIVE,
-        ]);
+        if ($payment->champion) {
+            $payment->champion->update([
+                'status' => ChampionStatus::ACTIVE,
+            ]);
+        } else {
+            Log::error("Champion not found for recurring payment", [
+                'payment_id' => $payment->id,
+                'trace_no' => $data['traceNo']
+            ]);
+            return;
+        }
     }
 
 
@@ -201,35 +271,39 @@ class PisopayCallbackServices
     protected function sendNotifications(Payment $payment, array $data, bool $isInitial): void
     {
 
-        $adminMailClass = $isInitial ? NewChampionMail::class : AdminChampionExtension::class;
+        try {
+            $adminMailClass = $isInitial ? NewChampionMail::class : AdminChampionExtension::class;
         
 
 
-        Mail::to(config('mail.admin_email.email'))
-            ->send(new $adminMailClass(
+            Mail::to(config('mail.admin_email.email'))
+                ->send(new $adminMailClass(
+                    $data['customerName'],
+                    $payment->amount,
+                    $payment->plan_type->value
+                ));
+
+
+            $mailClass = $isInitial ? ChampionWelcomeEmail::class : ChampionAnotherTransaction::class;
+
+            $nextPayment = Carbon::parse($payment->next_payment_at)->format('F j, Y');
+            $membership = ChampionMembership::from($payment->champion->membership)->name;
+
+            
+            Mail::to($data['customerEmail'])->send(new $mailClass(
                 $data['customerName'],
                 $payment->amount,
-                $payment->plan_type->value
+                $payment->plan_type->value,
+                $payment->champion->membership->name,
+                $membership,
+                $nextPayment
             ));
-
-
-        $mailClass = $isInitial ? ChampionWelcomeEmail::class : ChampionAnotherTransaction::class;
-
-        $nextPayment = Carbon::parse($payment->next_payment_at)->format('F j, Y');
-        $membership = ChampionMembership::from($payment->champion->membership)->name;
-
-        
-        Mail::to($data['customerEmail'])->send(new $mailClass(
-            $data['customerName'],
-            $payment->amount,
-            $payment->plan_type->value,
-            $payment->champion->membership->name,
-            $membership,
-            $nextPayment
-        ));
+        } catch (\Throwable $e) {
+            Log::error('Failed to send notifications', [
+                'payment_id' => $payment->id,
+                'error' => $e->getMessage()
+            ]);
+        }
     }
-
-
-
-
+    
 }

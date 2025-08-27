@@ -26,14 +26,13 @@ class UserInfo extends Component
             'contact_number' => ['required', 'regex:/^(09|\+639|9)\d{9}$/'],
         ];
     }
-       
     public function messages()
     {
         return [
             'contact_number.regex' => 'The contact number must be a valid mobile number.',
         ];
     }
-  
+
 
 
     public function mount()

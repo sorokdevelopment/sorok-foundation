@@ -53,10 +53,10 @@
                 'label' => 'CHAMPIONS FOR CHANGE',
                 'route' => 'champions'
             ],
-            // [
-            //     'label' => 'DREAM PROJECT SCHOLARSHIP',
-            //     'route' => 'project-scholarship'
-            // ],
+            [
+                'label' => 'DREAM PROJECT SCHOLARSHIP',
+                'route' => 'project-scholarship'
+            ],
             [
                 'label' => 'UPDATES',
                 'route' => 'updates'
@@ -83,7 +83,7 @@
             </div>
 
             <div class="items-center justify-end flex-1 hidden 2xl:flex">
-                <ul class="flex justify-center items-center 2xl:space-x-8">
+                <ul class="flex justify-center items-center 2xl:space-x-4">
                     @foreach ($menuItems as $index => $item)
                         <li class="flex justify-center items-center text-center relative group" x-data="{ isOpen: false }" @mouseenter="isOpen = true" @mouseleave="isOpen = false">
                             @if(isset($item['dropdown']))
@@ -114,6 +114,7 @@
                                 </ul>
                             @else
                                 <a href="{{ route($item['route']) }}" 
+                                    rel="prefetch"
                                     class="px-3 py-2 text-xs font-primary font-bold tracking-wide transition-colors hover:border-[#00674F] hover:text-primary
                                     {{ request()->routeIs($item['route']) ? 'text-primary border-b-2 border-[#00674F]' : '' }}"
                                     :class="{'text-white border-white': !scrolled}">
@@ -122,6 +123,13 @@
                             @endif
                         </li>
                     @endforeach
+                    {{-- <li class="ml-6">
+                        <a href="{{ route('donations') }}">
+                            <x-buttons.primary>
+                                DONATE
+                            </x-buttons.primary>
+                        </a>
+                    </li> --}}
                 </ul>
             </div>
 

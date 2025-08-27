@@ -106,6 +106,10 @@ class ChampionChart extends ChartWidget
                     ],
                 ],
             ],
+            'animation' => [
+                'duration' => 750,
+                'easing' => 'easeInOutQuart',
+            ],
         ];
     }
 }

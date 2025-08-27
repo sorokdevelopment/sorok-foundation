@@ -94,11 +94,12 @@ class ChampionPaymentServices
                 'trace_no' => $merchantTraceNo,
                 'amount' => $price,
                 'plan_type' => $planType,
-                'status' => PaymentStatus::PENDING,
+                'status' => PaymentStatus::PENDING,                
                 'meta_data' => [
                     'session_token' => $sessionToken,
                     'user_email' => $championInfo['email'],
-                    'membership' => $membership->value
+                    'membership_value' => $membership->value,
+                    'membership_name' => $membership->name,
                 ],
             ]);
 
@@ -110,10 +111,8 @@ class ChampionPaymentServices
             //     'status' => PaymentStatus::PENDING->value,
             // ]);
 
-                        
             return $decoded['data']['url'];
         });
-           
     }
 
 

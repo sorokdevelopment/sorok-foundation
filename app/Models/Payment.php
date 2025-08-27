@@ -11,26 +11,29 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Payment extends Model
 {
     protected $fillable = [
-        'champion_id',
         'status',
         'trace_no',
         'amount',
         'transaction_id',
         'paid_at',
         'next_payment_at',
-        'paymentable_type',
-        'paymentable_id',
         'plan_type',
-        'meta_data'
+        'meta_data',
+        'champion_id',
     ];
 
 
     
     protected $casts = [
-        'payment' => PaymentStatus::class,
+        'status' => PaymentStatus::class,
         'plan_type' => PaymentPlanType::class,
         'meta_data' => 'array',
     ];
+
+    public function champion(): BelongsTo
+    {
+        return $this->belongsTo(Champion::class);
+    }
 
 
     public function getRouteKeyName()
@@ -38,14 +41,4 @@ class Payment extends Model
         return 'trace_no';
     }
 
-
-    public function champion(): BelongsTo
-    {
-        return $this->belongsTo(Champion::class);
-    }
-
-    public function paymentable(): BelongsTo
-    {
-        return $this->morphTo();
-    }
 }

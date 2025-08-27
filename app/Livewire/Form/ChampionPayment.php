@@ -21,7 +21,7 @@ use Livewire\Features\SupportRedirects\Redirector;
 class ChampionPayment extends Component
 {
 
-
+    
     public $errorMessage = null;
     public $successMessage = null;
 
@@ -169,6 +169,7 @@ class ChampionPayment extends Component
     {
         $this->dispatch('goToPreviousStep');
     }
+
 
     
 

@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="relative w-full h-[30vh] md:h-[50vh] xl:h-[70vh] bg-[#333333]">
+    <div class="relative w-full h-[50vh] xl:h-[70vh] bg-[#333333]">
         <div 
             class="absolute inset-0 bg-cover bg-center"
             style="background-image: url('{{ asset('images/program-banner.jpg') }}');">

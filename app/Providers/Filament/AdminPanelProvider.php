@@ -21,6 +21,8 @@ use App\Filament\Resources\ChampionResource\Widgets\ChampionChart;
 use App\Filament\Resources\EventResource\Widgets\EventSignUpTrendsChart;
 use App\Filament\Resources\ChampionResource\Widgets\ChampionStatOverview;
 use App\Filament\Resources\EventResource\Widgets\CommunityEngagementChart;
+use App\Filament\Resources\ScholarSponsorResource\Widgets\ScholarSponsorChart;
+use App\Filament\Resources\ScholarSponsorResource\Widgets\SponsorStatOverview;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -55,6 +57,8 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 ChampionStatOverview::class,
+                SponsorStatOverview::class,
+                ScholarSponsorChart::class,
                 CommunityEngagementChart::class,
                 ChampionChart::class,
                 EventSignUpTrendsChart::class,

@@ -1,8 +1,8 @@
 <button {{ $attributes->merge(['type' => 'button']) }}
     class="bg-white focus:bg-[#00674F]] hover:bg-[#fafafa] active:bg-[#00674F]]
-           font-primary text-sm font-bold uppercase 
+           font-primary text-sm font-semibold uppercase border-[#00674F] border-2
            text-primary tracking-wide
-           py-2 px-8 md:py-3 lg:py-3.5
+           px-10 py-3 lg:py-3.5
            w-full lg:w-auto
            rounded
            flex justify-center items-center gap-2

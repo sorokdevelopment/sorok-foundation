@@ -32,9 +32,9 @@ class Champion extends Model
     }
 
 
-    public function payments()
+    public function payments(): HasMany
     {
-        return $this->morphMany(Payment::class, 'paymentable');
+        return $this->hasMany(Payment::class);
     }
 
 }

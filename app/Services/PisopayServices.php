@@ -102,7 +102,7 @@ class PisopayServices
     public function generateReferenceNumber(array $arrayData)
     {
 
-         $response = Http::withHeaders([
+        $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => "Basic {$this->creds}",
             'Content-Type' => 'application/json',

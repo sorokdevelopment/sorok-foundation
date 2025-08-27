@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Livewire\Form;
+namespace App\Livewire\Form\ProjectScholarship;
 
 use Livewire\Component;
 
-class ChampionForm extends Component
+class ScholarshipForm extends Component
 {
+
     public array $steps;
     public int $currentStep = 0;
 
@@ -51,9 +52,9 @@ class ChampionForm extends Component
         }
     }
 
-
+    
     public function render()
     {
-        return view('livewire.form.champion-form');
+        return view('livewire.form.project-scholarship.scholarship-form');
     }
 }

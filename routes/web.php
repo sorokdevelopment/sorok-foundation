@@ -31,6 +31,7 @@ Route::get('/contact-us', fn () => view('contact-us'))->name('contact-us');
 Route::get('/champions', fn () => view('champion'))->name('champions');
 Route::get('/dream-project-scholarship', fn () => view('dream-project-scholarship'))->name('project-scholarship');
 Route::get('/privacy-policy', fn () => view('privacy'))->name('privacy-policy');
+Route::get('/donations', fn () => view('donations'))->name('donations');
 
 // Updates Section
 Route::prefix('updates')->group(function () {
