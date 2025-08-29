@@ -136,6 +136,8 @@ class ChampionSubscriptions extends Command
         $this->info("Sent reminders processing complete.");
     }
 
+    
+
     protected function sendReminderForPayment(Payment $payment)
     {
         try {

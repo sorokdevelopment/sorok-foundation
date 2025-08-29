@@ -95,26 +95,37 @@
 
 
 
-    <div class="py-16 bg-[#00674F] text-[#333333]">
+    <div class="py-16">
       <x-layouts.container>
+        <div class="relative text-center bg-gradient-to-br from-[#00674F] via-[#00674F]/95 to-[#00674F]/80 rounded-3xl p-8 md:p-16 text-white overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+          <div class="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full translate-y-10 -translate-x-10"></div>
+          
+          <div class="relative z-10 max-w-4xl mx-auto">
+              <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8">
+                  <i class="fas fa-heart text-4xl text-white"></i>
+              </div>
 
-        <div>
-            <div class="mx-auto px-4 text-center">
-                <div class="max-w-3xl mx-auto bg-white rounded-lg p-8 md:p-12 shadow-sm">
-                    <h2 class="mt-8 font-bold text-2xl lg:text-4xl">Join Our Movement</h2>
-                    <p class="font-secondary text-base md:text-lg lg:text-xl leading-8 lg:leading-10 mt-8">
-                      Whether you're a potential champion or supporter, your contribution matters.
-                    </p>
-                    <div class="flex flex-col sm:flex-row justify-center mt-8 gap-4">
-                        <x-buttons.primary>
-                            <a href="{{ route('home') }}">
-                                Nominate a Champion
-                            </a>
-                        </x-buttons.primary>
-                  
-                    </div>
+              <h1 class="font-bold text-4xl lg:text-5xl text-white mb-6 text-center tracking-tight">
+                  Join Our Movement
+              </h1>
+              
+              <div class="mx-auto space-y-6 text-white">
+                <p class="mt-8 text-center text-base md:text-lg lg:text-xl leading-relaxed">
+                  Whether you're a potential champion or supporter, your contribution matters.
+                </p>
+                
+              </div>
+
+              <div class="flex flex-col sm:flex-row justify-center mt-8 gap-4">
+                    <x-buttons.secondary>
+                        <a href="{{ route('home') }}">
+                            Nominate a Champion
+                        </a>
+                    </x-buttons.secondary>
+
                 </div>
-            </div>
+          </div>
         </div>
       </x-layouts.container>
 

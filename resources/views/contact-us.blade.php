@@ -2,7 +2,7 @@
     <div class="relative w-full h-[50vh] xl:h-[70vh] bg-[#333333]">
         <div 
             class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/contact-banner.jpg') }}');">
+            style="background-image: url('{{ asset('images/banner-1.jpg') }}');">
         </div>
         <div class="absolute inset-0 bg-gradient-to-r from-[#333333]/70 to-[#333333]/70"></div>
     

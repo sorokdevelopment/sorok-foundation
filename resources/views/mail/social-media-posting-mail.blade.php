@@ -145,13 +145,13 @@
     </span>
     <div class="email-container">
         <div class="header">
-            <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;">
+            {{-- <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;"> --}}
         </div>
         
         
         <div class="content">
             @if($image)
-                <img src="{{ $message->embed(storage_path('app/public/'.$image)) }}" alt="{{ $title }}" class="post-image">
+                {{-- <img src="{{ $message->embed(storage_path('app/public/'.$image)) }}" alt="{{ $title }}" class="post-image"> --}}
             @endif
             
             <h1 class="post-title">{{ $title }}</h1>

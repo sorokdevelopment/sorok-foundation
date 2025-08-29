@@ -131,9 +131,7 @@ class ChampionPayment extends Component
                 'last_updated' => now()->timestamp
             ];
 
-            session()->put('pending_champion', $pendingData);
-
-
+            session()->put('pending_user', $pendingData);
 
             $url = $paymentService->submit(
                 $pendingData['info'],

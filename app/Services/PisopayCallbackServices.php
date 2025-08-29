@@ -75,7 +75,7 @@ class PisopayCallbackServices
                 'status' => PaymentStatus::COMPLETED,
                 'transaction_id' => $data['transactionId'],
                 'paid_at' => now(),
-                'next_payment_at' => $this->calculateNextPaymentDate($payment->plan_type)
+                'next_payment_at' => $this->calculateNextPaymentDate($payment)
             ]);
 
             $this->sendNotifications($payment, $data, $isInitialPayment);
@@ -88,28 +88,6 @@ class PisopayCallbackServices
             ]);
 
             return true;
-
-            // if (!$payment) {
-            //     Log::error("Payment not found for trace_no: {$data['traceNo']}");
-            //     return false;
-            // }
-
-            // $payment->update([
-            //     'status' => PaymentStatus::COMPLETED->value,
-            //     'transaction_id' => $data['transactionId'],
-            //     'paid_at' => now(),
-            //     'next_payment_at' => $this->calculateNextPaymentDate($payment),
-            // ]);
-
-            // $payment->champion->update([
-            //     'status' => ChampionStatus::ACTIVE->value,
-            // ]);
-
-            // Mail::to(config('mail.admin_email.email'))
-            //     ->send(new NewChampionMail($data['customerName']));
-
-            // Mail::to($data["customerEmail"])
-            //     ->send(new ChampionWelcomeEmail($data['customerName']));
 
         });
     }
@@ -294,7 +272,6 @@ class PisopayCallbackServices
                 $data['customerName'],
                 $payment->amount,
                 $payment->plan_type->value,
-                $payment->champion->membership->name,
                 $membership,
                 $nextPayment
             ));

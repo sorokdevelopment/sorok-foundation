@@ -54,7 +54,7 @@
                 'route' => 'champions'
             ],
             [
-                'label' => 'DREAM PROJECT SCHOLARSHIP',
+                'label' => 'SPONSOR A DREAM',
                 'route' => 'project-scholarship'
             ],
             [
@@ -123,13 +123,13 @@
                             @endif
                         </li>
                     @endforeach
-                    {{-- <li class="ml-6">
+                    <li class="ml-6">
                         <a href="{{ route('donations') }}">
                             <x-buttons.primary>
                                 DONATE
                             </x-buttons.primary>
                         </a>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
 
@@ -202,9 +202,18 @@
                                 class="block px-6 py-2 text-base font-bold uppercase tracking-wide hover:text-primary {{ request()->routeIs($item['route']) ? 'text-primary' : '' }}">
                                 {{ $item['label'] }}
                             </a>
+                            
                         @endif
                     </div>
                 @endforeach
+                <div class="px-6">
+                    <a href="{{ route('donations') }}">
+                        <x-buttons.primary>
+                            DONATE
+                        </x-buttons.primary>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </x-layouts.container>

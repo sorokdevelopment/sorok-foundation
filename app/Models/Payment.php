@@ -25,7 +25,6 @@ class Payment extends Model
 
     
     protected $casts = [
-        'status' => PaymentStatus::class,
         'plan_type' => PaymentPlanType::class,
         'meta_data' => 'array',
     ];

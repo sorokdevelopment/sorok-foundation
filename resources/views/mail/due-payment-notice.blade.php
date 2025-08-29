@@ -1,7 +1,7 @@
 <x-layouts.email.app>
 
     <div class="header">
-        <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;">
+        {{-- <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;"> --}}
     </div>
 
     <div class="content">

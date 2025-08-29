@@ -1,10 +1,7 @@
 <div class="rounded-2xl max-h-[90vh] py-6 flex flex-col">
     <div class="overflow-y-auto overflow-x-hidden">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold mb-3 text-[#00674F]">Get in Touch</h2>
-            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
+            <h2 class="text-3xl font-bold mb-3 text-[#00674F]">Sponsor A Dream</h2>
         </div>
 
         <div class="rounded-xl border border-gray-100 bg-gray-50 p-2 sm:p-8">

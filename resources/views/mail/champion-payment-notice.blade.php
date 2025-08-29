@@ -1,6 +1,6 @@
 <x-layouts.email.app>
     <div class="header" style="text-align: center; padding: 20px 0; background-color: #f8f9fa;">
-        <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;">
+        {{-- <img src="{{ $message->embed(public_path('images/logo-secondary.png')) }}" alt="{{ config('app.name') }}" style="height: 80px;"> --}}
     </div>
 
     <div class="content" style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px;">

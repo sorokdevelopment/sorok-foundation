@@ -12,226 +12,358 @@
             </h1>
         </div>
     </div>
-    
     <x-layouts.container>
-        <div class="py-16 px-4">
-            <!-- Introduction Section -->
-            <div class="text-center max-w-4xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Make a Difference Today</h2>
-                <p class="text-lg text-gray-600 leading-relaxed">
-                    Your generous donation helps us continue our mission to create positive change in communities. 
-                    Every contribution, no matter the size, makes a meaningful impact on the lives we touch.
-                </p>
-            </div>
-
-            <!-- Donation Options Grid -->
-            <div class="grid lg:grid-cols-2 gap-12 mb-16">
-                <!-- Bank Transfer Section -->
-                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300">
-                    <div class="text-center mb-8">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Bank Transfer</h3>
-                        <p class="text-gray-600">Secure and direct bank transfer to our foundation account</p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-blue-500">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-semibold text-gray-700">Account Name:</span>
-                                <button onclick="copyToClipboard('Sorok Uni Foundation Inc.')" class="text-blue-600 hover:text-blue-800 text-sm">
-                                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                    </svg>
-                                    Copy
-                                </button>
-                            </div>
-                            <p class="text-gray-800 font-mono text-sm">Sorok Uni Foundation Inc.</p>
-                        </div>
-
-                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-blue-500">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-semibold text-gray-700">Account Number:</span>
-                                <button onclick="copyToClipboard('632-7-63202485-8')" class="text-blue-600 hover:text-blue-800 text-sm">
-                                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                    </svg>
-                                    Copy
-                                </button>
-                            </div>
-                            <p class="text-gray-800 font-mono text-lg font-bold">632-7-63202485-8</p>
-                        </div>
-
-                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-blue-500">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="font-semibold text-gray-700">Swift Code:</span>
-                                <button onclick="copyToClipboard('MBTCPHMM')" class="text-blue-600 hover:text-blue-800 text-sm">
-                                    <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                    </svg>
-                                    Copy
-                                </button>
-                            </div>
-                            <p class="text-gray-800 font-mono">MBTCPHMM</p>
-                        </div>
-
-                        <div class="bg-blue-50 rounded-lg p-4 mt-6">
-                            <div class="flex items-start">
-                                <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                                    <svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-blue-800 font-medium">Bank: Metrobank</p>
-                                    <p class="text-xs text-blue-600 mt-1">For international transfers, use the Swift Code above</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alternative Methods Section -->
-                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300">
-                    <div class="text-center mb-8">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Other Ways to Give</h3>
-                        <p class="text-gray-600">Explore additional donation methods and support options</p>
-                    </div>
-
-                    <div class="space-y-6">
-                        <!-- Contact for Large Donations -->
-                        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border border-green-200">
-                            <h4 class="font-bold text-gray-800 mb-2">Major Gift Donations</h4>
-                            <p class="text-gray-600 text-sm mb-3">For substantial contributions or planned giving, our team is ready to assist you.</p>
-                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                                Contact Our Team
-                            </button>
-                        </div>
-
-                        <!-- Corporate Partnerships -->
-                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border border-purple-200">
-                            <h4 class="font-bold text-gray-800 mb-2">Corporate Partnerships</h4>
-                            <p class="text-gray-600 text-sm mb-3">Partner with us for CSR initiatives and community impact programs.</p>
-                            <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                                Learn More
-                            </button>
-                        </div>
-
-                        <!-- Recurring Donations -->
-                        <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-6 border border-orange-200">
-                            <h4 class="font-bold text-gray-800 mb-2">Monthly Giving Program</h4>
-                            <p class="text-gray-600 text-sm mb-3">Join our monthly donors and create sustained impact in our community.</p>
-                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                                Set Up Monthly Gift
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Impact Section -->
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white text-center mb-16">
-                <h3 class="text-3xl font-bold mb-4">Your Impact Matters</h3>
-                <p class="text-lg opacity-90 mb-8 max-w-3xl mx-auto">
-                    Thanks to generous donors like you, we've been able to make a lasting difference. 
-                    Your contribution helps us continue our vital work in the community.
-                </p>
+        <div class="py-8 md:py-16 space-y-16">
+            <div class="relative overflow-hidden bg-gradient-to-br from-[#00674F]/5 via-white to-[#00674F]/10 rounded-3xl p-8 md:p-12 mb-12 md:mb-20 border border-[#00674F]/10">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#00674F]/5 rounded-full -translate-y-32 translate-x-32"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-[#00674F]/10 rounded-full translate-y-16 -translate-x-16"></div>
                 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div>
-                        <div class="text-4xl font-bold mb-2">500+</div>
-                        <div class="text-sm opacity-80">Families Helped</div>
+                <div class="relative z-10 text-center max-w-5xl mx-auto">
+                    <div class="inline-flex items-center bg-[#00674F]/10 px-6 py-3 rounded-full mb-6">
+                        <span class="text-primary font-semibold text-sm">DSWD SP-SP-00001-2025 • Valid until: January 10, 2026</span>
                     </div>
-                    <div>
-                        <div class="text-4xl font-bold mb-2">50+</div>
-                        <div class="text-sm opacity-80">Projects Completed</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold mb-2">₱2M+</div>
-                        <div class="text-sm opacity-80">Funds Raised</div>
+                    <h1 class="font-bold text-4xl lg:text-5xl text-primary mb-6 text-center tracking-tight">
+                        Tara Tulong Tayo!
+                    </h1>
+                    
+                    <div class="mx-auto space-y-6 text-gray-700">
+                        <p class="mt-8 text-center text-base md:text-lg lg:text-xl leading-relaxed">
+                            Together, we can make a difference. Through your donation, you help Sorok Uni Foundation 
+                            continue its mission of empowering forgotten neighbors like <span class="font-semibold text-primary">persons affected by Leprosy</span>, 
+                            <span class="font-semibold text-primary">underprivileged children</span>, supporting <span class="font-semibold text-primary">underprivileged indigenous peoples</span>, 
+                            <span class="font-semibold text-primary">children & youth with disability</span>, and protecting children from 
+                            <span class="font-semibold text-primary">online sexual abuse and exploitation</span>.
+                        </p>
+                        
+                        <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-[#00674F]/20">
+                            <p class="text-base md:text-lg lg:text-xl font-medium text-primary">
+                                Your gift—big or small—goes a long way in bringing hope and brighter futures to Filipino communities in need.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Donation Process Steps -->
-            <div class="mb-16">
-                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">How to Donate</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-blue-600">1</span>
+            <div class="space-y-8 md:space-y-12 mb-16 md:mb-20">
+                <div class="bg-white rounded-3xl border border-gray-100 overflow-hidden">
+                    <div class="bg-gradient-to-r from-[#00674F] to-[#00674F]/80 p-6 md:p-8">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Bank Transfer</h3>
+                                <p class="text-white/90">Secure and direct bank transfer</p>
+                            </div>
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-credit-card text-2xl md:text-3xl text-white"></i>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-2">Choose Amount</h4>
-                        <p class="text-gray-600 text-sm">Decide on the amount you'd like to contribute to our cause.</p>
                     </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-blue-600">2</span>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+                            <div class="group bg-gray-50 hover:bg-[#00674F]/5 rounded-xl p-4 transition-all duration-300 border-2 border-transparent hover:border-[#00674F]/20">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-700">Bank Branch</span>
+                                </div>
+                                <p class="font-secondary text-gray-800 break-all">Metrobank Intramuros-CBCP</p>
+                            </div>
+
+                            <div class="group bg-gray-50 hover:bg-[#00674F]/5 rounded-xl p-4 transition-all duration-300 border-2 border-transparent hover:border-[#00674F]/20">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-700">Account Name</span>
+                                </div>
+                                <p class="font-secondary text-gray-800 break-all">Sorok Uni Foundation, Inc.</p>
+                            </div>
+
+                            <div class="group bg-gradient-to-br from-[#00674F]/5 to-[#00674F]/10 rounded-xl p-4 transition-all duration-300 border-2 border-[#00674F]/20 hover:border-[#00674F]/40">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-700">Account Number</span>
+                                </div>
+                                <p class="font-secondary text-xl md:text-2xl font-bold text-primary break-all">632-7-63202485-8</p>
+                            </div>
+
+                            <div class="group bg-gray-50 hover:bg-[#00674F]/5 rounded-xl p-4 transition-all duration-300 border-2 border-transparent hover:border-[#00674F]/20">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-gray-700">SWIFT Code</span>
+                                </div>
+                                <p class="font-secondary text-gray-800 break-all">MBTCPHMM</p>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-2">Transfer Funds</h4>
-                        <p class="text-gray-600 text-sm">Use the bank details above to make your secure transfer.</p>
                     </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-blue-600">3</span>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-gray-100 overflow-hidden">
+                    <div class="bg-gradient-to-r from-[#00674F] to-[#00674F]/80 p-6 md:p-8">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Digital Payments</h3>
+                                <p class="text-white/90">Quick and convenient QR payments</p>
+                            </div>
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-mobile-alt text-2xl md:text-3xl text-white"></i>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-2">Get Receipt</h4>
-                        <p class="text-gray-600 text-sm">Send us your transaction details to receive an official receipt.</p>
+                    </div>
+                    
+                    <div class="p-6 md:p-8">
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-6">
+                                <div class="bg-gradient-to-br from-[#00674F]/5 to-[#00674F]/10 rounded-xl p-4 border-2 border-[#00674F]/20">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-semibold text-gray-700">QR PH Account</span>
+                                    </div>
+                                    <p class="font-secondary text-gray-800 text-sm md:text-base break-all">Sorok Uni Foundation, Inc.</p>
+                                </div>
+                                
+                                <div class="text-center lg:text-left">
+                                    <h4 class="font-bold text-lg text-gray-800 mb-3">How to use QR Code:</h4>
+                                    <div class="space-y-2 text-sm text-gray-600">
+                                        <div class="flex items-start">
+                                            <div class="w-6 h-6 bg-[#00674F]/10 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                                <span class="text-xs font-bold text-primary">1</span>
+                                            </div>
+                                            <p>Open your mobile banking app or e-wallet</p>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="w-6 h-6 bg-[#00674F]/10 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                                <span class="text-xs font-bold text-primary">2</span>
+                                            </div>
+                                            <p>Scan the QR code or save the image to scan later</p>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="w-6 h-6 bg-[#00674F]/10 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                                <span class="text-xs font-bold text-primary">3</span>
+                                            </div>
+                                            <p>Enter your donation amount and complete the transfer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="text-center">
+                                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-300 hover:border-[#00674F]/30 transition-all duration-300">
+                                    <h4 class="font-bold text-gray-800 mb-4 text-lg">Scan to Donate</h4>
+                                    <div class="rounded-xl">
+                                        <img src="{{ asset('images/QR_SUFI.png') }}" 
+                                            alt="QR Code for Sorok Uni Foundation Donations" 
+                                            loading="lazy"
+                                            class="w-full max-w-sm mx-auto h-auto object-contain rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-4 font-medium">
+                                        Compatible with most Philippine e-wallets and banking apps
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Contact Section -->
-            <div class="bg-gray-50 rounded-2xl p-8 text-center">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Questions About Donating?</h3>
-                <p class="text-gray-600 mb-6">
-                    Our team is here to help you make your donation process as smooth as possible.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
-                        Contact Us
-                    </button>
-                    <button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
-                        Download Donation Form
-                    </button>
+            <div class="bg-gradient-to-br from-[#00674F] via-[#00674F]/90 to-[#00674F]/80 rounded-3xl p-4 sm:p-8 md:p-12 text-white mb-16 md:mb-20 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
+                
+                <div class="relative z-10">
+                    <div class="text-center mb-8 md:mb-12">
+                        <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-gift text-3xl text-white"></i>
+                        </div>
+                        <h1 class="font-bold text-4xl lg:text-5xl text-white mb-6 text-center tracking-tight">
+                            In-Kind Donations
+                        </h1>
+
+                        <p class="mt-8 opacity-90 max-w-4xl mx-auto text-center text-base md:text-lg lg:text-xl leading-relaxed">
+                            We also welcome in-kind support such as food packs, hygiene kits, school supplies, assistive devices, 
+                            and more. Please coordinate with us beforehand so we can match your donation with the 
+                            community's current needs.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-2xl mx-auto">
+                        <p class="font-semibold text-center mb-6 text-xl">Contact us to coordinate your donation:</p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <a class="flex flex-col sm:flex-row items-center justify-center bg-white/20 hover:bg-white/30 rounded-xl p-4 transition-all duration-300 group">
+                                <i class="fas fa-envelope mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="font-medium mt-2 sm:mt-0 text-base">fcd@sorokuni.com</span>
+                            </a>
+                            <a class="flex flex-col sm:flex-row items-center justify-center bg-white/20 hover:bg-white/30 rounded-xl p-4 transition-all duration-300 group">
+                                <i class="fas fa-phone mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="font-medium mt-2 sm:mt-0 text-base">+63 917 168 7834</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16 md:mb-20">
+                <div class="text-center mb-12 md:mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">After You Give</h3>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Follow these simple steps to complete your donation process</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 relative">
+                    <div class="hidden md:block absolute top-24 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-[#00674F]/20 via-[#00674F]/40 to-[#00674F]/20"></div>
+                    
+                    <div class="relative group">
+                        <div class="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#00674F]/30 transition-all duration-300 hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#00674F] to-[#00674F]/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                                <span class="text-2xl font-bold text-white">1</span>
+                            </div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-4 text-center">Send Proof of Donation</h4>
+                            <p class="text-gray-600 text-center mb-6 leading-relaxed">
+                                Email your deposit slip or transaction screenshot to our team
+                            </p>
+                            <div class="bg-[#00674F]/5 p-4 rounded-xl border border-[#00674F]/20">
+                                <p class="text-sm text-primary font-medium text-center">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    <span class="font-secondary">fcd@sorokuni.com</span>
+                                </p>
+                                <p class="text-sm text-gray-600 text-center mt-2">
+                                    Subject: Donation – [Your Name/Company]
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <div class="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#00674F]/30 transition-all duration-300 hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#00674F] to-[#00674F]/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                                <span class="text-2xl font-bold text-white">2</span>
+                            </div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-4 text-center">Get Official Receipt</h4>
+                            <p class="text-gray-600 text-center mb-6 leading-relaxed">
+                                We'll issue an official receipt for your donation records
+                            </p>
+                            <div class="bg-[#00674F]/5 p-4 rounded-xl border border-[#00674F]/20">
+                                <p class="text-sm text-primary text-center font-medium">
+                                    Include: Name/Company, TIN, Address & Contact Number
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <div class="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#00674F]/30 transition-all duration-300 hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#00674F] to-[#00674F]/80 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                                <span class="text-2xl font-bold text-white">3</span>
+                            </div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-4 text-center">Designate Your Gift</h4>
+                            <p class="text-gray-600 text-center mb-6 leading-relaxed">
+                                You may choose which program to support, or let us allocate it to the area of greatest need.
+                            </p>
+                            <div class="bg-[#00674F]/5 p-4 rounded-xl border border-[#00674F]/20">
+                                <p class="text-sm text-primary text-center font-medium">
+                                    Specify your preferred program or "Greatest Need"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-4 sm:p-8 md:p-12 mb-16 md:mb-20 border border-gray-200">
+                <div class="text-center mb-8 md:mb-12">
+                    <div class="w-20 h-20 bg-[#00674F]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-3xl text-primary"></i>
+                    </div>
+
+
+                    <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Corporate Partnerships</h3>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Partner with us for meaningful CSR initiatives, payroll giving programs, or grant support. 
+                        Together, we can create lasting impact in Filipino communities.
+                    </p>
+                </div>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl  p-6 md:p-8 shadow-lg border border-gray-200">
+                        <h4 class="font-bold text-xl text-center text-gray-800 mb-6">Get in touch with our team:</h4>
+                        <div class="bg-white/10 backdrop-blur-sm mx-auto">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <a class="flex flex-col sm:flex-row items-center justify-center bg-[#00674F]/5 hover:bg-[#00674F]/10 rounded-xl p-4 transition-all duration-300 group">
+                                    <i class="fas fa-envelope mr-3 text-primary group-hover:scale-110 transition-transform"></i>
+                                    <span class="font-medium mt-2 sm:mt-0 text-primary text-base">fcd@sorokuni.com</span>
+                                </a>
+                                <a class="flex flex-col sm:flex-row items-center justify-center bg-[#00674F]/5 hover:bg-[#00674F]/10 rounded-xl p-4 transition-all duration-300 group">
+                                    <i class="fas fa-phone mr-3 text-primary group-hover:scale-110 transition-transform"></i>
+                                    <span class="font-medium mt-2 sm:mt-0 text-primary text-base">+63 917 168 7834</span>
+                                </a>
+                            </div>
+                        </div>
+                            
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <h5 class="font-semibold text-gray-800 mb-3 text-center">Partnership Opportunities:</h5>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center text-sm">
+                                <div class="bg-[#00674F]/5 text-primary px-3 py-2 rounded-lg font-medium">CSR Programs</div>
+                                <div class="bg-[#00674F]/5 text-primary px-3 py-2 rounded-lg font-medium">Payroll Giving</div>
+                                <div class="bg-[#00674F]/5 text-primary px-3 py-2 rounded-lg font-medium">Grant Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#00674F]/5 rounded-3xl p-8 md:p-12 text-center mb-8 md:mb-12 border border-[#00674F]/10">
+                <div class="max-w-4xl mx-auto">
+                    <div class="w-20 h-20 bg-[#00674F]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-primary mb-6">Transparency & Accountability</h3>
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                        Sorok Uni Foundation is a duly registered non-profit in the Philippines. We uphold the highest 
+                        standards of financial transparency and provide comprehensive impact reports to our donors and partners.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-white/80 rounded-xl p-4 border border-[#00674F]/20">
+                            <div class="w-12 h-12 bg-[#00674F]/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-file-alt text-lg text-primary"></i>
+                            </div>
+                            <h4 class="font-semibold text-primary mb-1">Official Registration</h4>
+                            <p class="text-sm text-gray-600">Registered Philippine Non-Profit</p>
+                        </div>
+                        <div class="bg-white/80 rounded-xl p-4 border border-[#00674F]/20">
+                            <div class="w-12 h-12 bg-[#00674F]/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-chart-bar text-lg text-primary"></i>
+                            </div>
+                            <h4 class="font-semibold text-primary mb-1">Impact Reports</h4>
+                            <p class="text-sm text-gray-600">Regular transparency updates</p>
+                        </div>
+                        <div class="bg-white/80 rounded-xl p-4 border border-[#00674F]/20">
+                            <div class="w-12 h-12 bg-[#00674F]/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-lock text-lg text-primary"></i>
+                            </div>
+                            <h4 class="font-semibold text-primary mb-1">Secure Processing</h4>
+                            <p class="text-sm text-gray-600">Safe & protected donations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative text-center bg-gradient-to-br from-[#00674F] via-[#00674F]/95 to-[#00674F]/80 rounded-3xl p-8 md:p-16 text-white overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                <div class="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full translate-y-10 -translate-x-10"></div>
+                
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8">
+                        <i class="fas fa-heart text-4xl text-white"></i>
+                    </div>
+
+                    <h1 class="font-bold text-4xl lg:text-5xl text-white mb-6 text-center tracking-tight">
+                        Maraming Salamat!
+                    </h1>
+
+                    <h4 class="text-xl md:text-2xl font-medium mb-8 opacity-90">Thank You for Your Generosity!</h4>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-8">
+                        <p class="text-center text-base md:text-lg lg:text-xl leading-relaxed">
+                            Your generosity fuels <span class="font-bold">"Tara Tulong Tayo!"</span>—a movement of hope and compassion 
+                            that uplifts lives, one family and one community at a time. Together, we're creating lasting change 
+                            and brighter futures for those who need it most.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </x-layouts.container>
 
-    <!-- Success Toast (Hidden by default) -->
-    <div id="copyToast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-        <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-            </svg>
-            <span>Copied to clipboard!</span>
-        </div>
-    </div>
-
-    <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                showToast();
-            }).catch(function(err) {
-                console.error('Could not copy text: ', err);
-            });
-        }
-
-        function showToast() {
-            const toast = document.getElementById('copyToast');
-            toast.style.transform = 'translateX(0)';
-            setTimeout(() => {
-                toast.style.transform = 'translateX(100%)';
-            }, 2000);
-        }
-    </script>
 </x-layouts.app>
