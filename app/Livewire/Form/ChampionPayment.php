@@ -2,21 +2,11 @@
 
 namespace App\Livewire\Form;
 
-use GuzzleHttp\Client;
-use App\Models\Payment;
 use Livewire\Component;
-use App\Models\Champion;
 use Illuminate\Support\Str;
-use App\Enums\PaymentStatus;
-use App\Mail\NewChampionMail;
 use App\Enums\PaymentPlanType;
-use App\Services\PisopayServices;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\RedirectResponse;
 use App\Services\ChampionPaymentServices;
-use Livewire\Features\SupportEvents\Event;
-use Livewire\Features\SupportRedirects\Redirector;
 
 class ChampionPayment extends Component
 {
@@ -79,41 +69,6 @@ class ChampionPayment extends Component
      * @return mixed return redirect response and a event.
      * 
      */
-    // public function submit(ChampionPaymentServices $paymentService)
-    // {
-    //     if (!session()->has('champion_info') || !session()->has('champion_membership') || !session()->has('champion_membership_price')) {
-    //         return redirect()->away('home');
-
-
-    //     }
-
-    //     try {
-    //         $url = $paymentService->submit(
-    //             $this->info,
-    //             session()->get('champion_membership'),
-    //             $this->price,
-    //         );
-
-
-    //         session()->forget(['champion_info', 'champion_membership', 'champion_membership_price']);
-
-    //         return redirect()->away($url);
-
-    //     } catch (\Throwable $e) {
-    //         Log::error('Champion Payment Submission Failed', ['error' => $e->getMessage()]);
-
-    //         $this->dispatch('alert', [
-    //             'title' => 'Something went wrong',
-    //             'type' => 'danger',
-    //             'message' => $e->getMessage(),
-    //         ]);
-
-    //         $this->dispatch('delayed-redirect');
-    //     }
-
-
-    // }
-
     public function submit(ChampionPaymentServices $paymentService)
     {
         if (!session()->has('champion_info') || !session()->has('champion_membership') || !session()->has('champion_membership_price')) {
@@ -127,27 +82,25 @@ class ChampionPayment extends Component
                 'membership' => session('champion_membership'),
                 'price' => $this->finalPrice,
                 'plan_type' => $this->billingType,
-                'token' => Str::random(40),
-                'last_updated' => now()->timestamp
             ];
 
-            session()->put('pending_user', $pendingData);
 
             $url = $paymentService->submit(
                 $pendingData['info'],
                 $pendingData['membership'],
                 $pendingData['price'],
                 PaymentPlanType::from($pendingData['plan_type']),
-                $pendingData['token']
             );
+
 
             session()->forget([
                 'champion_info', 
                 'champion_membership', 
                 'champion_membership_price',
             ]);
-
+            
             return redirect()->away($url);
+
 
         } catch (\Throwable $e) {
             Log::error('Payment Error: '.$e->getMessage());

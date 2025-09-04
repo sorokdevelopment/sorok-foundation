@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\ConnectionException;
 
@@ -79,15 +80,17 @@ class PisopayServices
             ->post("{$this->url}/api/{$this->version}/token", $arrayData);
 
             if ($response->failed()) {
-                \Log::error('PisoPay Token Generation Failed', [
+                Log::error('PisoPay Token Generation Failed', [
                     'response' => $response->body(),
                     'status' => $response->status()
                 ]);
                 return false;
             }
+
             return $response->body(); // You can also return $response->json() if you want it decoded
+            
         } catch (\Exception $e) {
-            \Log::error('PisoPay Token Exception', ['error' => $e->getMessage()]);
+            Log::error('PisoPay Token Exception', ['error' => $e->getMessage()]);
             return false;
         }
     }

@@ -9,14 +9,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ChampionWelcomeEmail extends Mailable implements ShouldQueue
+class ScholarSponsorWelcomeEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-     public function __construct(
+    public function __construct(
         private string $name,
         private float $amount,
         private string $planType,
@@ -33,7 +33,7 @@ class ChampionWelcomeEmail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to the Movement, ' . $this->name . '!',
+            subject: 'Scholar Sponsor Welcome Email',
         );
     }
 
@@ -43,7 +43,7 @@ class ChampionWelcomeEmail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.champion-welcome-email',
+            view: 'mail.scholar-sponsor-welcome-email',
             with: [
                 'name' => $this->name,
                 'amount' => $this->amount,

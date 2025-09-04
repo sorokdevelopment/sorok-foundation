@@ -3,23 +3,25 @@
 namespace App\Services;
 
 use App\Models\Payment;
-use App\Models\Champion;
 use App\Enums\PaymentStatus;
+use App\Mail\NewSponsorMail;
 use App\Enums\ChampionStatus;
-use App\Mail\NewChampionMail;
-use App\Enums\PaymentPlanType;
+use App\Models\ScholarSponsor;
 use Illuminate\Support\Carbon;
-use App\Enums\ChampionMembership;
-use App\Mail\ChampionWelcomeEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Mail\AdminChampionExtension;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ChampionAnotherTransaction;
+use App\Enums\ScholarSponsorMembership;
+use App\Mail\ScholarSponsorWelcomeEmail;
+use App\Mail\AdminScholarSponsorExtension;
+use App\Mail\ScholarSponsorAnotherTransaction;
+use Illuminate\Http\Client\ConnectionException;
 
-class PisopayCallbackServices
+class SponsorPisopayCallbackServices
 {
 
+    
     /**
      * @param array $data a callback response from pisopay
      * @return bool
@@ -59,8 +61,9 @@ class PisopayCallbackServices
                 return true;
             }
 
-            $isInitialPayment = $payment->status === PaymentStatus::PENDING->value &&
-                $payment->champion_id === null && $payment->paymentable_type === null && $payment->paymentable_id === null;
+            $isInitialPayment = $payment->status === PaymentStatus::PENDING->value 
+                && $payment->paymentable_type === null 
+                && $payment->paymentable_id === null;
 
             if ($isInitialPayment) {
                 $this->handleInitialPayment($payment, $data);
@@ -73,7 +76,7 @@ class PisopayCallbackServices
                 'status' => PaymentStatus::COMPLETED,
                 'transaction_id' => $data['transactionId'],
                 'paid_at' => now(),
-                'next_payment_at' => $this->calculateNextPaymentDate($payment)
+                'next_payment_at' => now()->addMonths($payment->month_of_payment),
             ]);
 
             $this->sendNotifications($payment, $data, $isInitialPayment);
@@ -115,22 +118,6 @@ class PisopayCallbackServices
 
 
     /**
-     * Choosing between yearly or monthly payment
-     * 
-     * @param Payment $payment 
-     * @return DateTime
-     */
-    protected function calculateNextPaymentDate(Payment $payment): \DateTime
-    {
-        return match($payment->plan_type) {
-            PaymentPlanType::MONTHLY => now()->addMonth(),
-            PaymentPlanType::ANNUALLY => now()->addYear(),
-            default => now()->addMonth()
-        };
-    }
-
-
-    /**
      * Handle the First payment of the user
      * 
      * @param Payment $payment
@@ -161,44 +148,23 @@ class PisopayCallbackServices
         ];
 
 
-        $champion = Champion::create($baseData);
+        // Check if the membership is a scholar sponsor membership
+        $scholarSponsor = ScholarSponsor::create($baseData);
 
         $payment->update([
-            'champion_id'   => $champion->id,
-            'paymentable_id' => $champion->id,
-            'paymentable_type' => Champion::class,
+            'paymentable_id' => $scholarSponsor->id,
+            'paymentable_type' => ScholarSponsor::class,
         ]);
 
-        Log::info("New champion data created", [
+        Log::info("New scholar sponsor data created", [
             'email' => $data['customerEmail']
         ]);
-
-
-        // Check if the membership is a champion membership
-        // if($payment->meta_data['membership_name'] && in_array($payment->meta_data['membership_name'], array_column(ChampionMembership::cases(), 'name'))) {
-        // }
-
-        // // Check if the membership is a scholar sponsor membership
-        // $scholarSponsor = ScholarSponsor::create($baseData);
-
-        // $payment->update([
-        //     'paymentable_id' => $scholarSponsor->id,
-        //     'paymentable_type' => ScholarSponsor::class,
-        // ]);
-
-
-
-
-        // Log::info("New scholar sponsor data created", [
-        //     'email' => $data['customerEmail']
-        // ]);
         
     }
 
 
     /**
-     * Handle Monthy or Annually Payment of the champion
-     * 
+     * Handle Monthy or Annually Payment of the scholar sponsor
      * @param Payment $payment
      * @param array $data
      * 
@@ -223,7 +189,7 @@ class PisopayCallbackServices
 
 
     /**
-     * Email Notification for Champion
+     * Email Notification for Scholar Sponsor
      * 
      * @param Payment $payment
      * @param array $data
@@ -237,7 +203,7 @@ class PisopayCallbackServices
     {
 
         try {
-            $adminMailClass = $isInitial ? NewChampionMail::class : AdminChampionExtension::class;
+            $adminMailClass = $isInitial ? NewSponsorMail::class : AdminScholarSponsorExtension::class;
         
 
 
@@ -245,20 +211,20 @@ class PisopayCallbackServices
                 ->send(new $adminMailClass(
                     $data['customerName'],
                     $payment->amount,
-                    $payment->plan_type->value
+                    $payment->month_of_payment . ' Month(s)',
                 ));
 
 
-            $mailClass = $isInitial ? ChampionWelcomeEmail::class : ChampionAnotherTransaction::class;
+            $mailClass = $isInitial ? ScholarSponsorWelcomeEmail::class : ScholarSponsorAnotherTransaction::class;
 
             $nextPayment = Carbon::parse($payment->next_payment_at)->format('F j, Y');
-            $membership = ChampionMembership::from($payment->champion->membership)->name;
+            $membership = ScholarSponsorMembership::from($payment->paymentable->membership)->name;
 
             
             Mail::to($data['customerEmail'])->send(new $mailClass(
                 $data['customerName'],
                 $payment->amount,
-                $payment->plan_type->value,
+                $payment->month_of_payment . ' Month(s)',
                 $membership,
                 $nextPayment
             ));

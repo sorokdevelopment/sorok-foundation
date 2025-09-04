@@ -32,4 +32,5 @@ class ScholarSponsor extends Model
     {
         return $this->morphMany(Payment::class, 'paymentable');
     }
+    
 }

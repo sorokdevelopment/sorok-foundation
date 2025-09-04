@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
-use App\Enums\PaymentStatus;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Log;
-use App\Services\PisopayCallbackServices;
+use App\Services\SponsorPisopayCallbackServices;
 
-class PaymentController extends Controller
+class SponsorPaymentController extends Controller
 {
     /**
      * Handle the incoming request.
      * @param Request $request
-     * @param PisopayCallbackServices $callbackService
+     * @param SponsorPisopayCallbackServices $callbackService
      */
-    public function __invoke(Request $request, PisopayCallbackServices $callbackService)
+    public function __invoke(Request $request, SponsorPisopayCallbackServices $callbackService)
     {
 
         $data = $request->input('data');
@@ -44,5 +41,4 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Server error'], 500);
         }
     }
-
 }

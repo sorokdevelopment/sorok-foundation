@@ -2,32 +2,26 @@
 
 namespace App\Services;
 
-use App\Contracts\PaymentInterface;
 use App\Models\Payment;
-use App\Models\Champion;
-use Illuminate\Support\Str;
 use App\Enums\PaymentStatus;
 use App\Enums\PaymentPlanType;
-use App\Enums\ChampionMembership;
+use App\Models\ScholarSponsor;
 use App\Services\PisopayServices;
 use Illuminate\Support\Facades\DB;
+use App\Contracts\PaymentInterface;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Container\Attributes\DB as AttributesDB;
+use App\Enums\ScholarSponsorMembership;
 
-class ChampionPaymentServices implements PaymentInterface
+
+class ScholarSponsorPaymentServices implements PaymentInterface
 {
-
     public function __construct(public PisopayServices $pisopay) {}
 
 
-
-
+    
     /**
      * 
-     * @param array $championInfo array of session champion
+     * @param array $scholar_sponsorInfo array of session champion
      * @param $membership 
      * @param float $price 
      * @param PaymentPlanType $planType
@@ -35,9 +29,9 @@ class ChampionPaymentServices implements PaymentInterface
      * @return string
      */
 
-    public function submit(array $championInfo, $membership, float $price, PaymentPlanType $planType): string
+    public function submit(array $sponsorInfo, $membership, float $price, PaymentPlanType $planType): string
     {
-        return DB::transaction(function () use ($championInfo, $membership, $price, $planType)
+        return DB::transaction(function () use ($sponsorInfo, $membership, $price, $planType)
         {
             $merchantTraceNo = "sok-" . time() . "-" . rand(1000, 9999);
             $sessionId = $this->pisopay->sessionGenerate();
@@ -47,12 +41,12 @@ class ChampionPaymentServices implements PaymentInterface
                 'amount' => $price,
                 'delivery_fees' => 0,
                 'processor_name' => 'NA',
-                'customer_name' => $championInfo['first_name'] . ' ' . $championInfo['last_name'],
-                'customer_email' => $championInfo['email'],
-                'customer_phone' => $championInfo['contact_number'],
+                'customer_name' => $sponsorInfo['first_name'] . ' ' . $sponsorInfo['last_name'],
+                'customer_email' => $sponsorInfo['email'],
+                'customer_phone' => $sponsorInfo['contact_number'],
                 'customer_address' => 'PH',
                 'merchant_trace_no' => $merchantTraceNo,
-                'merchant_callback_url' => route('pisopay-callback'),
+                'merchant_callback_url' => route('sponsor-pisopay-callback'),
                 'callback_url' => route('payment.success'),
                 'ip_address' => request()->ip(),
                 'expiry_date' => now()->addDay()->format('Y-m-d H:i:s')
@@ -61,7 +55,7 @@ class ChampionPaymentServices implements PaymentInterface
 
             $tokenData = $this->pisopay->generateToken([
                 [
-                    "name" => $membership->name, 
+                    "name" => $membership->name . " Scholarship", 
                     "price" => $price, 
                     "quantity" => 1
                 ],
@@ -84,12 +78,13 @@ class ChampionPaymentServices implements PaymentInterface
                 'trace_no' => $merchantTraceNo,
                 'amount' => $price,
                 'plan_type' => $planType,
-                'status' => PaymentStatus::PENDING,                
+                'status' => PaymentStatus::PENDING,     
+                'month_of_payment' => $sponsorInfo['month_of_payment'] ?? null,       
                 'meta_data' => [
-                    'first_name' => $championInfo['first_name'],
-                    'last_name' => $championInfo['last_name'],
-                    'contact_number' => $championInfo['contact_number'],
-                    'user_email' => $championInfo['email'],
+                    'first_name' => $sponsorInfo['first_name'],
+                    'last_name' => $sponsorInfo['last_name'],
+                    'contact_number' => $sponsorInfo['contact_number'],
+                    'user_email' => $sponsorInfo['email'],
                     'membership_value' => $membership->value,
                     'membership_name' => $membership->name,
                 ],
@@ -103,10 +98,10 @@ class ChampionPaymentServices implements PaymentInterface
 
 
 
-
-    public function submitRecurring(Champion $champion, string $membership, float $price, string $plan_type, string $traceNo): string
+    
+    public function submitRecurring(ScholarSponsor $scholar_sponsor, string $membership, float $price, string $plan_type, string $traceNo): string
     {
-        return DB::transaction(function () use ($champion, $membership, $price, $plan_type, $traceNo) {
+        return DB::transaction(function () use ($scholar_sponsor, $membership, $price, $plan_type, $traceNo) {
 
             $sessionId = $this->pisopay->sessionGenerate();
 
@@ -115,9 +110,9 @@ class ChampionPaymentServices implements PaymentInterface
                 'amount' => $price,
                 'delivery_fees' => 0,
                 'processor_name' => 'NA',
-                'customer_name' => $champion->first_name . ' ' . $champion->last_name,
-                'customer_email' => $champion->email,
-                'customer_phone' => $champion->contact_number,
+                'customer_name' => $scholar_sponsor->first_name . ' ' . $scholar_sponsor->last_name,
+                'customer_email' => $scholar_sponsor->email,
+                'customer_phone' => $scholar_sponsor->contact_number,
                 'customer_address' => 'PH',
                 'merchant_trace_no' => $traceNo,
                 'merchant_callback_url' => route('pisopay-callback'),
@@ -134,7 +129,7 @@ class ChampionPaymentServices implements PaymentInterface
             ], $postData);
 
             Payment::create([
-                'champion_id' => $champion->id,
+                'champion_id' => $scholar_sponsor->id,
                 'amount' => $price,
                 'trace_no' => $traceNo,
                 'plan_type' => $plan_type,
@@ -155,6 +150,5 @@ class ChampionPaymentServices implements PaymentInterface
     }
 
 
-
-
+    
 }

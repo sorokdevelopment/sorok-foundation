@@ -36,15 +36,18 @@ class PaymentChampionResource extends Resource
             ->emptyStateIcon('heroicon-o-user')
             ->emptyStateDescription('No payment yet.')
             ->columns([
-                TextColumn::make('champion.email')
-                    ->label('Champion Email')
+                TextColumn::make('paymentable.email')
+                    ->label('User Email')
                     ->sortable()
                     ->searchable()
-                    ->url(fn ($record) => $record->champion ? 'mailto:'.$record->champion->email : null)
+                    ->url(fn ($record) => $record->paymentable ? 'mailto:'.$record->paymentable->email : null)
                     ->color('primary')
-                    ->description(fn ($record) => $record->champion->name ?? ''),
+                    ->description(fn ($record) => $record->paymentable->full_name ?? ''),
                 TextColumn::make('plan_type')
                     ->label('Plan Type')
+                    ->sortable(),
+                TextColumn::make('month_of_payment')
+                    ->label('Month(s) of Payment')
                     ->sortable(),
                 TextColumn::make('amount')
                     ->label('Amount')
@@ -84,7 +87,12 @@ class PaymentChampionResource extends Resource
                 
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->options(
+                        collect(PaymentStatus::cases())
+                            ->mapWithKeys(fn ($case) => [$case->value => $case->name])
+                            ->toArray()
+                    ),
             ])
             ->actions([
             ])

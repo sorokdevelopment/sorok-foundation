@@ -6,6 +6,7 @@ use App\Models\Champion;
 use App\Enums\PaymentStatus;
 use App\Enums\PaymentPlanType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Payment extends Model
@@ -20,6 +21,9 @@ class Payment extends Model
         'plan_type',
         'meta_data',
         'champion_id',
+        'paymentable_id',
+        'paymentable_type',
+        'month_of_payment',
     ];
 
 
@@ -38,6 +42,11 @@ class Payment extends Model
     public function getRouteKeyName()
     {
         return 'trace_no';
+    }
+
+    public function paymentable(): MorphTo
+    {
+        return $this->morphTo();
     }
 
 }

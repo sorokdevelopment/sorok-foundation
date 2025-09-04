@@ -7,6 +7,7 @@ use App\Livewire\Updates;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Livewire\Form\Updates\UserPlanManager;
+use App\Http\Controllers\SponsorPaymentController;
 use App\Livewire\Updates\Newsletter\NewsletterBlog;
 
 /*
@@ -48,6 +49,7 @@ Route::get('events/{event:slug}/form', function (Event $event) {
 
 // Payment Routes
 Route::post('/pisopay/payment/callback', PaymentController::class)->withoutMiddleware('web')->name('pisopay-callback');
+Route::post('/pisopay/sponsor/payment/callback', SponsorPaymentController::class)->withoutMiddleware('web')->name('sponsor-pisopay-callback');
 Route::get('/champion/payment/success-payment', fn () => view('payment-success'))->name('payment.success');
 
 Route::get('/champion/{payment}/edit', function (Payment $payment) {

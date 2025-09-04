@@ -37,4 +37,9 @@ class Champion extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function morphPayments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
+
 }

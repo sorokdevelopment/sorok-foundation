@@ -7,22 +7,18 @@
     <div class="content">
         <h1 style="color: #00674F; font-size: 20px; margin-bottom: 20px;">
             <span style="background-color: #ffebee; padding: 4px 8px; border-radius: 4px;">
-                Hi {{ $name }},
+                Welcome, {{ $name }}!
             </span>
         </h1>
 
         <div style="background-color: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-            <p style="margin: 12px 0 0 0; line-height: 1.5;">
-                Welcome to Champions for Change! 🎉 You are now part of a growing movement of people committed to transforming lives through Sorok Uni Foundation's mission.
+            <p style="margin: 0; font-weight: 600;">We're thrilled to have you join us!</p>
+            <p style="margin: 8px 0 0 0; font-size: 18px;">
+                <strong class="highlight">{{ $name }}</strong>
             </p>
-        </div>
-        <div style="margin-top: 24px;">
-            <p style="margin-bottom: 12px; font-weight: 600;">Here's what to do today:</p>
-
-            <ul style="padding-left: 20px; margin: 12px 0; line-height: 1.6;">
-                <li>Download your Certificate of Appreciation.</li>
-                <li>Save this email for your 30-day onboarding journey.</li>
-            </ul>
+            <p style="margin: 12px 0 0 0; line-height: 1.5;">
+                Thank you for supporting our scholars. Your generosity and commitment will make a significant difference in their educational journey and future success.
+            </p>
         </div>
 
         <div style="background-color: #e8f5e9; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
@@ -30,16 +26,23 @@
             <ul style="list-style: none; padding-left: 0; margin: 8px 0 0 0; font-size: 16px; line-height: 1.6;">
                 <li><strong>Membership:</strong> {{ $membership }}</li>
                 <li><strong>Payment Amount:</strong> ₱{{ number_format($amount, 2) }}</li>
-                <li><strong>Plan Type:</strong> {{ ucfirst($planType) }}</li>
+                <li><strong>Month of Payment:</strong> {{ ucfirst($planType) }}</li>
                 <li><strong>Next Payment Due:</strong> {{ $nextPayment }}</li>
             </ul>
         </div>
 
+        <div style="margin-top: 24px;">
+            <p style="margin-bottom: 12px; font-weight: 600;">What to expect next:</p>
+            <ul style="padding-left: 20px; margin: 12px 0; line-height: 1.6;">
+                <li>A team member will reach out within <strong>this day</strong> to confirm your registration.</li>
+                <li>You’ll receive program materials and guidelines via email.</li>
+                <li>Stay tuned for updates on training sessions or community events!</li>
+            </ul>
+        </div>
 
         <div style="margin-top: 24px; font-size: 14px; color: #757575;">
-            <p>Your first official message as a Champion has been sent. We're so excited you're here!</p>
-            <p style="margin-top: 8px;">With gratitude,<br> The Sorok Uni Team </p>
-            <p style="margin-top: 8px;">In the meantime, feel free to explore <a href="{{ config('app.url') }}" style="color: #00674F;">our website</a>.</p>
+            <p>In the meantime, feel free to explore <a href="{{ config('app.url') }}" style="color: #00674F;">our website</a>.</p>
+            <p style="margin-top: 8px;">Welcome to the team — we’re thrilled to have you!</p>
         </div>
     </div>
 
