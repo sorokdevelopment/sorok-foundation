@@ -14,6 +14,15 @@
 
         <script src="https://kit.fontawesome.com/9d5bf2e3d5.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image" href="{{ asset('images/logo.png') }}" />
+
+
+        <meta property="og:title" content="@yield('title', '')">
+        <meta property="og:description" content="@yield('description', '')">
+        <meta property="og:image" content="@yield('image', asset('images/primary-logo.png'))">
+
+
+
+
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6Q9E8VE1Q"></script>
         <script>
