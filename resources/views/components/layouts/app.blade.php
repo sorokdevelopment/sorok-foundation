@@ -16,6 +16,8 @@
         <link rel="icon" type="image" href="{{ asset('images/logo.png') }}" />
 
 
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:title" content="@yield('title', '')">
         <meta property="og:description" content="@yield('description', '')">
         <meta property="og:image" content="@yield('image', asset('images/primary-logo.png'))">
