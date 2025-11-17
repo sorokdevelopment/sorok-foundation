@@ -1,6 +1,6 @@
 <div>
     @if($videos->isNotEmpty())
-        <div class="flex items-center justify-center mt-12 md:py-12 scroll-section">
+        <div class="flex items-center justify-center mt-12 md:py-12 scroll-section overflow-hidden">
             <x-layouts.container>
 
                 <div class="relative">
